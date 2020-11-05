@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 1.9.1
+ * @version 1.9.2
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.9.1
+	 * @version 1.9.2
 	 * @since   1.0.0
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -122,6 +122,15 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 				'id'       => 'alg_wc_left_to_free_shipping_ajax_events',
 				'default'  => '',
 				'css'      => 'width:100%;',
+			),
+			array(
+				'title'    => __( 'Added to cart event without AJAX', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Enable', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'Fires a custom event <code>"alg_wc_alfs_added_to_cart"</code> in case a product has been added to cart without AJAX.', 'amount-left-free-shipping-woocommerce' ) . '<br />' .
+				              __( 'Enable it if the Store notice is not getting displayed on single product pages.', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'checkbox',
+				'id'       => 'alg_wc_left_to_free_shipping_ajax_added_to_cart_no_ajax',
+				'default'  => 'no',
 			),
 			array(
 				'type'     => 'sectionend',

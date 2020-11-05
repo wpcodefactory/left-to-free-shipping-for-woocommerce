@@ -27,7 +27,7 @@ msgstr ""
 #: includes/class-alg-wc-widget-alfs.php:27
 #: includes/class-alg-wc-widget-alfs.php:55
 #: includes/settings/class-alg-wc-alfs-settings-general.php:48
-#: includes/settings/class-alg-wc-alfs-settings-general.php:172
+#: includes/settings/class-alg-wc-alfs-settings-general.php:181
 #: includes/settings/class-alg-wc-settings-alfs.php:24
 msgid "Amount Left for Free Shipping"
 msgstr ""
@@ -362,8 +362,9 @@ msgid "Enable AJAX"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:109
-#: includes/settings/class-alg-wc-alfs-settings-general.php:140
+#: includes/settings/class-alg-wc-alfs-settings-general.php:128
 #: includes/settings/class-alg-wc-alfs-settings-general.php:149
+#: includes/settings/class-alg-wc-alfs-settings-general.php:158
 msgid "Enable"
 msgstr ""
 
@@ -382,57 +383,73 @@ msgstr ""
 msgid "These events are always included: %s"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:134
+#: includes/settings/class-alg-wc-alfs-settings-general.php:127
+msgid "Added to cart event without AJAX"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-general.php:129
+msgid ""
+"Fires a custom event <code>\"alg_wc_alfs_added_to_cart\"</code> in case a "
+"product has been added to cart without AJAX."
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-general.php:130
+msgid ""
+"Enable it if the Store notice is not getting displayed on single product "
+"pages."
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-general.php:143
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:139
+#: includes/settings/class-alg-wc-alfs-settings-general.php:148
 msgid "Check for free shipping"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:141
+#: includes/settings/class-alg-wc-alfs-settings-general.php:150
 msgid ""
 "Check for already available alternative (i.e. not requiring minimum order "
 "amount) free shipping methods."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:142
 #: includes/settings/class-alg-wc-alfs-settings-general.php:151
+#: includes/settings/class-alg-wc-alfs-settings-general.php:160
 msgid "No text will be outputted in this case."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:148
+#: includes/settings/class-alg-wc-alfs-settings-general.php:157
 msgid "Check for virtual cart"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:150
+#: includes/settings/class-alg-wc-alfs-settings-general.php:159
 msgid "Check if cart consists of virtual products only."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:164
+#: includes/settings/class-alg-wc-alfs-settings-general.php:173
 msgid "Info"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:168
+#: includes/settings/class-alg-wc-alfs-settings-general.php:177
 msgid "You can also use:"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:171
+#: includes/settings/class-alg-wc-alfs-settings-general.php:180
 msgid "Widget"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:175
+#: includes/settings/class-alg-wc-alfs-settings-general.php:184
 msgid "Shortcode"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:179
+#: includes/settings/class-alg-wc-alfs-settings-general.php:188
 msgid "PHP function"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:24
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:98
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:115
-msgid "Manual Min Amount"
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:104
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:121
+msgid "Manual min amount"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:37
@@ -443,17 +460,17 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:98
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:115
+msgid "Manual Min Amount"
+msgstr ""
+
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:99
 msgid ""
 "Generally the plugin will retrieve the minimum free shipping order amount "
 "automatically, however, if you are using <strong>non-standard</strong> "
 "shipping methods for free shipping (i.e. not the original \"Free shipping\" "
 "method from WooCommerce), you need to set the amount manually here."
-msgstr ""
-
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:104
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:121
-msgid "Manual min amount"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:116

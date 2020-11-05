@@ -39,6 +39,11 @@ Additionally, the Pro version has options to update the amount via **AJAX**.
 
 == Changelog ==
 
+= 1.9.2 - 05/11/2020 =
+* Fix - PHP Notice:  Undefined index: min_free_shipping_amount in class-alg-wc-alfs-pro.php.
+* Dev - Manual Min Amount - Settings section title updated.
+* Dev - General - Ajax Options - Add "Added to cart event without AJAX" option fixing the Store notice not getting displayed on single product pages.
+
 = 1.9.1 - 04/11/2020 =
 * Dev - AJAX - Events - Renamed to "Additional events" and it now defaults to an empty string. I.e. default events are now always included.
 * Dev - `[alg_wc_left_to_free_shipping]` - Third param in `shortcode_atts()` function now matches the shortcode name (was `alg_get_left_to_free_shipping`).

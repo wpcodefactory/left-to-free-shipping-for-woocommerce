@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings
  *
- * @version 1.9.0
+ * @version 1.9.2
  * @since   1.9.0
  * @author  WPFactory
  */
@@ -16,12 +16,12 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.9.0
+	 * @version 1.9.2
 	 * @since   1.9.0
 	 */
 	function __construct() {
 		$this->id   = 'manual_min_amount';
-		$this->desc = __( 'Manual Min Amount', 'amount-left-free-shipping-woocommerce' );
+		$this->desc = __( 'Manual min amount', 'amount-left-free-shipping-woocommerce' );
 		parent::__construct();
 	}
 
