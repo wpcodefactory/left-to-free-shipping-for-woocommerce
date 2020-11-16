@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Checkout Section Settings
  *
- * @version 1.8.0
+ * @version 1.9.3
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.8.0
+	 * @version 1.9.3
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -49,13 +49,14 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'desc_tip' => apply_filters( 'alg_wc_left_to_free_shipping_settings', $this->pro_desc ),
 			),
 			array(
-				'title'    => __( 'Content', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => $this->get_placeholders_desc(),
-				'desc_tip' => __( 'You can use HTML and/or shortcodes here.', 'amount-left-free-shipping-woocommerce' ),
-				'id'       => 'alg_wc_left_to_free_shipping_info_content_checkout',
-				'default'  => alg_wc_left_to_free_shipping()->core->get_default_content(),
-				'type'     => 'textarea',
-				'css'      => 'width:100%;height:100px;',
+				'title'           => __( 'Content', 'amount-left-free-shipping-woocommerce' ),
+				'desc'            => $this->get_placeholders_desc().'<br />'.
+				                     sprintf( __( 'If the content doesn\'t seem to get displayed in the proper position, try to wrap the placeholders in HTML table row tags like: %s', 'amount-left-free-shipping-woocommerce' ), '<code>' . esc_html( '<tr><th></th><td>' ) . '%amount_left_for_free_shipping%' . esc_html( '</td></tr>' ) . '</code>' ),
+				'desc_tip'        => __( 'You can use HTML and/or shortcodes here.', 'amount-left-free-shipping-woocommerce' ),
+				'id'              => 'alg_wc_left_to_free_shipping_info_content_checkout',
+				'default'         => alg_wc_left_to_free_shipping()->core->get_default_content(),
+				'type'            => 'textarea',
+				'css'             => 'width:100%;height:100px;',
 				'alg_wc_alfs_raw' => true,
 			),
 			array(
@@ -72,8 +73,8 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 					'woocommerce_checkout_after_customer_details'   => __( 'After customer details', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_checkout_before_order_review'      => __( 'Before order review', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_checkout_order_review'             => __( 'Order review', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_review_order_before_shipping'      => __( 'Order review: Before shipping', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_review_order_after_shipping'       => __( 'Order review: After shipping', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_review_order_before_shipping'      => __( 'Order review: Before shipping (in table)', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_review_order_after_shipping'       => __( 'Order review: After shipping (in table)', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_review_order_before_submit'        => __( 'Order review: Payment: Before submit button', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_review_order_after_submit'         => __( 'Order review: Payment: After submit button', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_checkout_after_order_review'       => __( 'After order review', 'amount-left-free-shipping-woocommerce' ),

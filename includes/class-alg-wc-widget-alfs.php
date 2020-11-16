@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Widget
  *
- * @version 1.8.0
+ * @version 1.9.3
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -67,16 +67,20 @@ class Alg_WC_Widget_Left_to_Free_Shipping extends WP_Widget {
 	/**
 	 * Processing widget options on save.
 	 *
-	 * @version 1.0.0
+	 * @version 1.9.3
 	 * @since   1.0.0
+	 *
 	 * @param   array $new_instance The new options
 	 * @param   array $old_instance The previous options
-	 * @todo    [next] HTML tags inside the title / content?
+	 *
+	 * @return array
 	 */
 	function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title']   = ( ! empty( $new_instance['title'] ) )   ? strip_tags( $new_instance['title'] )   : '';
-		$instance['content'] = ( ! empty( $new_instance['content'] ) ) ? strip_tags( $new_instance['content'] ) : '';
+		$allowed_html             = wp_kses_allowed_html( 'post' );
+		$allowed_html['progress'] = array( 'max' => array(), 'value' => array() );
+		$instance                 = array();
+		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['content']      = ( ! empty( $new_instance['content'] ) ) ? wp_kses( $new_instance['content'], $allowed_html ) : '';
 		return $instance;
 	}
 }

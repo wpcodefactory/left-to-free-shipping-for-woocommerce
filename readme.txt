@@ -3,7 +3,7 @@ Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.9.2
+Stable tag: 1.9.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,16 @@ Additionally, the Pro version has options to update the amount via **AJAX**.
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
 * [Visit plugin site](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/).
 
+== Frequently Asked Questions ==
+= Why the amount left message doesn't seem to get displayed in the proper position? =
+Some positions are located inside tables, so it's necessary to wrap the content in HTML table row tags, like:
+
+`
+<tr><th></th><td>%amount_left_for_free_shipping% left for free shipping</td></tr>
+`
+
+Most probably, these positions will have `(in table)` appended.
+
 == Installation ==
 
 1. Upload the entire plugin folder to the `/wp-content/plugins/` directory.
@@ -38,6 +48,12 @@ Additionally, the Pro version has options to update the amount via **AJAX**.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 1.9.3 - 16/11/2020 =
+* Fix - Widget - Allow the Widget to save some html including `<progress>` tag.
+* Add FAQ regarding HTML table row tags for table positions.
+* Improve position descriptions at Cart and Checkout sections using (in table) at the end.
+* Improve content description at Cart and Checkout sections regarding HTML table row tags for table positions.
 
 = 1.9.2 - 05/11/2020 =
 * Fix - PHP Notice:  Undefined index: min_free_shipping_amount in class-alg-wc-alfs-pro.php.
@@ -175,5 +191,8 @@ Additionally, the Pro version has options to update the amount via **AJAX**.
 
 == Upgrade Notice ==
 
-= 1.0.0 =
-This is the first release of the plugin.
+= 1.9.3 =
+* Fix - Widget - Allow the Widget to save some html including `<progress>` tag.
+* Add FAQ regarding HTML table row tags for table positions.
+* Improve position descriptions at Cart and Checkout sections using (in table) at the end.
+* Improve content description at Cart and Checkout sections regarding HTML table row tags for table positions.

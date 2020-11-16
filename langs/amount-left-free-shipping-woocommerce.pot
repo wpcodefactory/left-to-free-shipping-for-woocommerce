@@ -78,8 +78,8 @@ msgid "Content"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-add-to-cart.php:54
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:54
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:54
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:55
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:55
 #: includes/settings/class-alg-wc-alfs-settings-general.php:66
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:54
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:55
@@ -87,8 +87,8 @@ msgid "You can use HTML and/or shortcodes here."
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-add-to-cart.php:62
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:62
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:62
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:63
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:63
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:62
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:72
 msgid "Position"
@@ -124,94 +124,102 @@ msgstr ""
 msgid "Outputted on the cart page."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:68
-msgid "Before cart"
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:54
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:54
+#, php-format
+msgid ""
+"If the content doesn't seem to get displayed in the proper position, try to "
+"wrap the placeholders in HTML table row tags like: %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:69
-msgid "Before cart table"
+msgid "Before cart"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:70
-msgid "Before cart contents"
+msgid "Before cart table"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:71
-msgid "Cart contents"
+msgid "Before cart contents"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:72
-msgid "Cart coupon"
+msgid "Cart contents"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:73
-msgid "Cart actions"
+msgid "Cart coupon"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:74
-msgid "After cart contents"
+msgid "Cart actions"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:75
-msgid "After cart table"
+msgid "After cart contents"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:76
-msgid "Cart collaterals"
+msgid "After cart table"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:77
+msgid "Cart collaterals"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:78
 msgid "After cart"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:79
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:80
 msgid "Before cart totals"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:80
-msgid "Cart totals: Before shipping"
-msgstr ""
-
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:81
-msgid "Cart totals: After shipping"
+msgid "Cart totals: Before shipping (in table)"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:82
-msgid "Cart totals: Before order total"
+msgid "Cart totals: After shipping (in table)"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:83
-msgid "Cart totals: After order total"
+msgid "Cart totals: Before order total (in table)"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:84
-msgid "Proceed to checkout"
+msgid "Cart totals: After order total (in table)"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:85
+msgid "Proceed to checkout"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:86
 msgid "After cart totals"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:87
-msgid "Before shipping calculator"
-msgstr ""
-
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:88
-msgid "After shipping calculator"
+msgid "Before shipping calculator (in table)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:90
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:89
+msgid "After shipping calculator (in table)"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:91
 msgid "If cart is empty"
-msgstr ""
-
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:94
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:84
-#: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:79
-msgid "Position order (priority)"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:95
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:85
+#: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:79
+msgid "Position order (priority)"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:96
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:86
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:80
 msgid "Here you can move the info inside the Position selected above."
 msgstr ""
@@ -228,55 +236,55 @@ msgstr ""
 msgid "Outputted on the checkout page."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:68
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:69
 msgid "Before checkout form"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:69
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:70
 msgid "Before customer details"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:70
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:71
 msgid "Billing"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:71
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:72
 msgid "Shipping"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:72
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:73
 msgid "After customer details"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:73
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:74
 msgid "Before order review"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:74
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:75
 msgid "Order review"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-checkout.php:75
-msgid "Order review: Before shipping"
-msgstr ""
-
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:76
-msgid "Order review: After shipping"
+msgid "Order review: Before shipping (in table)"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:77
-msgid "Order review: Payment: Before submit button"
+msgid "Order review: After shipping (in table)"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:78
-msgid "Order review: Payment: After submit button"
+msgid "Order review: Payment: Before submit button"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:79
-msgid "After order review"
+msgid "Order review: Payment: After submit button"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:80
+msgid "After order review"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-checkout.php:81
 msgid "After checkout form"
 msgstr ""
 
@@ -388,15 +396,16 @@ msgid "Added to cart event without AJAX"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:129
+#, php-format
 msgid ""
-"Fires a custom event <code>\"alg_wc_alfs_added_to_cart\"</code> in case a "
-"product has been added to cart without AJAX."
+"Fires a custom event %s in case a product has been added to cart without "
+"AJAX."
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:130
 msgid ""
 "Enable it if the Store notice is not getting displayed on single product "
-"pages."
+"pages and if you have the \"Hide\" option enabled in \"Store notice\"."
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:143

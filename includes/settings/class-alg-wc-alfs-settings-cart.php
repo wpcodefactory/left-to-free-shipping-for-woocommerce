@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Cart Section Settings
  *
- * @version 1.8.0
+ * @version 1.9.3
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.8.0
+	 * @version 1.9.3
 	 * @since   1.6.0
 	 * @todo    [maybe] "notice" as "position" (same in "Checkout" section)
 	 * @todo    [maybe] multiple positions (same in "Mini-cart" and "Checkout" sections)
@@ -49,13 +49,14 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 				'type'     => 'checkbox',
 			),
 			array(
-				'title'    => __( 'Content', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => $this->get_placeholders_desc(),
-				'desc_tip' => __( 'You can use HTML and/or shortcodes here.', 'amount-left-free-shipping-woocommerce' ),
-				'id'       => 'alg_wc_left_to_free_shipping_info_content_cart',
-				'default'  => alg_wc_left_to_free_shipping()->core->get_default_content(),
-				'type'     => 'textarea',
-				'css'      => 'width:100%;height:100px;',
+				'title'           => __( 'Content', 'amount-left-free-shipping-woocommerce' ),
+				'desc'            => $this->get_placeholders_desc() . '<br />' .
+				                     sprintf( __( 'If the content doesn\'t seem to get displayed in the proper position, try to wrap the placeholders in HTML table row tags like: %s', 'amount-left-free-shipping-woocommerce' ), '<code>' . esc_html( '<tr><th></th><td>' ) . '%amount_left_for_free_shipping%' . esc_html( '</td></tr>' ) . '</code>' ),
+				'desc_tip'        => __( 'You can use HTML and/or shortcodes here.', 'amount-left-free-shipping-woocommerce' ),
+				'id'              => 'alg_wc_left_to_free_shipping_info_content_cart',
+				'default'         => alg_wc_left_to_free_shipping()->core->get_default_content(),
+				'type'            => 'textarea',
+				'css'             => 'width:100%;height:100px;',
 				'alg_wc_alfs_raw' => true,
 			),
 			array(
@@ -77,15 +78,15 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 					'woocommerce_after_cart'                     => __( 'After cart', 'amount-left-free-shipping-woocommerce' ),
 
 					'woocommerce_before_cart_totals'             => __( 'Before cart totals', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_cart_totals_before_shipping'    => __( 'Cart totals: Before shipping', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_cart_totals_after_shipping'     => __( 'Cart totals: After shipping', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_cart_totals_before_order_total' => __( 'Cart totals: Before order total', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_cart_totals_after_order_total'  => __( 'Cart totals: After order total', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_cart_totals_before_shipping'    => __( 'Cart totals: Before shipping (in table)', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_cart_totals_after_shipping'     => __( 'Cart totals: After shipping (in table)', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_cart_totals_before_order_total' => __( 'Cart totals: Before order total (in table)', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_cart_totals_after_order_total'  => __( 'Cart totals: After order total (in table)', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_proceed_to_checkout'            => __( 'Proceed to checkout', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_after_cart_totals'              => __( 'After cart totals', 'amount-left-free-shipping-woocommerce' ),
 
-					'woocommerce_before_shipping_calculator'     => __( 'Before shipping calculator', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_after_shipping_calculator'      => __( 'After shipping calculator', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_before_shipping_calculator'     => __( 'Before shipping calculator (in table)', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_after_shipping_calculator'      => __( 'After shipping calculator (in table)', 'amount-left-free-shipping-woocommerce' ),
 
 					'woocommerce_cart_is_empty'                  => __( 'If cart is empty', 'amount-left-free-shipping-woocommerce' ),
 				),

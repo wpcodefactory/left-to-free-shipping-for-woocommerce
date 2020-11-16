@@ -126,8 +126,8 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 			array(
 				'title'    => __( 'Added to cart event without AJAX', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => __( 'Enable', 'amount-left-free-shipping-woocommerce' ),
-				'desc_tip' => __( 'Fires a custom event <code>"alg_wc_alfs_added_to_cart"</code> in case a product has been added to cart without AJAX.', 'amount-left-free-shipping-woocommerce' ) . '<br />' .
-				              __( 'Enable it if the Store notice is not getting displayed on single product pages.', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => sprintf( __( 'Fires a custom event %s in case a product has been added to cart without AJAX.', 'amount-left-free-shipping-woocommerce' ), '<code>"alg_wc_alfs_added_to_cart"</code>' ) . '<br />' .
+				              __( 'Enable it if the Store notice is not getting displayed on single product pages and if you have the "Hide" option enabled in "Store notice".', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'checkbox',
 				'id'       => 'alg_wc_left_to_free_shipping_ajax_added_to_cart_no_ajax',
 				'default'  => 'no',
