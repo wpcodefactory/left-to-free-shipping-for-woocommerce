@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 1.9.2
+ * @version 1.9.4
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.9.2
+	 * @version 1.9.4
 	 * @since   1.0.0
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -58,6 +58,14 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 				'id'       => 'alg_wc_left_to_free_shipping_include_discounts',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Minimum cart amount', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'Minimum cart amount required for displaying the amount left for free shipping.', 'amount-left-free-shipping-woocommerce' ) . '<br />'
+				              . __( 'Use 0 or leave it empty to disable it.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_min_cart_amount',
+				'default'  => 0,
+				'type'     => 'number',
 			),
 			array(
 				'title'    => __( 'Message on free shipping reached', 'amount-left-free-shipping-woocommerce' ),
@@ -186,7 +194,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 						'</li>' .
 						'<li>' .
 								'<span style="text-decoration:underline;">' . __( 'PHP function', 'amount-left-free-shipping-woocommerce' ) . '</span>' . ': ' .
-								'<code>echo alg_wc_get_left_to_free_shipping( "%amount_left_for_free_shipping% left for free shipping" );</code>' .
+								'<code>echo alg_wc_get_left_to_free_shipping( array( "content" => "%amount_left_for_free_shipping% left for free shipping" ) );</code>' .
 						'</li>' .
 					'</ol>' .
 				'</div>',

@@ -3,7 +3,7 @@ Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.9.3
+Stable tag: 1.9.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,11 @@ Most probably, these positions will have `(in table)` appended.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 1.9.4 - 07/12/2020 =
+* Dev - General - Add "Minimum cart amount" option allowing to only display the amount left for free shipping if there is a minimum cart amount.
+* Dev - General - Add `min_cart_amount` param to `alg_wc_left_to_free_shipping` shortcode.
+* WC tested up to: 4.7
 
 = 1.9.3 - 16/11/2020 =
 * Fix - Widget - Allow the Widget to save some html including `<progress>` tag.
@@ -191,8 +196,5 @@ Most probably, these positions will have `(in table)` appended.
 
 == Upgrade Notice ==
 
-= 1.9.3 =
-* Fix - Widget - Allow the Widget to save some html including `<progress>` tag.
-* Add FAQ regarding HTML table row tags for table positions.
-* Improve position descriptions at Cart and Checkout sections using (in table) at the end.
-* Improve content description at Cart and Checkout sections regarding HTML table row tags for table positions.
+= 1.0.0 =
+* Initial Release.
