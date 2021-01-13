@@ -58,7 +58,7 @@ Most probably, these positions will have `(in table)` appended.
 * Dev - General - Hide by category - Add "check children" option
 * Dev - Add `alg_wc_get_left_to_free_shipping_validation` filter.
 * Tested up to: 5.6
-* WC tested up to: 5.9
+* WC tested up to: 4.9
 
 = 1.9.5 - 08/12/2020 =
 * Fix - Replace `get_left_to_free_shipping` call using an array as parameter.
