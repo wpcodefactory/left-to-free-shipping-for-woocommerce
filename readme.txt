@@ -2,8 +2,8 @@
 Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
-Tested up to: 5.5
-Stable tag: 1.9.5
+Tested up to: 5.6
+Stable tag: 1.9.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,6 +48,17 @@ Most probably, these positions will have `(in table)` appended.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 1.9.6 - 13/01/2021 =
+* Dev - Store notice - Create "Default WooCommerce notice" option.
+* Dev - Store notice - Default WooCommerce notice - Create "Notice type" option.
+* Dev - Store notice - Default WooCommerce notice - Create "Display by function" option.
+* Dev - Advanced - Add "Check cart free shipping" option.
+* Dev - General - Add "Hide by category" option
+* Dev - General - Hide by category - Add "check children" option
+* Dev - Add `alg_wc_get_left_to_free_shipping_validation` filter.
+* Tested up to: 5.6
+* WC tested up to: 5.9
 
 = 1.9.5 - 08/12/2020 =
 * Fix - Replace `get_left_to_free_shipping` call using an array as parameter.

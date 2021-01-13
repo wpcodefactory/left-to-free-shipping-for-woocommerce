@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class
  *
- * @version 1.9.4
+ * @version 1.9.6
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.6.0
+	 * @version 1.9.6
 	 * @since   1.0.0
 	 * @todo    [maybe] move shortcodes inside `alg_wc_left_to_free_shipping_enabled` (or maybe remove `alg_wc_left_to_free_shipping_enabled` completely?)
 	 */
@@ -35,8 +35,55 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		add_shortcode( 'alg_get_left_to_free_shipping',          array( $this, 'get_left_to_free_shipping_shortcode' ) ); // deprecated
 		add_shortcode( 'alg_wc_left_to_free_shipping',           array( $this, 'get_left_to_free_shipping_shortcode' ) );
 		add_shortcode( 'alg_wc_left_to_free_shipping_translate', array( $this, 'translate_shortcode' ) );
+		// Default notice
+		add_action( 'wp',                                             array( $this, 'create_default_notice' ) );
 		// Core loaded
 		do_action( 'alg_wc_left_to_free_shipping_core_loaded', $this );
+	}
+
+	/**
+	 * can_display_default_notice_by_function.
+	 *
+	 * @version 1.9.6
+	 * @since   1.9.6
+	 *
+	 * @param $functions
+	 *
+	 * @return bool
+	 */
+	function can_display_default_notice_by_function( $functions ) {
+		foreach ( $functions as $function ) {
+			if ( function_exists( $function ) && call_user_func( $function ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * create_default_notice.
+	 *
+	 * @version 1.9.6
+	 * @since   1.9.6
+	 */
+	function create_default_notice() {
+		if (
+			'no' == get_option( 'alg_wc_left_to_free_shipping_default_notice_enabled', 'no' )
+			|| is_admin()
+			|| wp_doing_ajax()
+			||
+			(
+				! empty( $functions = get_option( 'alg_wc_left_to_free_shipping_default_notice_display_by_function', '' ) )
+				&& ! $this->can_display_default_notice_by_function( $functions )
+			)
+		) {
+			return;
+		}
+		$message = $this->get_left_to_free_shipping( array(
+			'content'          => get_option( 'alg_wc_left_to_free_shipping_default_notice_content', $this->get_default_content() ),
+			'is_ajax_response' => true
+		) );
+		wc_add_notice( $message, get_option( 'alg_wc_left_to_free_shipping_default_notice_type', 'notice' ) );
 	}
 
 	/**
@@ -319,10 +366,49 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		return array( 'amount' => $min_free_shipping_amount, 'is_available' => $is_available );
 	}
 
+	/**
+	 * are_there_available_shipping_methods.
+	 *
+	 * @version 1.9.6
+	 * @since   1.9.6
+	 *
+	 * @return bool
+	 */
+	function are_there_available_shipping_methods() {
+		$rates    = array();
+		$packages = WC()->shipping()->get_packages();
+		foreach ( $packages as $i => $package ) {
+			if ( ! empty( $package['rates'] ) ) {
+				$rates[] = $package['rates'];
+			}
+		}
+		return count( $rates ) > 0 ? true : false;
+	}
+
+	/**
+	 * check_cart_free_shipping.
+	 *
+	 * @version 1.9.6
+	 * @since   1.9.6
+	 *
+	 * @return bool
+	 */
+	function check_cart_free_shipping() {
+		if (
+			'yes' == get_option( 'alg_wc_left_to_free_check_cart_free_shipping', 'no' )
+			&& WC()->cart
+			&& WC()->cart->get_shipping_total() == 0
+			&& $this->are_there_available_shipping_methods()
+		) {
+			return true;
+		}
+		return false;
+	}
+
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 1.9.4
+	 * @version 1.9.6
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -343,7 +429,8 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			$args['min_free_shipping_amount']      = $min_free_shipping_amount_data['amount'];
 		}
 		if (
-			0 != $args['min_free_shipping_amount']
+			apply_filters( 'alg_wc_get_left_to_free_shipping_validation', true )
+			&& 0 != $args['min_free_shipping_amount']
 			&& ! $this->is_cart_virtual()
 			&& (
 				$args['min_cart_amount'] == 0
@@ -364,7 +451,12 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				'%current_cart_total_raw%'            => $current_cart_total,
 			);
 			// Content
-			if ( $min_free_shipping_amount_data['is_available'] || $total > $args['min_free_shipping_amount'] || $this->is_equal( $total, $args['min_free_shipping_amount'] ) ) {
+			if (
+				$min_free_shipping_amount_data['is_available']
+				|| $total > $args['min_free_shipping_amount']
+				|| $this->is_equal( $total, $args['min_free_shipping_amount'] )
+				|| $this->check_cart_free_shipping()
+			) {
 				if ( false === $args['free_delivery_text'] ) {
 					$args['free_delivery_text'] = get_option( 'alg_wc_left_to_free_shipping_info_content_reached',
 						__( 'You have free delivery!', 'amount-left-free-shipping-woocommerce' ) );

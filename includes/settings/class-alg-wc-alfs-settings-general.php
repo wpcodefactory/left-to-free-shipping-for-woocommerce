@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 1.9.4
+ * @version 1.9.6
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.9.4
+	 * @version 1.9.6
 	 * @since   1.0.0
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -37,7 +37,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 	 * @todo    [maybe] Message on free shipping reached: add checkbox (similar as it's in "Message on empty cart" option)
 	 */
 	function get_settings() {
-
 		$general_settings = array(
 			array(
 				'title'    => __( 'General Options', 'amount-left-free-shipping-woocommerce' ),
@@ -103,6 +102,36 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_left_to_free_shipping_general_options',
 			),
+			array(
+				'title'    => __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_left_to_free_shipping_hide_by_category_options',
+			),
+			array(
+				'title'             => __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip'          => __( 'Hides the notification if a product from a specific category has been added to cart.', 'amount-left-free-shipping-woocommerce' ).'<br />'.
+				                       __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
+				'id'                => 'alg_wc_left_to_free_hide_by_category',
+				'class'             => 'chosen_select',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
+				'default'           => array(),
+				'options'           => wp_list_pluck( get_terms( array(
+					'taxonomy'   => "product_cat",
+					'hide_empty' => false,
+				) ), 'name', 'term_id' ),
+				'type'              => 'multiselect',
+			),
+			array(
+				'desc'              => __( 'Check children categories', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip'          => sprintf( __( 'Checks for children categories in cart so you can use just the parent categories in the %s option.', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
+				'id'                => 'alg_wc_left_to_free_hide_by_category_check_children',
+				'default'           => 'no',
+				'type'              => 'checkbox',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_left_to_free_shipping_hide_by_category_options',
+			),
 		);
 
 		$ajax_settings = array(
@@ -153,7 +182,14 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 				'id'       => 'alg_wc_left_to_free_shipping_advanced_options',
 			),
 			array(
-				'title'    => __( 'Check for free shipping', 'amount-left-free-shipping-woocommerce' ),
+				'title'    => __( 'Check cart free shipping', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Show free shipping message if current cart shipping cost is already free', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_check_cart_free_shipping',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Check for alternative free shipping', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => __( 'Enable', 'amount-left-free-shipping-woocommerce' ),
 				'desc_tip' => __( 'Check for already available alternative (i.e. not requiring minimum order amount) free shipping methods.', 'amount-left-free-shipping-woocommerce' ) . ' ' .
 					__( 'No text will be outputted in this case.', 'amount-left-free-shipping-woocommerce' ),
