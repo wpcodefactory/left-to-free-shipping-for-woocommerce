@@ -33,7 +33,7 @@ final class Alg_WC_Left_To_Free_Shipping {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '1.9.6-dev-20210106-0028';
+	public $version = '1.9.6';
 
 	/**
 	 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
