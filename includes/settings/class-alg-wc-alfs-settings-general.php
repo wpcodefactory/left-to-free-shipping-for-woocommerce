@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 1.9.6
+ * @version 2.0.0
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.9.6
+	 * @version 2.0.0
 	 * @since   1.0.0
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 	 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -47,14 +47,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 				'title'    => __( 'Amount Left for Free Shipping', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => '<strong>' . __( 'Enable plugin', 'amount-left-free-shipping-woocommerce' ) . '</strong>',
 				'id'       => 'alg_wc_left_to_free_shipping_enabled',
-				'default'  => 'yes',
-				'type'     => 'checkbox',
-			),
-			array(
-				'title'    => __( 'Include discounts', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => __( 'Include', 'amount-left-free-shipping-woocommerce' ),
-				'desc_tip' => __( 'Include discounts when calculating cart total.', 'amount-left-free-shipping-woocommerce' ),
-				'id'       => 'alg_wc_left_to_free_shipping_include_discounts',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
 			),
@@ -101,6 +93,35 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 			array(
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_left_to_free_shipping_general_options',
+			),
+			array(
+				'title'    => __( 'Calculation', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_left_to_free_shipping_calculation',
+			),
+			array(
+				'title'    => __( 'Include discounts', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Include', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'Include discounts when calculating cart total.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_include_discounts',
+				'default'  => 'yes',
+				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'The method used to get the total amount from cart.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_cart_total_method',
+				'default'  => 'get_displayed_subtotal',
+				'type'     => 'select',
+				'options'  => array(
+					'get_displayed_subtotal'  => sprintf( __( 'Displayed subtotal - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_displayed_subtotal()' ),
+					'get_cart_contents_total' => sprintf( __( 'Cart contents total - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_cart_contents_total()' ),
+				),
+				'class'    => 'chosen_select',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_left_to_free_shipping_calculation',
 			),
 			array(
 				'title'    => __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ),
@@ -203,6 +224,14 @@ class Alg_WC_Left_To_Free_Shipping_Settings_General extends Alg_WC_Left_To_Free_
 				'desc_tip' => __( 'Check if cart consists of virtual products only.', 'amount-left-free-shipping-woocommerce' ) . ' ' .
 					__( 'No text will be outputted in this case.', 'amount-left-free-shipping-woocommerce' ),
 				'id'       => 'alg_wc_left_to_free_shipping_check_virtual',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Clear notices', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Wipe notices when a product has been added to cart', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'Enable if you have problems with duplicated messages.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_clear_notices',
 				'default'  => 'no',
 				'type'     => 'checkbox',
 			),

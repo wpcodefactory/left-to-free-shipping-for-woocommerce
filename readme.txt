@@ -3,7 +3,7 @@ Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 5.6
-Stable tag: 1.9.6
+Stable tag: 2.0.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,13 +33,18 @@ Additionally, the Pro version has options to update the amount via **AJAX**.
 
 == Frequently Asked Questions ==
 = Why the amount left message doesn't seem to get displayed in the proper position? =
-Some positions are located inside tables, so it's necessary to wrap the content in HTML table row tags, like:
-
-`
-<tr><th></th><td>%amount_left_for_free_shipping% left for free shipping</td></tr>
-`
-
+Some positions are located inside tables, so it's necessary to wrap the content in HTML table row tags.
 Most probably, these positions will have `(in table)` appended.
+In such cases, the best solution to wrap the content is by using the **Wrapper options** section.
+When it happens, please try to set the **Wrap method** option as **Smart**.
+Besides that, most likely the **Wrap template** option should be set as:
+`
+<tr><th></th><td>{content}</td></tr>
+`
+You can optionally add a column title for the message if you wish like this:
+`
+<tr><th>Free shipping</th><td>{content}</td></tr>
+`
 
 == Installation ==
 
@@ -48,6 +53,17 @@ Most probably, these positions will have `(in table)` appended.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 2.0.0 - 15/02/2021 =
+* Fix - General - Ajax prevents content wrapping.
+* Dev - Cart and Checkout - Add "Wrap method" option.
+* Dev - Cart and Checkout - Add "Wrap template" option.
+* Dev - General - Add "Clear notices" option.
+* Dev - General - Create "Cart total method" option.
+* Dev - Manual min amount - Compatibility - Add compatibility option with "WooCommerce Currency Switcher" plugin made by WooCommerce author realmag777.
+* Dev - Add `alg_wc_left_to_free_shipping_manual_min_amount` filter.
+* Dev - Add `alg_wc_left_to_free_shipping_manual_min_amount_extra` filter.
+* WC tested up to: 5.0
 
 = 1.9.6 - 13/01/2021 =
 * Dev - Store notice - Create "Default WooCommerce notice" option.

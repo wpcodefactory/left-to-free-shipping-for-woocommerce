@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Cart Section Settings
  *
- * @version 1.9.3
+ * @version 2.0.0
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.9.3
+	 * @version 2.0.0
 	 * @since   1.6.0
 	 * @todo    [maybe] "notice" as "position" (same in "Checkout" section)
 	 * @todo    [maybe] multiple positions (same in "Mini-cart" and "Checkout" sections)
@@ -50,8 +50,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 			),
 			array(
 				'title'           => __( 'Content', 'amount-left-free-shipping-woocommerce' ),
-				'desc'            => $this->get_placeholders_desc() . '<br />' .
-				                     sprintf( __( 'If the content doesn\'t seem to get displayed in the proper position, try to wrap the placeholders in HTML table row tags like: %s', 'amount-left-free-shipping-woocommerce' ), '<code>' . esc_html( '<tr><th></th><td>' ) . '%amount_left_for_free_shipping%' . esc_html( '</td></tr>' ) . '</code>' ),
+				'desc'            => $this->get_placeholders_desc(),
 				'desc_tip'        => __( 'You can use HTML and/or shortcodes here.', 'amount-left-free-shipping-woocommerce' ),
 				'id'              => 'alg_wc_left_to_free_shipping_info_content_cart',
 				'default'         => alg_wc_left_to_free_shipping()->core->get_default_content(),
@@ -85,8 +84,8 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 					'woocommerce_proceed_to_checkout'            => __( 'Proceed to checkout', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_after_cart_totals'              => __( 'After cart totals', 'amount-left-free-shipping-woocommerce' ),
 
-					'woocommerce_before_shipping_calculator'     => __( 'Before shipping calculator (in table)', 'amount-left-free-shipping-woocommerce' ),
-					'woocommerce_after_shipping_calculator'      => __( 'After shipping calculator (in table)', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_before_shipping_calculator'     => __( 'Before shipping calculator', 'amount-left-free-shipping-woocommerce' ),
+					'woocommerce_after_shipping_calculator'      => __( 'After shipping calculator', 'amount-left-free-shipping-woocommerce' ),
 
 					'woocommerce_cart_is_empty'                  => __( 'If cart is empty', 'amount-left-free-shipping-woocommerce' ),
 				),
@@ -101,6 +100,40 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 			array(
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_left_to_free_shipping_cart_options',
+			),
+			array(
+				'title' => __( 'Wrapper options', 'amount-left-free-shipping-woocommerce' ),
+				'type'  => 'title',
+				'id'    => 'alg_wc_left_to_free_shipping_cart_wrapper_options',
+				'desc'  => __( 'Sometimes, depending on the position used the content should be wrapped.', 'amount-left-free-shipping-woocommerce' ) . ' '.__( 'E.g., If it\'s being displayed inside a table it will need HTML row tags.', 'amount-left-free-shipping-woocommerce' ) . '<br />' .
+				           __( 'Here you can setup how the wrapping will take place.', 'amount-left-free-shipping-woocommerce' ),
+			),
+			array(
+				'title'    => __( 'Wrap method', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'select',
+				'id'       => 'alg_wc_left_to_free_shipping_cart_wrap_method',
+				'desc_tip' => sprintf( __( '%s will wrap the content automatically, depending on the position.', 'amount-left-free-shipping-woocommerce' ), __( 'Smart', 'amount-left-free-shipping-woocommerce' ) ) . '<br />' .
+				              sprintf( __( '%s will not wrap the content.', 'amount-left-free-shipping-woocommerce' ), __( 'Ignore', 'amount-left-free-shipping-woocommerce' ) ) . '<br />' .
+				              sprintf( __( '%s will wrap the content in any situation.', 'amount-left-free-shipping-woocommerce' ), __( 'Force', 'amount-left-free-shipping-woocommerce' ) ),
+				'class'    => 'chosen_select',
+				'default'  => 'ignore',
+				'options'  => array(
+					'smart'  => __( 'Smart', 'amount-left-free-shipping-woocommerce' ),
+					'ignore' => __( 'Ignore', 'amount-left-free-shipping-woocommerce' ),
+					'force'  => __( 'Force', 'amount-left-free-shipping-woocommerce' ),
+				)
+			),
+			array(
+				'title'           => __( 'Wrap template', 'amount-left-free-shipping-woocommerce' ),
+				'type'            => 'text',
+				'desc'            => sprintf( __( 'Probably %s should suit well for positions using tables.', 'amount-left-free-shipping-woocommerce' ), '<code>' . htmlentities( '<tr><th></th><td>' ) . '{content}' . htmlentities( '</td></tr>' ) . '</code>' ),
+				'id'              => 'alg_wc_left_to_free_shipping_cart_wrap_template',
+				'default'         => '<tr><th></th><td>{content}</td></tr>',
+				'alg_wc_alfs_raw' => true,
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_left_to_free_shipping_cart_wrapper_options',
 			),
 		);
 	}

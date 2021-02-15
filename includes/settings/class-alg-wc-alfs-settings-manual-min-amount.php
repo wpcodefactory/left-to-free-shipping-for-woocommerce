@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings
  *
- * @version 1.9.2
+ * @version 2.0.0
  * @since   1.9.0
  * @author  WPFactory
  */
@@ -83,7 +83,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.9.0
+	 * @version 2.0.0
 	 * @since   1.9.0
 	 * @todo    [next] currency: conversion (i.e. exchange rates) (manual and automatic)
 	 * @todo    [next] rename `alg_wc_left_to_free_shipping_mma_roles_val` to e.g. `alg_wc_left_to_free_shipping_mma_amounts`
@@ -221,7 +221,29 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 			) );
 		}
 
-		return array_merge( $general_settings, $extra_settings, $extra_amounts_settings );
+		$compatibility_settings = array(
+			array(
+				'title'    => __( 'Compatibility', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Compatibility with 3rd party plugins or solutions.', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_left_to_free_shipping_mma_compatibility_options',
+			),
+			array(
+				'title'    => __( 'WooCommerce Currency Switcher (realmag777)', 'emails-verification-for-woocommerce' ),
+				'desc'     => sprintf( __( 'Convert manual min amount value to current currency when using "<a target="_blank" href="%s">WooCommerce Currency Switcher</a>" plugin made by author <a href="%s" target="_blank">realmag777</a>', 'emails-verification-for-woocommerce' ), 'https://currency-switcher.com/', 'https://pluginus.net/' ),
+				'desc_tip' => empty( $pro_tip = apply_filters( 'alg_wc_left_to_free_shipping_settings', $this->pro_desc ) ) ? __( 'Extra options will also be converted except currencies values.', 'emails-verification-for-woocommerce' ) : $pro_tip,
+				'id'       => 'alg_wc_left_to_free_shipping_mma_compatibility_woocs',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_left_to_free_shipping_mma_compatibility_options',
+			),
+		);
+
+		return array_merge( $general_settings, $extra_settings, $extra_amounts_settings, $compatibility_settings );
 	}
 
 }
