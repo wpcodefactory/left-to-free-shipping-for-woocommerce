@@ -2,8 +2,8 @@
 Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
-Tested up to: 5.6
-Stable tag: 2.0.0
+Tested up to: 5.7
+Stable tag: 2.0.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -53,6 +53,10 @@ You can optionally add a column title for the message if you wish like this:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 2.0.1 - 22/03/2021 =
+* Dev - Create `wpml-config.xml` file with some admin text options from the plugin for a better compatibility with Polylang and WPML.
+* Tested up to: 5.7.
 
 = 2.0.0 - 15/02/2021 =
 * Fix - General - Ajax prevents content wrapping.
