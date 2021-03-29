@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class
  *
- * @version 2.0.0
+ * @version 2.0.2
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -180,7 +180,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_cart_total.
 	 *
-	 * @version 2.0.0
+	 * @version 2.0.2
 	 * @since   1.4.0
 	 * @see     `WC_Shipping_Free_Shipping::is_available()` (/woocommerce/includes/shipping/free-shipping/class-wc-shipping-free-shipping.php)
 	 */
@@ -196,7 +196,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				$total = round( $total - WC()->cart->get_discount_total(), wc_get_price_decimals() );
 			}
 		}
-		return $total;
+		return apply_filters( 'alg_wc_left_to_free_shipping_cart_total', $total );
 	}
 
 	/**
