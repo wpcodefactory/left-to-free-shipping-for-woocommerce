@@ -3,13 +3,13 @@
 Plugin Name: Amount Left for Free Shipping for WooCommerce
 Plugin URI: https://wpfactory.com/item/amount-left-free-shipping-woocommerce/
 Description: Show your customers the amount left for free shipping in WooCommerce.
-Version: 2.0.2
+Version: 2.0.3
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: amount-left-free-shipping-woocommerce
 Domain Path: /langs
 Copyright: © 2021 WPFactory
-WC tested up to: 5.0
+WC tested up to: 5.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -33,7 +33,7 @@ final class Alg_WC_Left_To_Free_Shipping {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '2.0.2';
+	public $version = '2.0.3';
 
 	/**
 	 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
