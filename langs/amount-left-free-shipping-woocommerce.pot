@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Amount Left for Free Shipping for WooCommerce 2.0.3\n"
+"Project-Id-Version: Amount Left for Free Shipping for WooCommerce 2.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-11T00:12:01+02:00\n"
+"POT-Creation-Date: 2021-05-13T16:51:36+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
@@ -66,7 +66,7 @@ msgstr ""
 #: includes/class-alg-wc-widget-alfs.php:27
 #: includes/class-alg-wc-widget-alfs.php:55
 #: includes/settings/class-alg-wc-alfs-settings-general.php:47
-#: includes/settings/class-alg-wc-alfs-settings-general.php:261
+#: includes/settings/class-alg-wc-alfs-settings-general.php:269
 #: includes/settings/class-alg-wc-settings-alfs.php:24
 msgid "Amount Left for Free Shipping"
 msgstr ""
@@ -133,7 +133,7 @@ msgstr ""
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:62
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:62
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:62
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:132
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:146
 msgid "Position"
 msgstr ""
 
@@ -549,75 +549,87 @@ msgstr ""
 msgid "Enable it if the Store notice is not getting displayed on single product pages and if you have the \"Hide\" option enabled in \"Store notice\"."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:201
+#: includes/settings/class-alg-wc-alfs-settings-general.php:194
+msgid "Force update"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-general.php:195
+msgid "Force update via AJAX on any page load"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-general.php:196
+msgid "Enable if you have issues with caching."
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-general.php:209
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:206
+#: includes/settings/class-alg-wc-alfs-settings-general.php:214
 msgid "Check shipping cost"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:207
+#: includes/settings/class-alg-wc-alfs-settings-general.php:215
 msgid "Show free shipping message if cart shipping costs are not present, i.e., when shipping total is zero"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:213
+#: includes/settings/class-alg-wc-alfs-settings-general.php:221
 msgid "Check for alternative free shipping"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:214
+#: includes/settings/class-alg-wc-alfs-settings-general.php:222
 msgid "Check for already available alternative (i.e. not requiring minimum order amount) free shipping methods."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:215
+#: includes/settings/class-alg-wc-alfs-settings-general.php:223
 msgid "No text will be outputted in this case."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:221
+#: includes/settings/class-alg-wc-alfs-settings-general.php:229
 msgid "Virtual products"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:222
+#: includes/settings/class-alg-wc-alfs-settings-general.php:230
 msgid "Do not display any text if cart consists of virtual products only"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:229
+#: includes/settings/class-alg-wc-alfs-settings-general.php:237
 msgid "Ignore virtual products in cart to reach the min amount"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:230
+#: includes/settings/class-alg-wc-alfs-settings-general.php:238
 msgid "The free shipping method will also ignore virtual products in cart."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:238
+#: includes/settings/class-alg-wc-alfs-settings-general.php:246
 msgid "Clear notices"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:239
+#: includes/settings/class-alg-wc-alfs-settings-general.php:247
 msgid "Wipe notices when a product has been added to cart"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:240
+#: includes/settings/class-alg-wc-alfs-settings-general.php:248
 msgid "Enable if you have problems with duplicated messages."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:253
+#: includes/settings/class-alg-wc-alfs-settings-general.php:261
 msgid "Info"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:257
+#: includes/settings/class-alg-wc-alfs-settings-general.php:265
 msgid "You can also use:"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:260
+#: includes/settings/class-alg-wc-alfs-settings-general.php:268
 msgid "Widget"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:264
+#: includes/settings/class-alg-wc-alfs-settings-general.php:272
 msgid "Shortcode"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-general.php:268
+#: includes/settings/class-alg-wc-alfs-settings-general.php:276
 msgid "PHP function"
 msgstr ""
 
@@ -779,50 +791,66 @@ msgid "You may also want to enable %s option for this."
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:123
-msgid "Hide"
+msgid "Placement hook"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:124
-msgid "Set to zero to show the notice permanently."
+msgid "The action hook used to add the notice to the DOM."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:125
-msgid "milliseconds"
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:130
+msgid "Animate"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:131
+msgid "Create a smooth animation effect with opacity and position"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:137
+msgid "Hide"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:138
-msgid "Bottom"
+msgid "Set to zero to show the notice permanently."
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:139
+msgid "milliseconds"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:152
+msgid "Bottom"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:153
 msgid "Top"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:143
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:157
 msgid "Background color"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:149
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:163
 msgid "Text color"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:155
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:169
 msgid "Text alignment"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:161
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:175
 msgid "Left"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:162
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:176
 msgid "Right"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:163
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:177
 msgid "Center"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:164
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:178
 msgid "Justify"
 msgstr ""
 

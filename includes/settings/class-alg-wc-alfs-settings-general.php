@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 2.0.0
+ * @version 2.0.4
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.0.0
+		 * @version 2.0.4
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -188,6 +188,14 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					              __( 'Enable it if the Store notice is not getting displayed on single product pages and if you have the "Hide" option enabled in "Store notice".', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'checkbox',
 					'id'       => 'alg_wc_left_to_free_shipping_ajax_added_to_cart_no_ajax',
+					'default'  => 'no',
+				),
+				array(
+					'title'    => __( 'Force update', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Force update via AJAX on any page load', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip' => __( 'Enable if you have issues with caching.', 'amount-left-free-shipping-woocommerce' ),
+					'type'     => 'checkbox',
+					'id'       => 'alg_wc_left_to_free_shipping_ajax_force_update',
 					'default'  => 'no',
 				),
 				array(

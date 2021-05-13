@@ -120,6 +120,20 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 				'alg_wc_alfs_raw' => true,
 			),
 			array(
+				'title'    => __( 'Placement hook', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'The action hook used to add the notice to the DOM.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_info_placement_store_notice',
+				'default'  => 'wp_footer',
+				'type'     => 'text',
+			),
+			array(
+				'title'    => __( 'Animate', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Create a smooth animation effect with opacity and position', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_info_animate_store_notice',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
 				'title'    => __( 'Hide', 'amount-left-free-shipping-woocommerce' ),
 				'desc_tip' => __( 'Set to zero to show the notice permanently.', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => __( 'milliseconds', 'amount-left-free-shipping-woocommerce' ),
