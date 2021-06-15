@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Settings
  *
- * @version 1.9.0
+ * @version 2.0.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.9.0
+	 * @version 2.0.5
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -33,6 +33,34 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 		require_once( 'class-alg-wc-alfs-settings-store-notice.php' );
 		require_once( 'class-alg-wc-alfs-settings-add-to-cart.php' );
 		require_once( 'class-alg-wc-alfs-settings-manual-min-amount.php' );
+		// Create notice about pro
+		add_action( 'admin_init', array( $this, 'add_promoting_notice' ) );
+	}
+
+	/**
+	 * add_promoting_notice.
+	 *
+	 * @version 2.0.5
+	 * @since   2.0.5
+	 */
+	function add_promoting_notice() {
+		$promoting_notice = wpfactory_promoting_notice();
+		$promoting_notice->set_args( array(
+			'url_requirements'              => array(
+				'page_filename' => 'admin.php',
+				'params'        => array( 'page' => 'wc-settings', 'tab' => $this->id ),
+			),
+			'enable'                        => true === apply_filters( 'alg_wc_left_to_free_shipping_settings', true ),
+			'optimize_plugin_icon_contrast' => true,
+			'template_variables'            => array(
+				'%pro_version_url%'    => 'https://wpfactory.com/amount-left-free-shipping-woocommerce/',
+				'%plugin_icon_url%'    => 'https://ps.w.org/amount-left-free-shipping-woocommerce/assets/icon-128x128.jpg',
+				'%pro_version_title%'  => __( 'Amount Left for Free Shipping for WooCommerce Pro', 'amount-left-free-shipping-woocommerce' ),
+				'%main_text%'          => __( 'Disabled options can be unlocked using <a href="%pro_version_url%" target="_blank"><strong>%pro_version_title%</strong></a>', 'amount-left-free-shipping-woocommerce' ),
+				'%btn_call_to_action%' => __( 'Upgrade to Pro version', 'amount-left-free-shipping-woocommerce' ),
+			),
+		) );
+		$promoting_notice->init();
 	}
 
 	/**

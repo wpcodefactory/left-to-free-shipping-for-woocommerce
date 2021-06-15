@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Store Notice Section Settings
  *
- * @version 1.9.6
+ * @version 2.0.5
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.9.6
+	 * @version 2.0.5
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -47,7 +47,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 				'default'  => 'no',
 				'type'     => 'checkbox',
 				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
-				'desc_tip' => apply_filters( 'alg_wc_left_to_free_shipping_settings', $this->pro_desc ),
 			),
 			array(
 				'title'    => __( 'Content', 'amount-left-free-shipping-woocommerce' ),
@@ -107,7 +106,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 				'default'  => 'no',
 				'type'     => 'checkbox',
 				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
-				'desc_tip' => apply_filters( 'alg_wc_left_to_free_shipping_settings', $this->pro_desc ),
 			),
 			array(
 				'title'    => __( 'Content', 'amount-left-free-shipping-woocommerce' ),

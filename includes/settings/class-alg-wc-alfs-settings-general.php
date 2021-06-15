@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 2.0.4
+ * @version 2.0.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -26,9 +26,22 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		}
 
 		/**
+		 * get_user_roles_options.
+		 *
+		 * @version 2.0.5
+		 * @since   2.0.5
+		 */
+		function get_user_roles_options() {
+			global $wp_roles;	
+			$roles = $wp_roles->roles;
+			$guest = array( 'guest' => 'Guest' );
+			return array_merge( wp_list_pluck( $roles, 'name' ), $guest );
+		}
+
+		/**
 		 * get_settings.
 		 *
-		 * @version 2.0.4
+		 * @version 2.0.5
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -101,8 +114,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 				array(
 					'title'    => __( 'Include discounts', 'amount-left-free-shipping-woocommerce' ),
-					'desc'     => __( 'Include', 'amount-left-free-shipping-woocommerce' ),
-					'desc_tip' => __( 'Include discounts when calculating cart total.', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Include discounts when calculating cart total', 'amount-left-free-shipping-woocommerce' ),
 					'id'       => 'alg_wc_left_to_free_shipping_include_discounts',
 					'default'  => 'yes',
 					'type'     => 'checkbox',
@@ -124,9 +136,9 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_calculation',
 				),
 				array(
-					'title'    => __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ),
+					'title'    => __( 'Hide the amount left', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
-					'id'       => 'alg_wc_left_to_free_shipping_hide_by_category_options',
+					'id'       => 'alg_wc_left_to_free_shipping_hide_amount_left_options',
 				),
 				array(
 					'title'             => __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ),
@@ -150,8 +162,19 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'              => 'checkbox',
 				),
 				array(
+					'title'             => __( 'Hide by user roles', 'amount-left-free-shipping-woocommerce' ),
+					'desc'              => __( 'Hides the notification based on user roles.', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip'          => __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
+					'id'                => 'alg_wc_left_to_free_shipping_hide_by_user_role',
+					'class'             => 'chosen_select',
+					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
+					'default'           => array(),
+					'options'           => $this->get_user_roles_options(),
+					'type'              => 'multiselect',
+				),
+				array(
 					'type'     => 'sectionend',
-					'id'       => 'alg_wc_left_to_free_shipping_hide_by_category_options',
+					'id'       => 'alg_wc_left_to_free_shipping_hide_amount_left_options',
 				),
 			);
 
@@ -168,7 +191,6 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'     => 'checkbox',
 					'id'       => 'alg_wc_left_to_free_shipping_ajax_enabled',
 					'default'  => 'no',
-					'desc_tip' => apply_filters( 'alg_wc_left_to_free_shipping_settings', $this->pro_desc ),
 					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				),
 				array(
@@ -235,7 +257,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 				array(
 					'desc'              => __( 'Ignore virtual products in cart to reach the min amount', 'amount-left-free-shipping-woocommerce' ),
-					'desc_tip'          => __( 'The free shipping method will also ignore virtual products in cart.', 'amount-left-free-shipping-woocommerce' ).apply_filters( 'alg_wc_left_to_free_shipping_settings', '<br />'.$this->pro_desc ),
+					'desc_tip'          => __( 'The free shipping method will also ignore virtual products in cart.', 'amount-left-free-shipping-woocommerce' ),
 					'id'                => 'alg_wc_left_to_free_shipping_ignore_virtual_products',
 					'default'           => 'no',
 					'type'              => 'checkbox',

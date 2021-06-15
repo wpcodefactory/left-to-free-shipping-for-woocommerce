@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings
  *
- * @version 2.0.0
+ * @version 2.0.5
  * @since   1.9.0
  * @author  WPFactory
  */
@@ -83,7 +83,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.0
+	 * @version 2.0.5
 	 * @since   1.9.0
 	 * @todo    [next] currency: conversion (i.e. exchange rates) (manual and automatic)
 	 * @todo    [next] rename `alg_wc_left_to_free_shipping_mma_roles_val` to e.g. `alg_wc_left_to_free_shipping_mma_amounts`
@@ -231,7 +231,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 			array(
 				'title'    => __( 'WooCommerce Currency Switcher (realmag777)', 'emails-verification-for-woocommerce' ),
 				'desc'     => sprintf( __( 'Convert manual min amount value to current currency when using "<a target="_blank" href="%s">WooCommerce Currency Switcher</a>" plugin made by author <a href="%s" target="_blank">realmag777</a>', 'emails-verification-for-woocommerce' ), 'https://currency-switcher.com/', 'https://pluginus.net/' ),
-				'desc_tip' => empty( $pro_tip = apply_filters( 'alg_wc_left_to_free_shipping_settings', $this->pro_desc ) ) ? __( 'Extra options will also be converted except currencies values.', 'emails-verification-for-woocommerce' ) : $pro_tip,
+				'desc_tip' => empty( apply_filters( 'alg_wc_left_to_free_shipping_settings', true ) ) ? __( 'Extra options will also be converted except currencies values.', 'emails-verification-for-woocommerce' ) : '',
 				'id'       => 'alg_wc_left_to_free_shipping_mma_compatibility_woocs',
 				'default'  => 'no',
 				'type'     => 'checkbox',

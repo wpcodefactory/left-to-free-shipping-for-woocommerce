@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Section Settings
  *
- * @version 1.9.0
+ * @version 2.0.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,14 +16,10 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Section {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.6.0
+	 * @version 2.0.5
 	 * @since   1.0.0
 	 */
 	function __construct() {
-
-		$this->pro_desc = sprintf( 'You will need <a href="%s" target="_blank">Amount Left for Free Shipping for WooCommerce Pro plugin</a> to enable this option.',
-			'https://wpfactory.com/item/amount-left-free-shipping-woocommerce/' );
-
 		add_filter( 'woocommerce_get_sections_alg_wc_left_to_free_shipping',                   array( $this, 'settings_section' ) );
 		add_filter( 'woocommerce_get_settings_alg_wc_left_to_free_shipping' . '_' . $this->id, array( $this, 'get_settings' ), PHP_INT_MAX );
 	}

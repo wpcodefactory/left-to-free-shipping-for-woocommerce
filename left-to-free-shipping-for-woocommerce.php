@@ -3,18 +3,36 @@
 Plugin Name: Amount Left for Free Shipping for WooCommerce
 Plugin URI: https://wpfactory.com/item/amount-left-free-shipping-woocommerce/
 Description: Show your customers the amount left for free shipping in WooCommerce.
-Version: 2.0.4
+Version: 2.0.5
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: amount-left-free-shipping-woocommerce
 Domain Path: /langs
 Copyright: © 2021 WPFactory
-WC tested up to: 5.3
+WC tested up to: 5.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+// Handle is_plugin_active function
+if ( ! function_exists( 'is_plugin_active' ) ) {
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+}
+
+// Check for active plugins
+if (
+	! is_plugin_active( 'woocommerce/woocommerce.php' ) ||
+	( 'left-to-free-shipping-for-woocommerce.php' === basename( __FILE__ ) && is_plugin_active( 'left-to-free-shipping-for-woocommerce-pro/left-to-free-shipping-for-woocommerce-pro.php' ) )
+) {
+	return;
+}
+
+// Composer autoload
+if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
+	require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+endif;
 
 if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 
@@ -33,7 +51,7 @@ final class Alg_WC_Left_To_Free_Shipping {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '2.0.4';
+	public $version = '2.0.5';
 
 	/**
 	 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
@@ -61,19 +79,11 @@ final class Alg_WC_Left_To_Free_Shipping {
 	/**
 	 * Alg_WC_Left_To_Free_Shipping Constructor.
 	 *
-	 * @version 1.6.0
+	 * @version 2.0.5
 	 * @since   1.0.0
 	 * @access  public
 	 */
 	function __construct() {
-
-		// Check for active plugins
-		if (
-			! $this->is_plugin_active( 'woocommerce/woocommerce.php' ) ||
-			( 'left-to-free-shipping-for-woocommerce.php' === basename( __FILE__ ) && $this->is_plugin_active( 'left-to-free-shipping-for-woocommerce-pro/left-to-free-shipping-for-woocommerce-pro.php' ) )
-		) {
-			return;
-		}
 
 		// Set up localisation
 		load_plugin_textdomain( 'amount-left-free-shipping-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
@@ -90,21 +100,6 @@ final class Alg_WC_Left_To_Free_Shipping {
 		if ( is_admin() ) {
 			$this->admin();
 		}
-	}
-
-	/*
-	 * is_plugin_active.
-	 *
-	 * @version 1.4.1
-	 * @since   1.4.1
-	 */
-	function is_plugin_active( $plugin ) {
-		return ( function_exists( 'is_plugin_active' ) ? is_plugin_active( $plugin ) :
-			(
-				in_array( $plugin, apply_filters( 'active_plugins', (array) get_option( 'active_plugins', array() ) ) ) ||
-				( is_multisite() && array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) ) )
-			)
-		);
 	}
 
 	/**

@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - "Add to Cart" Section Settings
  *
- * @version 1.8.0
+ * @version 2.0.5
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Add_To_Cart extends Alg_WC_Left_To_F
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.8.0
+	 * @version 2.0.5
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -46,7 +46,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Add_To_Cart extends Alg_WC_Left_To_F
 				'default'  => 'no',
 				'type'     => 'checkbox',
 				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
-				'desc_tip' => apply_filters( 'alg_wc_left_to_free_shipping_settings', $this->pro_desc ),
 			),
 			array(
 				'title'    => __( 'Content', 'amount-left-free-shipping-woocommerce' ),
