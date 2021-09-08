@@ -2,8 +2,8 @@
 Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
-Tested up to: 5.7
-Stable tag: 2.0.6
+Tested up to: 5.8
+Stable tag: 2.0.7
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,18 +15,33 @@ Show your customers the amount left for free shipping in WooCommerce.
 
 The amount can be displayed on **cart** page or, alternatively, you can use **widget**, **shortcode** or PHP **function** to display it anywhere on your site.
 
-= Premium Version =
+### &#9989; Main Features: ###
 
-[Pro version](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) allows you to use additional **position(s)** for the text:
+* Set a minimum amount value **in cart** in order to display the amount left for free shipping.
+* Get the minimum order amount automatically from the **free shipping** method or set it **manually**.
+* Set a different min order amount for free shipping by **user role**, **currency** and **shipping zone**.
+* Create a **custom message** if the user reaches free shipping.
+* **Include discounts** when calculating cart total or not.
+* Show the free shipping message if cart shipping costs are not present, i.e., when shipping total is zero.
+* Do not display the amount left text if cart consists of **virtual products** only.
 
-* site-wide **store notice**,
-* "add to cart" **notice**,
-* **mini cart**, and/or
-* **checkout** page.
+### &#127942; Pro Version ###
 
-Additionally, the Pro version has options to update the amount via **AJAX**.
+[Pro version](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) features:
 
-= Feedback =
+* Additional **position(s)** available for displaying the amount left text:
+  * Site-wide **store notice**.
+  * "Add to cart" **notice**.
+  * **Mini cart**.
+  * **Checkout** page.
+* Update the amount left text via **AJAX**.
+* **Hide** the amount left text by **category** or **user role**.
+* Ignore **virtual products** in cart to reach the min amount required for free shipping.
+* Set a specific min order amount by each different **shipping method**.
+* **Compatibility** options:
+  * **[WooCommerce Currency Switcher](https://currency-switcher.com/)**: Convert manual min amount value to current currency.
+
+#### Feedback ####
 
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
 * [Visit plugin site](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/).
@@ -53,6 +68,16 @@ You can optionally add a column title for the message if you wish like this:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 2.0.7 - 08/09/2021 =
+* Dev - Manual min amount - Add "Shipping methods" extra option.
+* Dev - Add `alg_wc_left_to_free_shipping_manual_min_amount_available_types` filter.
+* Dev - Remove `alg_wc_left_to_free_shipping_manual_min_amount_extra` filter.
+* Dev - Improve `is_plugin_active` function.
+* Dev - Refactor `Alg_WC_Left_To_Free_Shipping_Core::get_manual_min_amount()` function.
+* Dev - Improve readme.
+* WC tested up to: 5.6.
+* Tested up to: 5.8.
 
 = 2.0.6 - 23/06/2021 =
 * Fix - Pro version link.

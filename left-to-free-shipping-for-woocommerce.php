@@ -3,28 +3,40 @@
 Plugin Name: Amount Left for Free Shipping for WooCommerce
 Plugin URI: https://wpfactory.com/item/amount-left-free-shipping-woocommerce/
 Description: Show your customers the amount left for free shipping in WooCommerce.
-Version: 2.0.6
+Version: 2.0.7
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: amount-left-free-shipping-woocommerce
 Domain Path: /langs
 Copyright: © 2021 WPFactory
-WC tested up to: 5.4
+WC tested up to: 5.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// Handle is_plugin_active function
-if ( ! function_exists( 'is_plugin_active' ) ) {
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+if ( ! function_exists( 'alg_wc_left_to_free_shipping_is_plugin_active' ) ) {
+	/**
+	 * alg_wc_left_to_free_shipping_is_plugin_active.
+	 *
+	 * @version 2.0.7
+	 * @since   2.0.7
+	 */
+	function alg_wc_left_to_free_shipping_is_plugin_active( $plugin ) {
+		return ( function_exists( 'is_plugin_active' ) ? is_plugin_active( $plugin ) :
+			(
+				in_array( $plugin, apply_filters( 'active_plugins', ( array ) get_option( 'active_plugins', array() ) ) ) ||
+				( is_multisite() && array_key_exists( $plugin, ( array ) get_site_option( 'active_sitewide_plugins', array() ) ) )
+			)
+		);
+	}
 }
 
 // Check for active plugins
 if (
-	! is_plugin_active( 'woocommerce/woocommerce.php' ) ||
-	( 'left-to-free-shipping-for-woocommerce.php' === basename( __FILE__ ) && is_plugin_active( 'left-to-free-shipping-for-woocommerce-pro/left-to-free-shipping-for-woocommerce-pro.php' ) )
+	! alg_wc_left_to_free_shipping_is_plugin_active( 'woocommerce/woocommerce.php' ) ||
+	( 'left-to-free-shipping-for-woocommerce.php' === basename( __FILE__ ) && alg_wc_left_to_free_shipping_is_plugin_active( 'left-to-free-shipping-for-woocommerce-pro/left-to-free-shipping-for-woocommerce-pro.php' ) )
 ) {
 	return;
 }
@@ -51,7 +63,7 @@ final class Alg_WC_Left_To_Free_Shipping {
 	 * @var   string
 	 * @since 1.0.0
 	 */
-	public $version = '2.0.6';
+	public $version = '2.0.7';
 
 	/**
 	 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class

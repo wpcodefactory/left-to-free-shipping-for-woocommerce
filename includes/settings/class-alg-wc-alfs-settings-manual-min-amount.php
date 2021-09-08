@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings
  *
- * @version 2.0.5
+ * @version 2.0.7
  * @since   1.9.0
  * @author  WPFactory
  */
@@ -56,6 +56,21 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	}
 
 	/**
+	 * get_shipping_methods.
+	 *
+	 * @version 2.0.7
+	 * @since   2.0.7
+	 */
+	function get_shipping_methods() {
+		$shipping_methods  = array();
+		$_shipping_methods = WC()->shipping() ? WC()->shipping()->load_shipping_methods() : array();
+		foreach ( $_shipping_methods as $method ) {
+			$shipping_methods[ $method->id ] = $method->get_method_title();
+		}
+		return $shipping_methods;
+	}
+
+	/**
 	 * get_shipping_zones_options.
 	 *
 	 * @version 1.9.0
@@ -83,7 +98,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.5
+	 * @version 2.0.7
 	 * @since   1.9.0
 	 * @todo    [next] currency: conversion (i.e. exchange rates) (manual and automatic)
 	 * @todo    [next] rename `alg_wc_left_to_free_shipping_mma_roles_val` to e.g. `alg_wc_left_to_free_shipping_mma_amounts`
@@ -131,9 +146,10 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 		);
 
 		$all_values = array(
-			'roles'      => $this->get_user_roles_options(),
-			'currencies' => get_woocommerce_currencies(),
-			'zones'      => $this->get_shipping_zones_options(),
+			'roles'            => $this->get_user_roles_options(),
+			'currencies'       => get_woocommerce_currencies(),
+			'zones'            => $this->get_shipping_zones_options(),
+			'shipping_methods' => $this->get_shipping_methods(),
 		);
 		$extra_settings = array(
 			array(
@@ -147,12 +163,13 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 		foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
 			$extra_settings = array_merge( $extra_settings, array(
 				array(
-					'title'    => $title,
-					'id'       => "alg_wc_left_to_free_shipping_mma_{$type}",
-					'default'  => array(),
-					'type'     => 'multiselect',
-					'class'    => 'chosen_select',
-					'options'  => $all_values[ $type ],
+					'title'             => $title,
+					'id'                => "alg_wc_left_to_free_shipping_mma_{$type}",
+					'default'           => array(),
+					'type'              => 'multiselect',
+					'class'             => 'chosen_select',
+					'options'           => $all_values[ $type ],
+					'custom_attributes' => 'shipping_methods' === $type ? apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ) : array(),
 				),
 			) );
 		}
@@ -187,29 +204,31 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 			foreach ( $types['roles'] as $value_roles ) {
 				foreach ( $types['currencies'] as $value_currencies ) {
 					foreach ( $types['zones'] as $value_zones ) {
-						// Get title and ID
-						$extra_amount_title = array();
-						$extra_amount_id    = array();
-						foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
-							$value = 'value_' . $type;
-							$value = $$value;
-							if ( '' !== $value ) {
-								$extra_amount_title[] = ( isset( $all_values[ $type ][ $value ] ) ? $all_values[ $type ][ $value ] : $value );
-								$extra_amount_id[]    = ( 'roles' === $type ? '' : $type . ':' ) . $value;
+						foreach ( $types['shipping_methods'] as $value_shipping_methods ) {
+							// Get title and ID
+							$extra_amount_title = array();
+							$extra_amount_id    = array();
+							foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
+								$value = 'value_' . $type;
+								$value = $$value;
+								if ( '' !== $value ) {
+									$extra_amount_title[] = ( isset( $all_values[ $type ][ $value ] ) ? $all_values[ $type ][ $value ] : $value );
+									$extra_amount_id[]    = ( 'roles' === $type ? '' : $type . ':' ) . $value;
+								}
 							}
+							$extra_amount_title = implode( ' | ', $extra_amount_title );
+							$extra_amount_id    = implode( '|', $extra_amount_id );
+							// Add settings field
+							$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
+								array(
+									'title'             => $extra_amount_title,
+									'id'                => "alg_wc_left_to_free_shipping_mma_roles_val[{$extra_amount_id}]", // mislabeled, should be e.g. `alg_wc_left_to_free_shipping_mma_amounts`
+									'default'           => 0,
+									'type'              => 'number',
+									'custom_attributes' => $this->get_amount_atts(),
+								),
+							) );
 						}
-						$extra_amount_title = implode( ' | ', $extra_amount_title );
-						$extra_amount_id    = implode( '|',   $extra_amount_id );
-						// Add settings field
-						$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
-							array(
-								'title'    => $extra_amount_title,
-								'id'       => "alg_wc_left_to_free_shipping_mma_roles_val[{$extra_amount_id}]", // mislabeled, should be e.g. `alg_wc_left_to_free_shipping_mma_amounts`
-								'default'  => 0,
-								'type'     => 'number',
-								'custom_attributes' => $this->get_amount_atts(),
-							),
-						) );
 					}
 				}
 			}

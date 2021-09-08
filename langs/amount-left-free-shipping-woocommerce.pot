@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Amount Left for Free Shipping for WooCommerce 2.0.6\n"
+"Project-Id-Version: Amount Left for Free Shipping for WooCommerce 2.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-06-23T16:19:16+02:00\n"
+"POT-Creation-Date: 2021-09-08T21:43:55+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
@@ -38,23 +38,27 @@ msgstr ""
 msgid "Please pass it as a key of the first parameter like %s"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:243
+#: includes/class-alg-wc-alfs-core.php:247
 msgid "%s left for free shipping"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:254
+#: includes/class-alg-wc-alfs-core.php:258
 msgid "User roles"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:255
+#: includes/class-alg-wc-alfs-core.php:259
 msgid "Currencies"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:256
+#: includes/class-alg-wc-alfs-core.php:260
 msgid "Shipping zones"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:497
+#: includes/class-alg-wc-alfs-core.php:261
+msgid "Shipping methods"
+msgstr ""
+
+#: includes/class-alg-wc-alfs-core.php:541
 #: includes/settings/class-alg-wc-alfs-settings-general.php:81
 msgid "You have free delivery!"
 msgstr ""
@@ -103,7 +107,7 @@ msgstr ""
 #: includes/settings/class-alg-wc-alfs-settings-add-to-cart.php:44
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:46
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:44
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:105
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:120
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:44
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:45
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:104
@@ -642,8 +646,8 @@ msgid "PHP function"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:24
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:104
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:121
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:119
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:136
 msgid "Manual min amount"
 msgstr ""
 
@@ -651,46 +655,46 @@ msgstr ""
 msgid "Guest"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:98
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:113
 msgid "Advanced"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:98
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:115
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:113
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:130
 msgid "Manual Min Amount"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:99
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:114
 msgid "Generally the plugin will retrieve the minimum free shipping order amount automatically, however, if you are using <strong>non-standard</strong> shipping methods for free shipping (i.e. not the original \"Free shipping\" method from WooCommerce), you need to set the amount manually here."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:116
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:182
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:131
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:199
 msgid "Ignored if set to zero."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:140
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:181
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:156
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:198
 msgid "Extra Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:141
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:157
 msgid "Here you can optionally select user roles, currencies and/or shipping zones to set individual manual min amounts for."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:142
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:158
 msgid "Select values and \"Save changes\" for new option fields."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:181
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:198
 msgid "Amounts"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:226
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:245
 msgid "Compatibility"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:227
+#: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:246
 msgid "Compatibility with 3rd party plugins or solutions."
 msgstr ""
 
@@ -895,6 +899,6 @@ msgstr ""
 msgid "Your settings have been reset."
 msgstr ""
 
-#: left-to-free-shipping-for-woocommerce.php:150
+#: left-to-free-shipping-for-woocommerce.php:162
 msgid "Go Pro"
 msgstr ""

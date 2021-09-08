@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class
  *
- * @version 2.0.2
+ * @version 2.0.7
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.0.0
+	 * @version 2.0.7
 	 * @since   1.0.0
 	 * @todo    [maybe] move shortcodes inside `alg_wc_left_to_free_shipping_enabled` (or maybe remove `alg_wc_left_to_free_shipping_enabled` completely?)
 	 */
@@ -40,6 +40,10 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		add_action( 'woocommerce_add_to_cart_validation',             array( $this, 'clear_notices' ), 1 );
 		// Core loaded
 		do_action( 'alg_wc_left_to_free_shipping_core_loaded', $this );
+		// Min amount extra options
+		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_user_role_available_on_min_amount' ), 9, 2 );
+		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_currency_available_on_min_amount' ), 10, 2 );
+		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_shipping_zone_available_on_min_amount' ), 11, 2 );
 	}
 
 	/**
@@ -246,21 +250,100 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_manual_min_amount_types.
 	 *
-	 * @version 1.9.0
+	 * @version 2.0.7
 	 * @since   1.9.0
 	 */
 	function get_manual_min_amount_types() {
 		return array(
-			'roles'      => __( 'User roles', 'amount-left-free-shipping-woocommerce' ),
-			'currencies' => __( 'Currencies', 'amount-left-free-shipping-woocommerce' ),
-			'zones'      => __( 'Shipping zones', 'amount-left-free-shipping-woocommerce' ),
+			'roles'            => __( 'User roles', 'amount-left-free-shipping-woocommerce' ),
+			'currencies'       => __( 'Currencies', 'amount-left-free-shipping-woocommerce' ),
+			'zones'            => __( 'Shipping zones', 'amount-left-free-shipping-woocommerce' ),
+			'shipping_methods' => __( 'Shipping methods', 'amount-left-free-shipping-woocommerce' ),
 		);
+	}
+
+	/**
+	 * get_user_role_available_on_min_amount.
+	 *
+	 * @version 2.0.7
+	 * @since   2.0.7
+	 *
+	 * @param $id_array
+	 * @param $args
+	 *
+	 * @return array
+	 */
+	function get_user_role_available_on_min_amount( $id_array, $args ) {
+		$types = $args['types'];
+		if ( isset( $types['roles'] ) ) {
+			$user          = ( function_exists( 'wp_get_current_user' ) ? wp_get_current_user() : false );
+			$current_roles = ( ! empty( $user->roles ) ? $user->roles : array( 'guest' ) );
+			foreach ( $current_roles as $current_role ) {
+				if ( '' == $current_role ) {
+					$current_role = 'guest';
+				}
+				if ( in_array( $current_role, $types['roles'] ) ) {
+					$id_array[] = $current_role;
+				}
+			}
+		}
+		return $id_array;
+	}
+
+	/**
+	 * get_currency_available_on_min_amount.
+	 *
+	 * @version 2.0.7
+	 * @since   2.0.7
+	 *
+	 * @param $id_array
+	 * @param $args
+	 *
+	 * @return array
+	 */
+	function get_currency_available_on_min_amount( $id_array, $args ) {
+		$types = $args['types'];
+		if ( isset( $types['currencies'] ) ) {
+			$current_currency = get_woocommerce_currency();
+			if ( in_array( $current_currency, $types['currencies'] ) ) {
+				$id_array[] = 'currencies:' . $current_currency;
+			}
+		}
+		return $id_array;
+	}
+
+	/**
+	 * get_shipping_zone_available_on_min_amount.
+	 *
+	 * @version 2.0.7
+	 * @since   2.0.7
+	 *
+	 * @param $id_array
+	 * @param $args
+	 *
+	 * @return array
+	 */
+	function get_shipping_zone_available_on_min_amount( $id_array, $args ) {
+		$types = $args['types'];
+		if ( isset( $types['zones'] ) ) {
+			if ( function_exists( 'WC' ) && ( $wc_cart = WC()->cart ) ) {
+				$packages = $wc_cart->get_shipping_packages();
+				foreach ( $packages as $package ) {
+					$shipping_zone = WC_Shipping_Zones::get_zone_matching_package( $package );
+					$current_zone  = 'z' . $shipping_zone->get_id();
+					if ( in_array( $current_zone, $types['zones'] ) ) {
+						$id_array[] = 'zones:' . $current_zone;
+					}
+				}
+			}
+		}
+		return $id_array;
 	}
 
 	/*
 	 * get_manual_min_amount.
 	 *
-	 * @version 2.0.0
+	 * @version 2.0.7
 	 * @since   1.9.0
 	 * @todo    [maybe] pre-check `function_exists( 'WC' ) && ( $wc_cart = WC()->cart )`
 	 */
@@ -279,58 +362,19 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				}
 			}
 			if ( ! empty( $types ) ) {
-				$id = array();
-				if ( isset( $types['roles'] ) ) {
-					$user          = ( function_exists( 'wp_get_current_user' ) ? wp_get_current_user() : false );
-					$current_roles = ( ! empty( $user->roles ) ? $user->roles : array( 'guest' ) );
-					foreach ( $current_roles as $current_role ) {
-						if ( '' == $current_role ) {
-							$current_role = 'guest';
-						}
-						if ( in_array( $current_role, $types['roles'] ) ) {
-							$id[] = array( $current_role );
-						}
-					}
-				}
-				if ( empty( $id ) ) {
-					$id[] = array();
-				}
-				if ( isset( $types['currencies'] ) ) {
-					$current_currency = get_woocommerce_currency();
-					if ( in_array( $current_currency, $types['currencies'] ) ) {
-						foreach ( $id as &$_id ) {
-							$_id[] = 'currencies:' . $current_currency;
-						}
-					}
-				}
-				if ( isset( $types['zones'] ) ) {
-					if ( function_exists( 'WC' ) && ( $wc_cart = WC()->cart ) ) {
-						$packages = $wc_cart->get_shipping_packages();
-						foreach ( $packages as $package ) {
-							$shipping_zone = WC_Shipping_Zones::get_zone_matching_package( $package );
-							$current_zone  = 'z' . $shipping_zone->get_id();
-							if ( in_array( $current_zone, $types['zones'] ) ) {
-								foreach ( $id as &$_id ) {
-									$_id[] = 'zones:' . $current_zone;
-								}
-							}
-						}
-					}
-				}
-				foreach ( $id as $_id ) {
-					$_id = implode( '|', $_id );
-					if ( ! empty( $_id ) && ! empty( $amounts[ $_id ] ) ) {
-						return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount_extra', array( 'amount' => $amounts[ $_id ], 'is_available' => false ), array(
-							'id'      => $_id,
-							'amounts' => $amounts,
-						) );
-					}
+				$id  = apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array(), array( 'types' => $types ) );
+				$_id = implode( '|', $id );
+				if ( ! empty( $_id ) && ! empty( $amounts[ $_id ] ) ) {
+					return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $amounts[ $_id ], 'is_available' => false ), array(
+						'id'      => $_id,
+						'amounts' => $amounts,
+					) );
 				}
 			}
 		}
 		// General manual min amount
 		if ( 0 != ( $manual_min_amount = get_option( 'alg_wc_left_to_free_shipping_manual_min_amount', 0 ) ) ) {
-			return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $manual_min_amount, 'is_available' => false ) );
+			return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $manual_min_amount, 'is_available' => false ), array( 'amounts' => $amounts ) );
 		}
 		// No manual min amount
 		return false;
