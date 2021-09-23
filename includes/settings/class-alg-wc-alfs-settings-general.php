@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 2.0.5
+ * @version 2.0.8
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.0.5
+		 * @version 2.0.8
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -62,14 +62,6 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_enabled',
 					'default'  => 'yes',
 					'type'     => 'checkbox',
-				),
-				array(
-					'title'    => __( 'Minimum cart amount', 'amount-left-free-shipping-woocommerce' ),
-					'desc_tip' => __( 'Minimum cart amount required for displaying the amount left for free shipping.', 'amount-left-free-shipping-woocommerce' ) . '<br />'
-					              . __( 'Use 0 or leave it empty to disable it.', 'amount-left-free-shipping-woocommerce' ),
-					'id'       => 'alg_wc_left_to_free_shipping_min_cart_amount',
-					'default'  => 0,
-					'type'     => 'number',
 				),
 				array(
 					'title'    => __( 'Message on free shipping reached', 'amount-left-free-shipping-woocommerce' ),
@@ -136,14 +128,23 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_calculation',
 				),
 				array(
-					'title'    => __( 'Hide the amount left', 'amount-left-free-shipping-woocommerce' ),
+					'title'    => __( 'Hide the amount left text', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
 					'id'       => 'alg_wc_left_to_free_shipping_hide_amount_left_options',
 				),
 				array(
-					'title'             => __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ),
-					'desc_tip'          => __( 'Hides the notification if a product from a specific category has been added to cart.', 'amount-left-free-shipping-woocommerce' ).'<br />'.
-					                       __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
+					'title'    => __( 'By cart amount', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Hides the text if cart is below a specific value.', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip' => __( 'Minimum cart amount required for displaying the amount left for free shipping.', 'amount-left-free-shipping-woocommerce' ) . '<br />'
+					              . __( 'Use 0 or leave it empty to disable it.', 'amount-left-free-shipping-woocommerce' ),
+					'id'       => 'alg_wc_left_to_free_shipping_min_cart_amount',
+					'default'  => 0,
+					'type'     => 'number',
+				),
+				array(
+					'title'             => __( 'By category', 'amount-left-free-shipping-woocommerce' ),
+					'desc'              => __( 'Hides the text if a product from a specific category has been added to cart.', 'amount-left-free-shipping-woocommerce' ) . '<br />',
+					'desc_tip'          => __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
 					'id'                => 'alg_wc_left_to_free_hide_by_category',
 					'class'             => 'chosen_select',
 					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
@@ -162,8 +163,8 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'              => 'checkbox',
 				),
 				array(
-					'title'             => __( 'Hide by user roles', 'amount-left-free-shipping-woocommerce' ),
-					'desc'              => __( 'Hides the notification based on user roles.', 'amount-left-free-shipping-woocommerce' ),
+					'title'             => __( 'By user roles', 'amount-left-free-shipping-woocommerce' ),
+					'desc'              => __( 'Hides the text based on user roles.', 'amount-left-free-shipping-woocommerce' ),
 					'desc_tip'          => __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
 					'id'                => 'alg_wc_left_to_free_shipping_hide_by_user_role',
 					'class'             => 'chosen_select',

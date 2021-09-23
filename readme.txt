@@ -3,7 +3,7 @@ Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 5.8
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,7 +19,7 @@ The amount can be displayed on **cart** page or, alternatively, you can use **wi
 
 * Set a minimum amount value **in cart** in order to display the amount left for free shipping.
 * Get the minimum order amount automatically from the **free shipping** method or set it **manually**.
-* Set a different min order amount for free shipping by **user role**, **currency** and **shipping zone**.
+* Set a different minimum order amount for free shipping by **user role**, **currency** and **shipping zone**.
 * Create a **custom message** if the user reaches free shipping.
 * **Include discounts** when calculating cart total or not.
 * Show the free shipping message if cart shipping costs are not present, i.e., when shipping total is zero.
@@ -29,15 +29,15 @@ The amount can be displayed on **cart** page or, alternatively, you can use **wi
 
 [Pro version](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) features:
 
-* Additional **position(s)** available for displaying the amount left text:
+* Additional **positions** available for displaying the amount left text:
   * Site-wide **store notice**.
   * "Add to cart" **notice**.
   * **Mini cart**.
   * **Checkout** page.
 * Update the amount left text via **AJAX**.
 * **Hide** the amount left text by **category** or **user role**.
-* Ignore **virtual products** in cart to reach the min amount required for free shipping.
-* Set a specific min order amount by each different **shipping method**.
+* Ignore **virtual products** in cart to reach the minimum amount required for free shipping.
+* Set a specific minimum order amount by each different **shipping method**.
 * **Compatibility** options:
   * **[WooCommerce Currency Switcher](https://currency-switcher.com/)**: Convert manual min amount value to current currency.
 
@@ -68,6 +68,9 @@ You can optionally add a column title for the message if you wish like this:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 2.0.8 - 23/09/2021 =
+* Rename and move "Minimum cart amount" option to "General > Hide the amount left text > By cart amount".
 
 = 2.0.7 - 08/09/2021 =
 * Dev - Manual min amount - Add "Shipping methods" extra option.
