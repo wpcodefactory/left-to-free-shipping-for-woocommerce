@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 2.0.8
+ * @version 2.0.9
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.0.8
+		 * @version 2.0.9
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -120,6 +120,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'options'  => array(
 						'get_displayed_subtotal'  => sprintf( __( 'Displayed subtotal - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_displayed_subtotal()' ),
 						'get_cart_contents_total' => sprintf( __( 'Cart contents total - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_cart_contents_total()' ),
+						'get_total' => sprintf( __( 'Cart total - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_total( "raw" )' ),
 					),
 					'class'    => 'chosen_select',
 				),

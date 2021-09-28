@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class
  *
- * @version 2.0.7
+ * @version 2.0.9
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -184,7 +184,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_cart_total.
 	 *
-	 * @version 2.0.2
+	 * @version 2.0.9
 	 * @since   1.4.0
 	 * @see     `WC_Shipping_Free_Shipping::is_available()` (/woocommerce/includes/shipping/free-shipping/class-wc-shipping-free-shipping.php)
 	 */
@@ -192,7 +192,12 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		if ( ! function_exists( 'WC' ) || ! isset( WC()->cart ) ) {
 			return 0;
 		}
-		$total = call_user_func( array( WC()->cart, get_option( 'alg_wc_left_to_free_shipping_cart_total_method', 'get_displayed_subtotal' ) ) );
+		$cart_total_params   = array(
+			'get_total' => array( 'raw' )
+		);
+		$cart_total_function = get_option( 'alg_wc_left_to_free_shipping_cart_total_method', 'get_displayed_subtotal' );
+		$cart_total_params   = isset( $cart_total_params[ $cart_total_function ] ) ? $cart_total_params[ $cart_total_function ] : array();
+		$total               = call_user_func_array( array( WC()->cart, $cart_total_function ), $cart_total_params );
 		if ( 'yes' === get_option( 'alg_wc_left_to_free_shipping_include_discounts', 'yes' ) ) {
 			if ( WC()->cart->display_prices_including_tax() ) {
 				$total = round( $total - ( WC()->cart->get_discount_total() + WC()->cart->get_discount_tax() ), wc_get_price_decimals() );

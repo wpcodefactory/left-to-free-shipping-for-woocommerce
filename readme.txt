@@ -3,7 +3,7 @@ Contributors: wpcodefactory
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 5.8
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,7 +27,7 @@ The amount can be displayed on **cart** page or, alternatively, you can use **wi
 
 ### &#127942; Pro Version ###
 
-[Pro version](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) features:
+[Amount Left for Free Shipping for WooCommerce Pro](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) features:
 
 * Additional **positions** available for displaying the amount left text:
   * Site-wide **store notice**.
@@ -68,6 +68,10 @@ You can optionally add a column title for the message if you wish like this:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 2.0.9 - 28/09/2021 =
+* Dev - General - Calculation - Add "Cart total" method.
+* WC tested up to: 5.7.
 
 = 2.0.8 - 23/09/2021 =
 * Rename and move "Minimum cart amount" option to "General > Hide the amount left text > By cart amount".
