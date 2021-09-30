@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class
  *
- * @version 2.0.9
+ * @version 2.1.0
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -184,7 +184,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_cart_total.
 	 *
-	 * @version 2.0.9
+	 * @version 2.1.0
 	 * @since   1.4.0
 	 * @see     `WC_Shipping_Free_Shipping::is_available()` (/woocommerce/includes/shipping/free-shipping/class-wc-shipping-free-shipping.php)
 	 */
@@ -204,6 +204,10 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			} else {
 				$total = round( $total - WC()->cart->get_discount_total(), wc_get_price_decimals() );
 			}
+		}
+		if ( 'yes' === get_option( 'alg_wc_left_to_free_shipping_exclude_shipping', 'no' ) ) {
+			$shipping_taxes = 'yes' === get_option( 'alg_wc_left_to_free_shipping_exclude_shipping_taxes', 'yes' ) ? WC()->cart->get_shipping_tax() : 0;
+			$total = round( $total - ( WC()->cart->get_shipping_total() + $shipping_taxes ), wc_get_price_decimals() );
 		}
 		return apply_filters( 'alg_wc_left_to_free_shipping_cart_total', $total );
 	}

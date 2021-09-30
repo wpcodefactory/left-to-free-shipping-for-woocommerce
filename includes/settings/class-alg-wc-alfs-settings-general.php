@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 2.0.9
+ * @version 2.1.0
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.0.9
+		 * @version 2.1.0
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -105,13 +105,6 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_calculation',
 				),
 				array(
-					'title'    => __( 'Include discounts', 'amount-left-free-shipping-woocommerce' ),
-					'desc'     => __( 'Include discounts when calculating cart total', 'amount-left-free-shipping-woocommerce' ),
-					'id'       => 'alg_wc_left_to_free_shipping_include_discounts',
-					'default'  => 'yes',
-					'type'     => 'checkbox',
-				),
-				array(
 					'title'    => __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ),
 					'desc_tip' => __( 'The method used to get the total amount from cart.', 'amount-left-free-shipping-woocommerce' ),
 					'id'       => 'alg_wc_left_to_free_shipping_cart_total_method',
@@ -123,6 +116,31 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 						'get_total' => sprintf( __( 'Cart total - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_total( "raw" )' ),
 					),
 					'class'    => 'chosen_select',
+				),
+				array(
+					'title'    => __( 'Discounts', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Exclude discounts from cart total calculation', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip' => sprintf( __( 'Most probably, should be enabled when %s option is set as %s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ) . '</strong>', '<strong>' . __( 'Displayed subtotal', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
+					'id'       => 'alg_wc_left_to_free_shipping_include_discounts',
+					'default'  => 'yes',
+					'type'     => 'checkbox',
+				),
+				array(
+					'title'    => __( 'Shipping', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Exclude shipping from cart total calculation', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip' => sprintf( __( 'Most probably, should be enabled when %s option it set as %s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ) . '</strong>', '<strong>' . __( 'Cart total', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
+					'id'       => 'alg_wc_left_to_free_shipping_exclude_shipping',
+					'default'  => 'no',
+					'checkboxgroup' => 'start',
+					'type'     => 'checkbox',
+				),
+				array(
+					'desc'     => __( 'Also exclude shipping taxes', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip' => __( 'Needs the above exclusion option enabled', 'amount-left-free-shipping-woocommerce' ),
+					'id'       => 'alg_wc_left_to_free_shipping_exclude_shipping_taxes',
+					'default'  => 'yes',
+					'checkboxgroup' => 'end',
+					'type'     => 'checkbox',
 				),
 				array(
 					'type'     => 'sectionend',
@@ -164,8 +182,8 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'              => 'checkbox',
 				),
 				array(
-					'title'             => __( 'By user roles', 'amount-left-free-shipping-woocommerce' ),
-					'desc'              => __( 'Hides the text based on user roles.', 'amount-left-free-shipping-woocommerce' ),
+					'title'             => __( 'By user role', 'amount-left-free-shipping-woocommerce' ),
+					'desc'              => __( 'Hides the text based on user role.', 'amount-left-free-shipping-woocommerce' ),
 					'desc_tip'          => __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
 					'id'                => 'alg_wc_left_to_free_shipping_hide_by_user_role',
 					'class'             => 'chosen_select',
