@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class
  *
- * @version 2.1.0
+ * @version 2.1.1
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.0.7
+	 * @version 2.1.1
 	 * @since   1.0.0
 	 * @todo    [maybe] move shortcodes inside `alg_wc_left_to_free_shipping_enabled` (or maybe remove `alg_wc_left_to_free_shipping_enabled` completely?)
 	 */
@@ -44,6 +44,29 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_user_role_available_on_min_amount' ), 9, 2 );
 		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_currency_available_on_min_amount' ), 10, 2 );
 		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_shipping_zone_available_on_min_amount' ), 11, 2 );
+		// Manual amount - Minus 1
+		add_filter( 'alg_wc_get_left_to_free_shipping_validation', array( $this, 'handle_manual_min_amount_special_value_minus_one' ), 10, 2 );
+	}
+
+	/**
+	 * handle_manual_min_amount_special_value_minus_one.
+	 *
+	 * @version 2.1.1
+	 * @since   2.1.1
+	 *
+	 * @param $validation
+	 * @param $args
+	 *
+	 * @return bool
+	 */
+	function handle_manual_min_amount_special_value_minus_one( $validation, $args ) {
+		if ( 'hide_amount_left' === get_option( 'alg_wc_left_to_free_shipping_sv_minusone', 'alg_wc_left_to_free_shipping_sv_minusone' ) ) {
+			$min_free_shipping_amount = (float) $args['min_free_shipping_amount'];
+			if ( - 1 == $min_free_shipping_amount ) {
+				$validation = false;
+			}
+		}
+		return $validation;
 	}
 
 	/**
@@ -352,7 +375,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_manual_min_amount.
 	 *
-	 * @version 2.0.7
+	 * @version 2.1.1
 	 * @since   1.9.0
 	 * @todo    [maybe] pre-check `function_exists( 'WC' ) && ( $wc_cart = WC()->cart )`
 	 */
@@ -360,6 +383,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		if ( 'yes' !== get_option( 'alg_wc_left_to_free_shipping_mma_enabled', 'yes' ) ) {
 			return false;
 		}
+		$general_manual_min_amount = get_option( 'alg_wc_left_to_free_shipping_manual_min_amount', 0 );
 		// Extra options
 		$amounts = get_option( 'alg_wc_left_to_free_shipping_mma_roles_val', array() );
 		if ( ! empty( $amounts ) ) {
@@ -373,8 +397,9 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			if ( ! empty( $types ) ) {
 				$id  = apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array(), array( 'types' => $types ) );
 				$_id = implode( '|', $id );
-				if ( ! empty( $_id ) && ! empty( $amounts[ $_id ] ) ) {
-					return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $amounts[ $_id ], 'is_available' => false ), array(
+				$amount = isset( $amounts[ $_id ] ) ? $amounts[ $_id ] : $general_manual_min_amount;
+				if ( ! empty( $_id ) && isset( $amounts[ $_id ] ) ) {
+					return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $amount, 'is_available' => false ), array(
 						'id'      => $_id,
 						'amounts' => $amounts,
 					) );
@@ -382,9 +407,11 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			}
 		}
 		// General manual min amount
-		if ( 0 != ( $manual_min_amount = get_option( 'alg_wc_left_to_free_shipping_manual_min_amount', 0 ) ) ) {
-			return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $manual_min_amount, 'is_available' => false ), array( 'amounts' => $amounts ) );
-		}
+		return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $general_manual_min_amount, 'is_available' => false ), array( 'amounts' => $amounts ) );
+		//if ( ! empty( $manual_min_amount = get_option( 'alg_wc_left_to_free_shipping_manual_min_amount', 0 ) ) ) {
+		//$manual_min_amount = get_option( 'alg_wc_left_to_free_shipping_manual_min_amount', 0 );
+		//	return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $manual_min_amount, 'is_available' => false ), array( 'amounts' => $amounts ) );
+		//}
 		// No manual min amount
 		return false;
 	}
@@ -392,7 +419,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_min_free_shipping_amount.
 	 *
-	 * @version 1.9.0
+	 * @version 2.1.1
 	 * @since   1.4.0
 	 * @todo    [next] `either`: should check for coupon (e.g. coupon not applied: "Or a coupon";            coupon applied: "You have free delivery!")
 	 * @todo    [next] `both`:   should check for coupon (e.g. coupon not applied: "You also need a coupon"; coupon applied: "You have free delivery!")
@@ -400,9 +427,19 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	 * @todo    [maybe] Flat rate + zero rate (both by shipping class or no class)
 	 */
 	function get_min_free_shipping_amount() {
-		$is_available = false;
-		// Manual min amount
-		if ( false !== ( $manual_min_amount_data = $this->get_manual_min_amount() ) ) {
+		$is_available           = false;
+		$get_amount_manually    = true;
+		$manual_min_amount_data = $this->get_manual_min_amount();
+		if (
+			false === $manual_min_amount_data ||
+			(
+				empty( $manual_min_amount_data['amount'] ) &&
+				'ignore' === get_option( 'alg_wc_left_to_free_shipping_sv_zero', 'ignore' )
+			)
+		) {
+			$get_amount_manually = false;
+		}
+		if ( $get_amount_manually ) {
 			return $manual_min_amount_data;
 		}
 		// Automatic min amount
@@ -495,7 +532,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 2.0.0
+	 * @version 2.1.1
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -511,24 +548,23 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			'is_ajax_response'         => false,
 			'min_cart_amount'          => get_option( 'alg_wc_left_to_free_shipping_min_cart_amount', 0 )
 		) );
-
 		if ( 0 == $args['min_free_shipping_amount'] ) {
 			$min_free_shipping_amount_data = $this->get_min_free_shipping_amount();
-			$args['min_free_shipping_amount']      = $min_free_shipping_amount_data['amount'];
+			$args['min_free_shipping_amount']      = (float) $min_free_shipping_amount_data['amount'];
 		}
+		$min_free_shipping_amount = (float) $args['min_free_shipping_amount'];
 		if (
-			apply_filters( 'alg_wc_get_left_to_free_shipping_validation', true )
-			&& 0 != $args['min_free_shipping_amount']
+			apply_filters( 'alg_wc_get_left_to_free_shipping_validation', true, $args )
 			&& ! $this->is_cart_virtual()
 			&& (
-				$args['min_cart_amount'] == 0
-				|| ( $args['min_cart_amount'] > 0 && $this->get_cart_total() > $args['min_cart_amount'] )
+				empty( $min_cart_amount = $args['min_cart_amount'] )
+				|| ( (float) $min_cart_amount > 0 && $this->get_cart_total() > (float) $min_cart_amount )
 			)
 		) {
 			$total = $this->get_cart_total();
 			// Placeholders
-			$amount_left_for_free_shipping = ( $args['min_free_shipping_amount'] - $total ) * $args['multiply_by'];
-			$free_shipping_min_amount      = ( $args['min_free_shipping_amount'] )          * $args['multiply_by'];
+			$amount_left_for_free_shipping = ( $min_free_shipping_amount - $total ) * $args['multiply_by'];
+			$free_shipping_min_amount      = ( $min_free_shipping_amount )          * $args['multiply_by'];
 			$current_cart_total            = ( $total )                             * $args['multiply_by'];
 			$placeholders = array(
 				'%amount_left_for_free_shipping%'     => wc_price( $amount_left_for_free_shipping ),
@@ -541,8 +577,8 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			// Content
 			if (
 				$min_free_shipping_amount_data['is_available']
-				|| $total > $args['min_free_shipping_amount']
-				|| $this->is_equal( $total, $args['min_free_shipping_amount'] )
+				|| $total > $min_free_shipping_amount
+				|| $this->is_equal( $total, $min_free_shipping_amount )
 				|| $this->check_cart_free_shipping()
 			) {
 				if ( false === $args['free_delivery_text'] ) {

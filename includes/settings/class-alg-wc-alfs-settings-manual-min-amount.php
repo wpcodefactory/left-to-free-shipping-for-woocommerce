@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings
  *
- * @version 2.0.7
+ * @version 2.1.1
  * @since   1.9.0
  * @author  WPFactory
  */
@@ -87,18 +87,19 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	/**
 	 * get_amount_atts.
 	 *
-	 * @version 1.9.0
+	 * @version 2.1.1
 	 * @since   1.9.0
 	 * @todo    [maybe] `'min' => -1` (i.e. no min amount)
 	 */
 	function get_amount_atts() {
-		return array( 'min' => 0, 'step' => 0.000001 );
+		$min = 'disable' !== get_option( 'alg_wc_left_to_free_shipping_sv_minusone', 'alg_wc_left_to_free_shipping_sv_minusone' ) ? -1 : 0;
+		return array( 'min' => $min, 'step' => 0.000001 );
 	}
 
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.7
+	 * @version 2.1.1
 	 * @since   1.9.0
 	 * @todo    [next] currency: conversion (i.e. exchange rates) (manual and automatic)
 	 * @todo    [next] rename `alg_wc_left_to_free_shipping_mma_roles_val` to e.g. `alg_wc_left_to_free_shipping_mma_amounts`
@@ -110,41 +111,63 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 
 		$general_settings = array(
 			array(
-				'title'    => __( 'Advanced', 'amount-left-free-shipping-woocommerce' ) . ': ' . __( 'Manual Min Amount', 'amount-left-free-shipping-woocommerce' ),
+				'title'    => __( 'Manual min amount options', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => __( 'Generally the plugin will retrieve the minimum free shipping order amount automatically, however, if you are using <strong>non-standard</strong> shipping methods for free shipping (i.e. not the original "Free shipping" method from WooCommerce), you need to set the amount manually here.', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_left_to_free_shipping_mma_options',
 			),
 			array(
-				'title'    => __( 'Manual min amount', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => '<strong>' . __( 'Enable section', 'amount-left-free-shipping-woocommerce' ) . '</strong>',
+				'title'    => __( 'Section', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => '<strong>' . __( 'Enable manual min amount section', 'amount-left-free-shipping-woocommerce' ) . '</strong>',
 				'id'       => 'alg_wc_left_to_free_shipping_mma_enabled',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Amount', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Manual min amount value.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_manual_min_amount',
+				'default'  => 0,
+				'type'     => 'number',
+				//'custom_attributes' => $this->get_amount_atts(),
+				'custom_attributes' => array( 'min' => 0, 'step' => 0.000001 )
 			),
 			array(
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_left_to_free_shipping_mma_options',
 			),
 			array(
-				'title'    => __( 'Manual Min Amount', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => __( 'Ignored if set to zero.', 'amount-left-free-shipping-woocommerce' ),
+				'title'    => __( 'Special values', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => sprintf( __( 'Special values you can use on the %s section', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ) . ': ' . __( 'Amounts', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 				'type'     => 'title',
-				'id'       => 'alg_wc_left_to_free_shipping_mma_general_options',
+				'id'       => 'alg_wc_left_to_free_shipping_special_manual_values_options',
 			),
 			array(
-				'title'    => __( 'Manual min amount', 'amount-left-free-shipping-woocommerce' ),
-				'id'       => 'alg_wc_left_to_free_shipping_manual_min_amount',
-				'default'  => 0,
-				'type'     => 'number',
-				'custom_attributes' => $this->get_amount_atts(),
+				'title'    => __( 'Empty or Zero (0)', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_sv_zero',
+				'default'  => 'ignore',
+				'options'  => array(
+					'ignore' => __( 'Ignore', 'amount-left-free-shipping-woocommerce' ) . ' - ' . __( 'Ignores the manual value and try to retrieve the minimum free shipping order amount automatically.', 'amount-left-free-shipping-woocommerce' ),
+					'free_shipping' => __( 'Free shipping', 'amount-left-free-shipping-woocommerce' ) . ' - ' . __( 'Displays the free shipping message.', 'amount-left-free-shipping-woocommerce' )
+				),
+				'type'     => 'radio',
+			),
+			array(
+				'title'    => __( 'Minus one (-1)', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_sv_minusone',
+				'default'  => 'hide_amount_left',
+				'options'  => array(
+					'disable' => __( 'Disable', 'amount-left-free-shipping-woocommerce' ) . ' - ' . __( 'Does nothing, acting like a zero.', 'amount-left-free-shipping-woocommerce' ),
+					'hide_amount_left' => __( 'Hide', 'amount-left-free-shipping-woocommerce' ) . ' - ' . __( 'Hides the amount left for free shipping text.', 'amount-left-free-shipping-woocommerce' )
+				),
+				'type'     => 'radio',
 			),
 			array(
 				'type'     => 'sectionend',
-				'id'       => 'alg_wc_left_to_free_shipping_mma_general_options',
+				'id'       => 'alg_wc_left_to_free_shipping_special_manual_values_options',
 			),
-		);
 
+		);
 		$all_values = array(
 			'roles'            => $this->get_user_roles_options(),
 			'currencies'       => get_woocommerce_currencies(),
@@ -154,8 +177,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 		$extra_settings = array(
 			array(
 				'title'    => __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => __( 'Here you can optionally select user roles, currencies and/or shipping zones to set individual manual min amounts for.', 'amount-left-free-shipping-woocommerce' ) . ' ' .
-					__( 'Select values and "Save changes" for new option fields.', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Here you can optionally select user roles, currencies and/or shipping zones to set individual manual min amounts for.', 'amount-left-free-shipping-woocommerce' ) . ' ' .__( 'Select values and "Save changes" for new option fields.', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_left_to_free_shipping_mma_extra_options',
 			),
@@ -179,7 +201,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 				'id'       => 'alg_wc_left_to_free_shipping_mma_extra_options',
 			),
 		) );
-
 		$extra_amounts_settings = array();
 		$types                  = array();
 		$do_display             = false;
@@ -195,10 +216,9 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 		if ( $do_display ) {
 			$extra_amounts_settings = array(
 				array(
-					'title'    => __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ) . ': ' . __( 'Amounts', 'amount-left-free-shipping-woocommerce' ),
-					'desc'     => __( 'Ignored if set to zero.', 'amount-left-free-shipping-woocommerce' ),
-					'type'     => 'title',
-					'id'       => 'alg_wc_left_to_free_shipping_mma_extra_amounts_options',
+					'title' => __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ) . ': ' . __( 'Amounts', 'amount-left-free-shipping-woocommerce' ),
+					'type'  => 'title',
+					'id'    => 'alg_wc_left_to_free_shipping_mma_extra_amounts_options',
 				),
 			);
 			foreach ( $types['roles'] as $value_roles ) {
