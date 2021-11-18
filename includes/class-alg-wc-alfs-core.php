@@ -408,12 +408,6 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		}
 		// General manual min amount
 		return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $general_manual_min_amount, 'is_available' => false ), array( 'amounts' => $amounts ) );
-		//if ( ! empty( $manual_min_amount = get_option( 'alg_wc_left_to_free_shipping_manual_min_amount', 0 ) ) ) {
-		//$manual_min_amount = get_option( 'alg_wc_left_to_free_shipping_manual_min_amount', 0 );
-		//	return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $manual_min_amount, 'is_available' => false ), array( 'amounts' => $amounts ) );
-		//}
-		// No manual min amount
-		return false;
 	}
 
 	/*
