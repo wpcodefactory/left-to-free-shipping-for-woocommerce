@@ -1,8 +1,8 @@
 <?php
 /**
- * Amount Left for Free Shipping for WooCommerce - Widget
+ * Amount Left for Free Shipping for WooCommerce - Widget.
  *
- * @version 2.0.3
+ * @version 2.1.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -30,7 +30,7 @@ class Alg_WC_Widget_Left_to_Free_Shipping extends WP_Widget {
 	/**
 	 * Outputs the content of the widget.
 	 *
-	 * @version 2.0.3
+	 * @version 2.1.5
 	 * @since   1.0.0
 	 * @param   array $args
 	 * @param   array $instance
@@ -40,7 +40,10 @@ class Alg_WC_Widget_Left_to_Free_Shipping extends WP_Widget {
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
-		echo alg_wc_left_to_free_shipping()->core->get_left_to_free_shipping( array( 'content' => isset( $instance['content'] ) ? $instance['content'] : '' ) );
+		echo alg_wc_left_to_free_shipping()->core->get_left_to_free_shipping( array(
+			'content'  => isset( $instance['content'] ) ? $instance['content'] : '',
+			'location' => 'widget'
+		) );
 		echo $args['after_widget'];
 	}
 

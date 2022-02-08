@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Cart Section Settings
  *
- * @version 2.0.0
+ * @version 2.1.5
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,13 +28,13 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.0
+	 * @version 2.1.5
 	 * @since   1.6.0
 	 * @todo    [maybe] "notice" as "position" (same in "Checkout" section)
 	 * @todo    [maybe] multiple positions (same in "Mini-cart" and "Checkout" sections)
 	 */
 	function get_settings() {
-		return array(
+		$cart_options = array(
 			array(
 				'title'    => __( 'Cart Options', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'title',
@@ -101,11 +101,14 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_left_to_free_shipping_cart_options',
 			),
+		);
+
+		$wrapper_options = array(
 			array(
 				'title' => __( 'Wrapper options', 'amount-left-free-shipping-woocommerce' ),
 				'type'  => 'title',
 				'id'    => 'alg_wc_left_to_free_shipping_cart_wrapper_options',
-				'desc'  => __( 'Sometimes, depending on the position used the content should be wrapped.', 'amount-left-free-shipping-woocommerce' ) . ' '.__( 'E.g., If it\'s being displayed inside a table it will need HTML row tags.', 'amount-left-free-shipping-woocommerce' ) . '<br />' .
+				'desc'  => __( 'Sometimes, depending on the position used the content should be wrapped.', 'amount-left-free-shipping-woocommerce' ) . ' ' . __( 'E.g., If it\'s being displayed inside a table it will need HTML row tags.', 'amount-left-free-shipping-woocommerce' ) . '<br />' .
 				           __( 'Here you can setup how the wrapping will take place.', 'amount-left-free-shipping-woocommerce' ),
 			),
 			array(
@@ -132,10 +135,47 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 				'alg_wc_alfs_raw' => true,
 			),
 			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_left_to_free_shipping_cart_wrapper_options',
+				'type' => 'sectionend',
+				'id'   => 'alg_wc_left_to_free_shipping_cart_wrapper_options',
 			),
 		);
+
+		$style = array(
+			array(
+				'title'    => __( 'Custom style', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_left_to_free_shipping_cart_style',
+			),
+			array(
+				'title'    => __( 'Custom style', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Customize the style', 'amount-left-free-shipping-woocommerce' ),
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
+				'type'     => 'checkbox',
+				'id'       => 'alg_wc_left_to_free_shipping_cart_custom_style_enabled',
+				'default'  => 'no',
+			),
+			array(
+				'title'    => __( 'Text color', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_cart_custom_color',
+				'default'  => '#000000',
+				'type'     => 'color',
+			),
+			array(
+				'title'    => __( 'Font size', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'Font size in pixels.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_cart_font_size',
+				'default'  => '16',
+				'type'     => 'number',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_left_to_free_shipping_cart_style',
+			),
+		);
+
+		return array_merge( $cart_options, $wrapper_options, $style );
+
+
 	}
 
 }

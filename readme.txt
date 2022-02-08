@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, karzin
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
-Tested up to: 5.8
-Stable tag: 2.1.4
+Tested up to: 5.9
+Stable tag: 2.1.5
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,6 +68,17 @@ You can optionally add a column title for the message if you wish like this:
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
 == Changelog ==
+
+= 2.1.5 - 08/02/2022 =
+* Fix - Store notice - Fix possible conflict between "Hide", "Animate" and "Ajax" options.
+* Fix - Allow default WooCommerce notice to be updated via ajax.
+* Fix - Change `alg-wc-alfs-data` parameter to `data-alg-wc-alfs` on ajax.
+* Dev - Cart - Custom style - Create option to customize text color and font size style.
+* Dev - Checkout - Custom style - Create option to customize text color and font size style.
+* Dev - Store notice - Add font size option.
+* Dev - Create `alg_wc_get_left_to_free_shipping_args` filter.
+* Dev - Create advanced section.
+* Tested up to: 5.9.
 
 = 2.1.4 - 20/01/2022 =
 * WC tested up to: 6.1.

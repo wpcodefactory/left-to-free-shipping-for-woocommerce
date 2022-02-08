@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Store Notice Section Settings
  *
- * @version 2.0.5
+ * @version 2.1.5
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.5
+	 * @version 2.1.5
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -36,8 +36,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 			array(
 				'title'    => __( 'Default WooCommerce notice', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'title',
-				'desc'     => sprintf( __( 'You may want to set the %s option along with this option.', 'amount-left-free-shipping-woocommerce' ), '<strong>"General > Minimum cart amount"</strong>' ) . '<br />' .
-				              __( 'It will be updated via AJAX only on cart and checkout pages. It won\'t work on AJAX add to cart calls.', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => sprintf( __( 'You may want to set the %s option along with this option.', 'amount-left-free-shipping-woocommerce' ), '<strong>"General > Hide the amount left text > By cart amount"</strong>' ),
 				'id'       => 'alg_wc_left_to_free_shipping_default_notice_opt',
 			),
 			array(
@@ -95,7 +94,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 			array(
 				'title'    => __( 'Site-wide notice', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => __( 'Site-wide notice.', 'amount-left-free-shipping-woocommerce' ) . ' ' .
-				              sprintf( __( 'You may also want to enable %s option for this.', 'amount-left-free-shipping-woocommerce' ), '<strong>"General > AJAX"</strong>' ),
+				              sprintf( __( 'You may also want to enable %s option for this.', 'amount-left-free-shipping-woocommerce' ), '<strong>"Advanced > AJAX"</strong>' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_left_to_free_shipping_store_notice_options',
 			),
@@ -125,16 +124,16 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 				'type'     => 'text',
 			),
 			array(
-				'title'    => __( 'Animate', 'amount-left-free-shipping-woocommerce' ),
+				'title'    => __( 'Animation', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => __( 'Create a smooth animation effect with opacity and position', 'amount-left-free-shipping-woocommerce' ),
 				'id'       => 'alg_wc_left_to_free_shipping_info_animate_store_notice',
 				'default'  => 'no',
 				'type'     => 'checkbox',
 			),
 			array(
-				'title'    => __( 'Hide', 'amount-left-free-shipping-woocommerce' ),
+				'title'    => __( 'Auto hide time', 'amount-left-free-shipping-woocommerce' ),
 				'desc_tip' => __( 'Set to zero to show the notice permanently.', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => __( 'milliseconds', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Time in milliseconds it will take to auto-hide the notice.', 'amount-left-free-shipping-woocommerce' ),
 				'id'       => 'alg_wc_left_to_free_shipping_info_store_notice_hide',
 				'default'  => 0,
 				'type'     => 'number',
@@ -162,6 +161,13 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 				'id'       => 'alg_wc_left_to_free_shipping_info_text_color_store_notice',
 				'default'  => '#fff',
 				'type'     => 'color',
+			),
+			array(
+				'title'    => __( 'Font size', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'Font size in pixels', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_info_font_size_store_notice',
+				'default'  => '16',
+				'type'     => 'number',
 			),
 			array(
 				'title'    => __( 'Text alignment', 'amount-left-free-shipping-woocommerce' ),

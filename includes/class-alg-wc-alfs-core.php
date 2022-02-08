@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class
  *
- * @version 2.1.1
+ * @version 2.1.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -108,7 +108,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * create_default_notice.
 	 *
-	 * @version 1.9.6
+	 * @version 2.1.5
 	 * @since   1.9.6
 	 */
 	function create_default_notice() {
@@ -126,7 +126,8 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		}
 		$message = $this->get_left_to_free_shipping( array(
 			'content'          => get_option( 'alg_wc_left_to_free_shipping_default_notice_content', $this->get_default_content() ),
-			'is_ajax_response' => true
+			'location'         => 'wc_notice',
+			'is_ajax_response' => false
 		) );
 		wc_add_notice( $message, get_option( 'alg_wc_left_to_free_shipping_default_notice_type', 'notice' ) );
 	}
@@ -183,12 +184,13 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * show_left_to_free_shipping_info_cart.
 	 *
-	 * @version 2.0.0
+	 * @version 2.1.5
 	 * @since   1.0.0
 	 */
 	function show_left_to_free_shipping_info_cart() {
-		$args          = array( 'content' => get_option( 'alg_wc_left_to_free_shipping_info_content_cart', $this->get_default_content() ) );
-		$wrap_template = get_option( 'alg_wc_left_to_free_shipping_cart_wrap_template', '<tr><th></th><td>{content}</td></tr>' );
+		$args             = array( 'content' => get_option( 'alg_wc_left_to_free_shipping_info_content_cart', $this->get_default_content() ) );
+		$args['location'] = 'cart';
+		$wrap_template    = get_option( 'alg_wc_left_to_free_shipping_cart_wrap_template', '<tr><th></th><td>{content}</td></tr>' );
 		if (
 			'smart' === ( $wrap_method = get_option( 'alg_wc_left_to_free_shipping_cart_wrap_method', 'ignore' ) )
 			&& in_array( current_filter(), array(
@@ -526,7 +528,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 2.1.1
+	 * @version 2.1.5
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -535,13 +537,16 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	function get_left_to_free_shipping( $args = null ) {
 		$args = wp_parse_args( $args, array(
 			'content'                  => '',
+			'content_wrapper'          => '', // Example: <span class="alg_wc_left_to_free_shipping">{content}</span>
 			'multiply_by'              => 1,
+			'location'                 => '',
 			'min_free_shipping_amount' => 0,
 			'free_delivery_text'       => false,
 			'template'                 => '{content}',
 			'is_ajax_response'         => false,
 			'min_cart_amount'          => get_option( 'alg_wc_left_to_free_shipping_min_cart_amount', 0 )
 		) );
+		$args = apply_filters( 'alg_wc_get_left_to_free_shipping_args', $args );
 		if ( 0 == $args['min_free_shipping_amount'] ) {
 			$min_free_shipping_amount_data = $this->get_min_free_shipping_amount();
 			$args['min_free_shipping_amount']      = (float) $min_free_shipping_amount_data['amount'];
@@ -596,6 +601,15 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			if ( '' === $result ) {
 				return null;
 			}
+			// Add content wrapper.
+			if (
+				! empty( $args['content_wrapper'] ) &&
+				'{content}' !== $args['content_wrapper'] &&
+				false !== strpos( $args['content_wrapper'], '{content}' )
+			) {
+				$result = str_replace( '{content}', $result, $args['content_wrapper'] );
+			}
+			// Result.
 			$result = str_replace( array_keys( $placeholders ), $placeholders, $result );
 			$result = do_shortcode( $result );
 			$args['original_result'] = $result;

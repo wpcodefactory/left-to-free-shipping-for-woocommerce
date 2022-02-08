@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Checkout Section Settings
  *
- * @version 2.0.5
+ * @version 2.1.5
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,11 +28,11 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.5
+	 * @version 2.1.5
 	 * @since   1.6.0
 	 */
 	function get_settings() {
-		return array(
+		$checkout_options = array(
 			array(
 				'title'    => __( 'Checkout Options', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'title',
@@ -90,6 +90,9 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_left_to_free_shipping_checkout_options',
 			),
+		);
+
+		$wrapper_options = array(
 			array(
 				'title' => __( 'Wrapper options', 'amount-left-free-shipping-woocommerce' ),
 				'type'  => 'title',
@@ -125,6 +128,40 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'id'       => 'alg_wc_left_to_free_shipping_checkout_wrapper_options',
 			),
 		);
+
+		$style = array(
+			array(
+				'title'    => __( 'Custom style', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_left_to_free_shipping_checkout_style',
+			),
+			array(
+				'title'    => __( 'Custom style', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => __( 'Customize the style', 'amount-left-free-shipping-woocommerce' ),
+				'type'     => 'checkbox',
+				'id'       => 'alg_wc_left_to_free_shipping_checkout_custom_style_enabled',
+				'default'  => 'no',
+			),
+			array(
+				'title'    => __( 'Text color', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_checkout_custom_color',
+				'default'  => '#000000',
+				'type'     => 'color',
+			),
+			array(
+				'title'    => __( 'Font size', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( 'Font size in pixels.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_checkout_font_size',
+				'default'  => '16',
+				'type'     => 'number',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_left_to_free_shipping_checkout_style',
+			),
+		);
+
+		return array_merge( $checkout_options, $wrapper_options, $style );
 	}
 
 }
