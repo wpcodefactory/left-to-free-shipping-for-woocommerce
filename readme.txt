@@ -3,7 +3,7 @@ Contributors: wpcodefactory, karzin
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 5.9
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,7 +17,8 @@ The amount can be displayed on **cart** page or, alternatively, you can use **wi
 
 ### &#9989; Main Features: ###
 
-* Set a minimum amount value **in cart** in order to display the amount left for free shipping.
+* Display the amount left for free shipping in the Cart page in many different spots.
+* Hide the amount left text if the total value **in cart** is below a specific amount.
 * Get the minimum order amount automatically from the **free shipping** method or set it **manually**.
 * Set a different minimum order amount for free shipping by **user role**, **currency** and **shipping zone**.
 * Create a **custom message** if the user reaches free shipping.
@@ -67,7 +68,18 @@ You can optionally add a column title for the message if you wish like this:
 2. Activate the plugin through the "Plugins" menu in WordPress.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Amount Left for Free Shipping".
 
+== Screenshots ==
+
+1. In order to see the plugin working on the frontend, enable the Cart section.
+2. It's possible to specify a custom message to the user on frontend when the free shipping is available.
+3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
+
 == Changelog ==
+
+= 2.1.6 - 24/03/2022 =
+* Improve readme.
+* Add screenshot.
+* WC tested up to: 6.3.
 
 = 2.1.5 - 08/02/2022 =
 * Fix - Store notice - Fix possible conflict between "Hide", "Animate" and "Ajax" options.

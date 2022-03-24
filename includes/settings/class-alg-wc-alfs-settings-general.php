@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings
  *
- * @version 2.1.0
+ * @version 2.1.6
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.1.5
+		 * @version 2.1.6
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		 * @todo    [maybe] Message on free shipping reached: add checkbox (similar as it's in "Message on empty cart" option)
 		 */
 		function get_settings() {
-			$general_settings = array(
+			$general_opts = array(
 				array(
 					'title'    => __( 'General Options', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
@@ -99,6 +99,9 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'     => 'sectionend',
 					'id'       => 'alg_wc_left_to_free_shipping_general_options',
 				),
+			);
+
+			$calculation_opts = array(
 				array(
 					'title'    => __( 'Calculation', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
@@ -146,6 +149,9 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'     => 'sectionend',
 					'id'       => 'alg_wc_left_to_free_shipping_calculation',
 				),
+			);
+
+			$hide_text_opts = array(
 				array(
 					'title'    => __( 'Hide the amount left text', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
@@ -227,7 +233,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 			);
 
-			return array_merge( $general_settings, $info );
+			return array_merge( $general_opts, $calculation_opts, $hide_text_opts, $info );
 		}
 
 	}
