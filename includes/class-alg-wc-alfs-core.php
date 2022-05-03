@@ -1,8 +1,8 @@
 <?php
 /**
- * Amount Left for Free Shipping for WooCommerce - Core Class
+ * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.1.5
+ * @version 2.1.7
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.1.1
+	 * @version 2.1.7
 	 * @since   1.0.0
 	 * @todo    [maybe] move shortcodes inside `alg_wc_left_to_free_shipping_enabled` (or maybe remove `alg_wc_left_to_free_shipping_enabled` completely?)
 	 */
@@ -46,6 +46,34 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_shipping_zone_available_on_min_amount' ), 11, 2 );
 		// Manual amount - Minus 1
 		add_filter( 'alg_wc_get_left_to_free_shipping_validation', array( $this, 'handle_manual_min_amount_special_value_minus_one' ), 10, 2 );
+		// Hide shipping methods
+		add_filter( 'woocommerce_package_rates', array( $this, 'hide_shipping_methods' ), 10, 1 );
+	}
+
+	/**
+	 * Hide shipping methods when free shipping is available.
+	 *
+	 * @version 2.1.7
+	 * @since   2.1.7
+	 *
+	 * @param $packages
+	 *
+	 * @return mixed
+	 */
+	function hide_shipping_methods( $packages ) {
+		if (
+			'yes' === get_option( 'alg_wc_left_to_free_shipping_hide_shipping_methods', 'no' ) &&
+			'free-shipping-reached' === $this->get_left_to_free_shipping( array(
+				'min_cart_amount'    => 0,
+				'free_delivery_text' => 'free-shipping-reached',
+			) ) &&
+			! empty( $free_shipping_package = array_filter( $packages, function ( WC_Shipping_Rate $shipping_rate ) {
+				return get_option( 'alg_wc_left_to_free_shipping_hide_shipping_methods_free_shipping_method', 'free_shipping' ) === $shipping_rate->get_method_id();
+			} ) )
+		) {
+			$packages = $free_shipping_package;
+		}
+		return $packages;
 	}
 
 	/**

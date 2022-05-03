@@ -1,8 +1,8 @@
 <?php
 /**
- * Amount Left for Free Shipping for WooCommerce - General Section Settings
+ * Amount Left for Free Shipping for WooCommerce - General Section Settings.
  *
- * @version 2.1.6
+ * @version 2.1.7
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.1.6
+		 * @version 2.1.7
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -151,6 +151,34 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 			);
 
+			$hide_other_shipping_opts = array(
+				array(
+					'title'    => __( 'Hide shipping methods', 'amount-left-free-shipping-woocommerce' ),
+					'type'     => 'title',
+					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_opts',
+				),
+				array(
+					'title'    => __( 'Hide', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Hide other shipping methods when free shipping is available', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip' => __( 'The free shipping will be considered available when the plugin can\'t find any amount left for free shipping.', 'amount-left-free-shipping-woocommerce' ),
+					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods',
+					'type'     => 'checkbox',
+					'default'  => 'no'
+				),
+				array(
+					'title'    => __( 'Free shipping method', 'amount-left-free-shipping-woocommerce' ),
+					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_free_shipping_method',
+					'default'  => 'free_shipping',
+					'type'     => 'select',
+					'options'  => wp_list_pluck( WC()->shipping->get_shipping_methods(), 'method_title', 'id' ),
+					'class'    => 'chosen_select',
+				),
+				array(
+					'type'     => 'sectionend',
+					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_opts',
+				),
+			);
+
 			$hide_text_opts = array(
 				array(
 					'title'    => __( 'Hide the amount left text', 'amount-left-free-shipping-woocommerce' ),
@@ -233,7 +261,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 			);
 
-			return array_merge( $general_opts, $calculation_opts, $hide_text_opts, $info );
+			return array_merge( $general_opts, $calculation_opts, $hide_other_shipping_opts, $hide_text_opts, $info );
 		}
 
 	}

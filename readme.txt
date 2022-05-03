@@ -3,7 +3,7 @@ Contributors: wpcodefactory, karzin
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 5.9
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,6 +17,7 @@ The amount can be displayed on **cart** page or, alternatively, you can use **wi
 
 ### &#9989; Main Features: ###
 
+* Hide other shipping methods when free shipping is available.
 * Display the amount left for free shipping in the Cart page in many different spots.
 * Hide the amount left text if the total value **in cart** is below a specific amount.
 * Get the minimum order amount automatically from the **free shipping** method or set it **manually**.
@@ -75,6 +76,10 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.1.7 - 02/05/2022 =
+* Dev - General - Hide all shipping methods when free shipping is available.
+* WC tested up to: 6.4.
 
 = 2.1.6 - 24/03/2022 =
 * Improve readme.
