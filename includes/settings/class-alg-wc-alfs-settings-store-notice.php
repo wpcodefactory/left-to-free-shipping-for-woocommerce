@@ -1,8 +1,8 @@
 <?php
 /**
- * Amount Left for Free Shipping for WooCommerce - Store Notice Section Settings
+ * Amount Left for Free Shipping for WooCommerce - Store Notice Section Settings.
  *
- * @version 2.1.5
+ * @version 2.1.8
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.1.5
+	 * @version 2.1.8
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -167,6 +167,13 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 				'desc_tip' => __( 'Font size in pixels', 'amount-left-free-shipping-woocommerce' ),
 				'id'       => 'alg_wc_left_to_free_shipping_info_font_size_store_notice',
 				'default'  => '16',
+				'type'     => 'number',
+			),
+			array(
+				'title'    => __( 'Font weight', 'amount-left-free-shipping-woocommerce' ),
+				'desc_tip' => __( '400 is supposed to be normal, while 700, bold.', 'amount-left-free-shipping-woocommerce' ),
+				'id'       => 'alg_wc_left_to_free_shipping_info_font_weight_store_notice',
+				'default'  => '400',
 				'type'     => 'number',
 			),
 			array(
