@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Amount Left for Free Shipping for WooCommerce 2.1.8\n"
+"Project-Id-Version: Amount Left for Free Shipping for WooCommerce 2.1.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-31T20:37:39+02:00\n"
+"POT-Creation-Date: 2022-07-27T16:56:32+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
@@ -1010,6 +1010,18 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:189
 msgid "Justify"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:193
+msgid "Padding"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:194
+msgid "Look for %s if you want help configuring the padding."
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:194
+msgid "padding shorthand"
 msgstr ""
 
 #: includes/settings/class-alg-wc-settings-alfs.php:59

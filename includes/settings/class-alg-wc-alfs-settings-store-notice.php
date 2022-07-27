@@ -190,6 +190,13 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 				),
 			),
 			array(
+				'title'    => __( 'Padding', 'amount-left-free-shipping-woocommerce' ),
+				'desc'     => sprintf( __( 'Look for %s if you want help configuring the padding.', 'amount-left-free-shipping-woocommerce' ), '<a href="https://www.w3schools.com/css/css_padding.asp" target="_blank">' . __( 'padding shorthand', 'amount-left-free-shipping-woocommerce' ) . '</a>' ),
+				'id'       => 'alg_wc_left_to_free_shipping_info_padding_store_notice',
+				'default'  => '16px 23px',
+				'type'     => 'text',
+			),
+			array(
 				'type'     => 'sectionend',
 				'id'       => 'alg_wc_left_to_free_shipping_store_notice_options',
 			),

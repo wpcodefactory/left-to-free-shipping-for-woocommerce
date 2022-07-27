@@ -1,9 +1,9 @@
 === Amount Left for Free Shipping for WooCommerce ===
-Contributors: wpcodefactory, karzin
+Contributors: wpcodefactory, karzin, algoritmika, anbinder
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.1.8
+Stable tag: 2.1.9
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,10 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.1.9 - 27/07/2022 =
+* Dev - Store notice - Create padding style option.
+* WC tested up to: 6.7.
 
 = 2.1.8 - 31/05/2022 =
 * Dev - Store notice - Create "font weight" option.
