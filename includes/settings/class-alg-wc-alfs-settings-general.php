@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings.
  *
- * @version 2.1.7
+ * @version 2.2.0
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.1.7
+		 * @version 2.2.0
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		function get_settings() {
 			$general_opts = array(
 				array(
-					'title'    => __( 'General Options', 'amount-left-free-shipping-woocommerce' ),
+					'title'    => __( 'General options', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
 					'id'       => 'alg_wc_left_to_free_shipping_general_options',
 				),
@@ -64,7 +64,27 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'     => 'checkbox',
 				),
 				array(
-					'title'    => __( 'Message on free shipping reached', 'amount-left-free-shipping-woocommerce' ),
+					'title'    => __( 'Shipping country', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'If empty, set shipping country automatically based on the default shipping zone', 'amount-left-free-shipping-woocommerce' ),
+					'desc_tip' => __( 'Useful if the free message is being displayed despite the minimum amount already set on the free shipping method.', 'amount-left-free-shipping-woocommerce' ),
+					'id'       => 'alg_wc_left_to_free_shipping_set_shipping_country_automatically',
+					'default'  => 'no',
+					'type'     => 'checkbox',
+				),
+				array(
+					'type'     => 'sectionend',
+					'id'       => 'alg_wc_left_to_free_shipping_general_options',
+				),
+			);
+
+			$general_msg_opts = array(
+				array(
+					'title'    => __( 'General message options', 'amount-left-free-shipping-woocommerce' ),
+					'type'     => 'title',
+					'id'       => 'alg_wc_left_to_free_shipping_general_msg_options',
+				),
+				array(
+					'title'    => __( 'Free shipping reached', 'amount-left-free-shipping-woocommerce' ),
 					'desc'     => $this->get_placeholders_desc(),
 					'desc_tip' => __( 'Outputted when min free shipping amount is reached.', 'amount-left-free-shipping-woocommerce' ) . ' ' .
 					              __( 'You can use HTML and/or shortcodes here.', 'amount-left-free-shipping-woocommerce' ) . ' ' .
@@ -72,12 +92,12 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_info_content_reached',
 					'default'  => __( 'You have free delivery!', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'textarea',
-					'css'      => 'width:100%;height:100px;',
+					'css'      => 'width:100%;height:50px;',
 					'alg_wc_alfs_raw' => true,
 				),
 				array(
-					'title'    => __( 'Message on empty cart', 'amount-left-free-shipping-woocommerce' ),
-					'desc'     => __( 'Custom message', 'amount-left-free-shipping-woocommerce' ),
+					'title'    => __( 'Empty cart', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Display a custom message if the cart is empty', 'amount-left-free-shipping-woocommerce' ),
 					'desc_tip' => __( 'If disabled, then standard content is outputted.', 'amount-left-free-shipping-woocommerce' ),
 					'id'       => 'alg_wc_left_to_free_shipping_custom_empty_cart',
 					'default'  => 'no',
@@ -92,12 +112,12 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_info_content_empty_cart',
 					'default'  => '',
 					'type'     => 'textarea',
-					'css'      => 'width:100%;height:100px;',
+					'css'      => 'width:100%;height:50px;',
 					'alg_wc_alfs_raw' => true,
 				),
 				array(
 					'type'     => 'sectionend',
-					'id'       => 'alg_wc_left_to_free_shipping_general_options',
+					'id'       => 'alg_wc_left_to_free_shipping_general_msg_options',
 				),
 			);
 
@@ -158,7 +178,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_opts',
 				),
 				array(
-					'title'    => __( 'Hide', 'amount-left-free-shipping-woocommerce' ),
+					'title'    => __( 'Hide shipping methods', 'amount-left-free-shipping-woocommerce' ),
 					'desc'     => __( 'Hide other shipping methods when free shipping is available', 'amount-left-free-shipping-woocommerce' ),
 					'desc_tip' => __( 'The free shipping will be considered available when the plugin can\'t find any amount left for free shipping.', 'amount-left-free-shipping-woocommerce' ),
 					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods',
@@ -168,6 +188,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				array(
 					'title'    => __( 'Free shipping method', 'amount-left-free-shipping-woocommerce' ),
 					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_free_shipping_method',
+					'desc'     => __( 'The only shipping method that will be visible when free shipping is reached.', 'amount-left-free-shipping-woocommerce' ),
 					'default'  => 'free_shipping',
 					'type'     => 'select',
 					'options'  => wp_list_pluck( WC()->shipping->get_shipping_methods(), 'method_title', 'id' ),
@@ -261,7 +282,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 			);
 
-			return array_merge( $general_opts, $calculation_opts, $hide_other_shipping_opts, $hide_text_opts, $info );
+			return array_merge( $general_opts, $general_msg_opts, $calculation_opts, $hide_other_shipping_opts, $hide_text_opts, $info );
 		}
 
 	}

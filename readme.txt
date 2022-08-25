@@ -3,7 +3,7 @@ Contributors: wpcodefactory, karzin, algoritmika, anbinder
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.1.9
+Stable tag: 2.2.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,10 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.2.0 - 25/08/2022 =
+* Dev - General - New option: If empty, set shipping country automatically based on the default shipping zone.
+* WC tested up to: 6.8.
 
 = 2.1.9 - 27/07/2022 =
 * Dev - Store notice - Create padding style option.

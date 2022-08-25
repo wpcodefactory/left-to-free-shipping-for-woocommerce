@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.1.7
+ * @version 2.2.0
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -443,7 +443,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_min_free_shipping_amount.
 	 *
-	 * @version 2.1.1
+	 * @version 2.2.0
 	 * @since   1.4.0
 	 * @todo    [next] `either`: should check for coupon (e.g. coupon not applied: "Or a coupon";            coupon applied: "You have free delivery!")
 	 * @todo    [next] `both`:   should check for coupon (e.g. coupon not applied: "You also need a coupon"; coupon applied: "You have free delivery!")
@@ -466,47 +466,48 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		if ( $get_amount_manually ) {
 			return $manual_min_amount_data;
 		}
+		// Sets shipping country automatically, if empty.
+		if (
+			( empty( $shipping_country = WC()->customer->get_shipping_country() ) || 'default' === $shipping_country ) &&
+			'yes' === get_option( 'alg_wc_left_to_free_shipping_set_shipping_country_automatically', 'no' ) &&
+			! empty( $delivery_zones = WC_Shipping_Zones::get_zones() )
+		) {
+			$first_zone      = reset( $delivery_zones );
+			$first_zone_code = $first_zone['zone_locations'][0]->code;
+			WC()->customer->set_shipping_country( $first_zone_code );
+		}
 		// Automatic min amount
 		$min_free_shipping_amount = 0;
 		$current_wc_version       = get_option( 'woocommerce_version', null );
-		if ( version_compare( $current_wc_version, '2.6.0', '<' ) ) {
-			$free_shipping = new WC_Shipping_Free_Shipping();
-			if ( in_array( $free_shipping->requires, array( 'min_amount', 'either', 'both' ) ) ) {
-				$min_free_shipping_amount = $free_shipping->min_amount;
-			}
-		} else {
-			$legacy_free_shipping = new WC_Shipping_Legacy_Free_Shipping();
-			if ( 'yes' === $legacy_free_shipping->enabled ) {
-				if ( in_array( $legacy_free_shipping->requires, array( 'min_amount', 'either', 'both' ) ) ) {
-					$min_free_shipping_amount = $legacy_free_shipping->min_amount;
-				}
-			}
-			$do_check_for_available_free_shipping = ( 'yes' === get_option( 'alg_wc_left_to_free_shipping_check_free_shipping', 'no' ) );
-			if (
-				0 == $min_free_shipping_amount &&
-				function_exists( 'WC' ) && ( $wc_shipping = WC()->shipping ) && ( $wc_cart = WC()->cart ) &&
-				$wc_shipping->enabled &&
-				( $packages = $wc_cart->get_shipping_packages() )
-			) {
-				$shipping_methods = $wc_shipping->load_shipping_methods( $packages[0] );
-				foreach ( $shipping_methods as $shipping_method ) {
-					if (
-						'yes' === $shipping_method->enabled && 0 != $shipping_method->instance_id &&
-						$shipping_method instanceof WC_Shipping_Free_Shipping
-					) {
-						if ( in_array( $shipping_method->requires, array( 'min_amount', 'either', 'both' ) ) ) {
-							if ( $shipping_method->is_available( $packages[0] ) ) {
-								$is_available = true;
-							}
-							$min_free_shipping_amount = $shipping_method->min_amount;
-							if ( ! $do_check_for_available_free_shipping ) {
-								break;
-							}
-						} elseif ( $do_check_for_available_free_shipping ) {
+		$free_shipping            = version_compare( $current_wc_version, '2.6.0', '<' ) ? new WC_Shipping_Legacy_Free_Shipping() : new WC_Shipping_Free_Shipping();
+		if ( $free_shipping->is_enabled() && in_array( $free_shipping->requires, array( 'min_amount', 'either', 'both' ) ) ) {
+			$min_free_shipping_amount = $free_shipping->min_amount;
+		}
+		$do_check_for_available_free_shipping = ( 'yes' === get_option( 'alg_wc_left_to_free_shipping_check_free_shipping', 'no' ) );
+		if (
+			0 == $min_free_shipping_amount &&
+			function_exists( 'WC' ) && ( $wc_shipping = WC()->shipping ) && ( $wc_cart = WC()->cart ) &&
+			$wc_shipping->enabled &&
+			( $packages = $wc_cart->get_shipping_packages() )
+		) {
+			$shipping_methods = $wc_shipping->load_shipping_methods( $packages[0] );
+			foreach ( $shipping_methods as $shipping_method ) {
+				if (
+					'yes' === $shipping_method->enabled && 0 != $shipping_method->instance_id &&
+					$shipping_method instanceof WC_Shipping_Free_Shipping
+				) {
+					if ( in_array( $shipping_method->requires, array( 'min_amount', 'either', 'both' ) ) ) {
+						if ( $shipping_method->is_available( $packages[0] ) ) {
 							$is_available = true;
-							$min_free_shipping_amount = 0;
+						}
+						$min_free_shipping_amount = $shipping_method->min_amount;
+						if ( ! $do_check_for_available_free_shipping ) {
 							break;
 						}
+					} elseif ( $do_check_for_available_free_shipping ) {
+						$is_available             = true;
+						$min_free_shipping_amount = 0;
+						break;
 					}
 				}
 			}
