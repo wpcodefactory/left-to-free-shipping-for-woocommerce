@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.2.0
+ * @version 2.2.1
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -175,19 +175,23 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping_shortcode.
 	 *
-	 * @version 2.0.0
+	 * @version 2.2.1
 	 * @since   1.0.0
 	 */
 	function get_left_to_free_shipping_shortcode( $atts, $content ) {
-		$atts = shortcode_atts( array(
-			'content'                  => '',
-			'template'                 => '{content}',
-			'multiply_by'              => 1,
-			'min_free_shipping_amount' => 0,
-			'free_delivery_text'       => false,
-			'min_cart_amount'          => get_option( 'alg_wc_left_to_free_shipping_min_cart_amount', 0 )
-		), $atts, 'alg_wc_left_to_free_shipping' );
-		return $this->get_left_to_free_shipping( $atts );
+		if ( ! alg_wc_left_to_free_shipping_is_admin() ) {
+			$atts = shortcode_atts( array(
+				'content'                  => '',
+				'template'                 => '{content}',
+				'multiply_by'              => 1,
+				'min_free_shipping_amount' => 0,
+				'free_delivery_text'       => false,
+				'min_cart_amount'          => get_option( 'alg_wc_left_to_free_shipping_min_cart_amount', 0 )
+			), $atts, 'alg_wc_left_to_free_shipping' );
+			return $this->get_left_to_free_shipping( $atts );
+		} else {
+			return '';
+		}
 	}
 
 	/**

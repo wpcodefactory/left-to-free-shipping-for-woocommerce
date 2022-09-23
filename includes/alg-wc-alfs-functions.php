@@ -1,13 +1,15 @@
 <?php
 /**
- * Amount Left for Free Shipping for WooCommerce - Functions
+ * Amount Left for Free Shipping for WooCommerce - Functions.
  *
- * @version 1.9.4
+ * @version 2.2.1
  * @since   1.0.0
  * @author  WPFactory
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 if ( ! function_exists( 'alg_wc_get_left_to_free_shipping' ) ) {
 	/*
@@ -39,5 +41,17 @@ if ( ! function_exists( 'alg_wc_get_left_to_free_shipping' ) ) {
 		if ( function_exists( 'alg_wc_left_to_free_shipping' ) ) {
 			return alg_wc_left_to_free_shipping()->core->get_left_to_free_shipping( $args );
 		}
+	}
+}
+
+if ( ! function_exists( 'alg_wc_left_to_free_shipping_is_admin' ) ) {
+	/*
+	 * alg_wc_left_to_free_shipping_is_admin.
+	 *
+	 * @version 2.2.1
+	 * @since   2.2.1
+	 */
+	function alg_wc_left_to_free_shipping_is_admin( $args = null ) {
+		return ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) );
 	}
 }
