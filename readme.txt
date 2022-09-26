@@ -3,7 +3,7 @@ Contributors: wpcodefactory, karzin, algoritmika, anbinder
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,9 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.2.2 - 26/09/2022 =
+* Fix - Uncaught Error on Amount Left widget.
 
 = 2.2.1 - 23/09/2022 =
 * Fix - Uncaught Error is triggered on admin if the `[alg_wc_left_to_free_shipping]` shortcode is used on a widget or block.
