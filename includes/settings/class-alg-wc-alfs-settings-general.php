@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings.
  *
- * @version 2.2.0
+ * @version 2.2.3
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -174,6 +174,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 			$hide_other_shipping_opts = array(
 				array(
 					'title'    => __( 'Hide shipping methods', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Hide all the shipping methods on the frontend except the free shipping when it becomes available.', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
 					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_opts',
 				),
@@ -203,6 +204,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 			$hide_text_opts = array(
 				array(
 					'title'    => __( 'Hide the amount left text', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Hide the amount left text in some specific circumstance.', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
 					'id'       => 'alg_wc_left_to_free_shipping_hide_amount_left_options',
 				),
@@ -214,6 +216,27 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_min_cart_amount',
 					'default'  => 0,
 					'type'     => 'number',
+				),
+				array(
+					'title'             => __( 'By shipping method', 'amount-left-free-shipping-woocommerce' ),
+					'desc'              => sprintf( __( 'Hides the text if the selected shipping methods are %s.', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'disabled', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
+					'desc_tip'          => __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
+					'id'                => 'alg_wc_left_to_free_shipping_hide_by_disabled_shipping_method',
+					'class'             => 'chosen_select',
+					'default'           => array( 'free_shipping' ),
+					'options'           => wp_list_pluck( WC()->shipping->get_shipping_methods(), 'method_title', 'id' ),
+					'type'              => 'multiselect',
+				),
+				array(
+					'desc'              => sprintf( __( 'Choose if you need to have %s shipping methods disabled or %s.', 'amount-left-free-shipping-woocommerce' ), '<code>' . __( 'All', 'amount-left-free-shipping-woocommerce' ) . '</code>', '<code>' . __( 'At least one', 'amount-left-free-shipping-woocommerce' ) . '</code>' ),
+					'id'                => 'alg_wc_left_to_free_shipping_hide_by_disabled_shipping_method_operator',
+					'class'             => 'chosen_select',
+					'default'           => 'or',
+					'options'           => array(
+						'or'            => __( 'At least one', 'amount-left-free-shipping-woocommerce' ),
+						'and'           => __( 'All', 'amount-left-free-shipping-woocommerce' )
+					),
+					'type'              => 'select',
 				),
 				array(
 					'title'             => __( 'By category', 'amount-left-free-shipping-woocommerce' ),

@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.2.1
+ * @version 2.2.3
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.1.7
+	 * @version 2.2.3
 	 * @since   1.0.0
 	 * @todo    [maybe] move shortcodes inside `alg_wc_left_to_free_shipping_enabled` (or maybe remove `alg_wc_left_to_free_shipping_enabled` completely?)
 	 */
@@ -30,24 +30,58 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 					get_option( 'alg_wc_left_to_free_shipping_info_priority_cart', 10 )
 				);
 			}
+			// Shortcodes
+			add_shortcode( 'alg_get_left_to_free_shipping',          array( $this, 'get_left_to_free_shipping_shortcode' ) ); // deprecated
+			add_shortcode( 'alg_wc_left_to_free_shipping',           array( $this, 'get_left_to_free_shipping_shortcode' ) );
+			add_shortcode( 'alg_wc_left_to_free_shipping_translate', array( $this, 'translate_shortcode' ) );
+			// Default notice
+			add_action( 'wp',                                             array( $this, 'create_default_notice' ) );
+			add_action( 'woocommerce_add_to_cart_validation',             array( $this, 'clear_notices' ), 1 );
+			// Core loaded
+			do_action( 'alg_wc_left_to_free_shipping_core_loaded', $this );
+			// Min amount extra options
+			add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_user_role_available_on_min_amount' ), 9, 2 );
+			add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_currency_available_on_min_amount' ), 10, 2 );
+			add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_shipping_zone_available_on_min_amount' ), 11, 2 );
+			// Manual amount - Minus 1
+			add_filter( 'alg_wc_get_left_to_free_shipping_validation', array( $this, 'handle_manual_min_amount_special_value_minus_one' ), 10, 2 );
+			// Hide shipping methods
+			add_filter( 'woocommerce_package_rates', array( $this, 'hide_shipping_methods' ), 10, 1 );
+			// Hide by disabled shipping methods.
+			add_filter( 'alg_wc_get_left_to_free_shipping_validation', array( $this, 'hide_notification_by_disabled_shipping_method' ) );
 		}
-		// Shortcodes
-		add_shortcode( 'alg_get_left_to_free_shipping',          array( $this, 'get_left_to_free_shipping_shortcode' ) ); // deprecated
-		add_shortcode( 'alg_wc_left_to_free_shipping',           array( $this, 'get_left_to_free_shipping_shortcode' ) );
-		add_shortcode( 'alg_wc_left_to_free_shipping_translate', array( $this, 'translate_shortcode' ) );
-		// Default notice
-		add_action( 'wp',                                             array( $this, 'create_default_notice' ) );
-		add_action( 'woocommerce_add_to_cart_validation',             array( $this, 'clear_notices' ), 1 );
-		// Core loaded
-		do_action( 'alg_wc_left_to_free_shipping_core_loaded', $this );
-		// Min amount extra options
-		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_user_role_available_on_min_amount' ), 9, 2 );
-		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_currency_available_on_min_amount' ), 10, 2 );
-		add_filter( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array( $this, 'get_shipping_zone_available_on_min_amount' ), 11, 2 );
-		// Manual amount - Minus 1
-		add_filter( 'alg_wc_get_left_to_free_shipping_validation', array( $this, 'handle_manual_min_amount_special_value_minus_one' ), 10, 2 );
-		// Hide shipping methods
-		add_filter( 'woocommerce_package_rates', array( $this, 'hide_shipping_methods' ), 10, 1 );
+	}
+
+	/**
+	 * hide_notification_by_disabled_shipping_method.
+	 *
+	 * @version 2.2.3
+	 * @since   2.2.3
+	 *
+	 * @param $validation
+	 *
+	 * @return bool
+	 */
+	function hide_notification_by_disabled_shipping_method( $validation ) {
+		if (
+			! empty( $shipping_methods = get_option( 'alg_wc_left_to_free_shipping_hide_by_disabled_shipping_method', array( 'free_shipping' ) ) ) &&
+			! empty( $shipping_packages = WC()->cart->get_shipping_packages() ) &&
+			! empty( $shipping_zone = wc_get_shipping_zone( reset( $shipping_packages ) ) ) &&
+			! empty( $zone_id = $shipping_zone->get_id() ) &&
+			! empty( $delivery_zones = WC_Shipping_Zones::get_zones() ) &&
+			isset( $delivery_zones[ $zone_id ] ) &&
+			isset( $delivery_zones[ $zone_id ]['shipping_methods'] ) &&
+			! empty( $methods_from_zone = $delivery_zones[ $zone_id ]['shipping_methods'] ) &&
+			! empty( $disabled_methods_from_zone = wp_list_pluck( wp_list_filter( $methods_from_zone, array( 'enabled' => 'no' ) ), 'id' ) )
+		) {
+			$operator   = get_option( 'alg_wc_left_to_free_shipping_hide_by_disabled_shipping_method_operator', 'or' );
+			$intersect  = array_intersect( $shipping_methods, $disabled_methods_from_zone );
+			$validation = ! ( count( $intersect ) > 0 );
+			if ( 'and' === $operator ) {
+				$validation = ! ( count( $intersect ) === count( $shipping_methods ) );
+			}
+		}
+		return $validation;
 	}
 
 	/**
@@ -561,7 +595,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 2.1.5
+	 * @version 2.2.3
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -569,15 +603,15 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	 */
 	function get_left_to_free_shipping( $args = null ) {
 		$args = wp_parse_args( $args, array(
-			'content'                  => '',
-			'content_wrapper'          => '', // Example: <span class="alg_wc_left_to_free_shipping">{content}</span>
-			'multiply_by'              => 1,
-			'location'                 => '',
-			'min_free_shipping_amount' => 0,
-			'free_delivery_text'       => false,
-			'template'                 => '{content}',
-			'is_ajax_response'         => false,
-			'min_cart_amount'          => get_option( 'alg_wc_left_to_free_shipping_min_cart_amount', 0 )
+			'content'                       => '',
+			'content_wrapper'               => '', // Example: <span class="alg_wc_left_to_free_shipping">{content}</span>
+			'multiply_by'                   => 1,
+			'location'                      => '',
+			'min_free_shipping_amount'      => 0,
+			'free_delivery_text'            => false,
+			'template'                      => '{content}',
+			'is_ajax_response'              => false,
+			'min_cart_amount'               => get_option( 'alg_wc_left_to_free_shipping_min_cart_amount', 0 )
 		) );
 		$args = apply_filters( 'alg_wc_get_left_to_free_shipping_args', $args );
 		if ( 0 == $args['min_free_shipping_amount'] ) {
@@ -655,7 +689,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_default_ajax_events.
 	 *
-	 * @version 1.9.1
+	 * @version 2.2.3
 	 * @since   1.9.1
 	 * @todo    [next] [maybe] add `wc_fragments_loaded updated_shipping_method applied_coupon removed_coupon wc_fragments_refreshed`
 	 */
@@ -667,6 +701,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			'wc_fragment_refresh',
 			'updated_checkout',
 			'wc_cart_emptied',
+			'updated_shipping_method'
 		);
 	}
 
