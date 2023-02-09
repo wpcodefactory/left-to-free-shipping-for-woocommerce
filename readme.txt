@@ -3,7 +3,7 @@ Contributors: wpcodefactory, karzin, algoritmika, anbinder
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.1
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,10 +77,11 @@ You can optionally add a column title for the message if you wish like this:
 
 == Changelog ==
 
-= 2.2.3 - 09/01/2023 =
+= 2.2.3 - 09/02/2023 =
 * Dev - Hide amount left - New option: By shipping method.
 * Dev - Hide amount left - By shipping method - New option: Operator.
-* WC tested up to: 7.2.
+* Dev - Advanced - Manually detect changes on updated totals from WooCommerce cart/checkout blocks with a custom js event: `alg_wc_alfs_wc_cart_checkout_updated_totals`.
+* WC tested up to: 7.3.
 * Tested up to: 6.1.
 
 = 2.2.2 - 26/09/2022 =

@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.2.3
+ * @version 2.2.4
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -689,7 +689,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_default_ajax_events.
 	 *
-	 * @version 2.2.3
+	 * @version 2.2.4
 	 * @since   1.9.1
 	 * @todo    [next] [maybe] add `wc_fragments_loaded updated_shipping_method applied_coupon removed_coupon wc_fragments_refreshed`
 	 */
@@ -701,7 +701,8 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			'wc_fragment_refresh',
 			'updated_checkout',
 			'wc_cart_emptied',
-			'updated_shipping_method'
+			'updated_shipping_method',
+			'alg_wc_alfs_wc_cart_checkout_updated_totals'
 		);
 	}
 

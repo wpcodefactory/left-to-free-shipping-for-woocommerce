@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: amount-left-free-shipping-woocommerce 2.2.3\n"
+"Project-Id-Version: amount-left-free-shipping-woocommerce 2.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-01-10T01:33:07+01:00\n"
+"POT-Creation-Date: 2023-02-09T19:28:42+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
@@ -318,155 +318,155 @@ msgstr ""
 msgid "After cart"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:79
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:78
 msgid "Before cart totals"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:80
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:79
 msgid "Cart totals: Before shipping (in table)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:81
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:80
 msgid "Cart totals: After shipping (in table)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:82
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:81
 msgid "Cart totals: Before order total (in table)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:83
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:82
 msgid "Cart totals: After order total (in table)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:84
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:83
 msgid "Proceed to checkout"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:85
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:84
 msgid "After cart totals"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:87
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:85
 msgid "Before shipping calculator"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:88
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:86
 msgid "After shipping calculator"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:90
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:87
 msgid "If cart is empty"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:94
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:91
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:83
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:78
 msgid "Position order (priority)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:95
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:92
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:84
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:79
 msgid "Here you can move the info inside the Position selected above."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:108
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:105
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:97
 msgid "Wrapper options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:111
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:108
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:100
 msgid "Sometimes, depending on the position used the content should be wrapped."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:111
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:108
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:100
 msgid "E.g., If it's being displayed inside a table it will need HTML row tags."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:112
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:109
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:101
 msgid "Here you can setup how the wrapping will take place."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:115
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:112
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:104
 msgid "Wrap method"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:118
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:115
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:107
 msgid "%s will wrap the content automatically, depending on the position."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:118
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:124
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:115
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:121
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:107
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:113
 msgid "Smart"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:119
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:116
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:108
 msgid "%s will not wrap the content."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:119
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:125
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:116
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:122
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:108
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:114
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:150
 msgid "Ignore"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:120
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:117
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:109
 msgid "%s will wrap the content in any situation."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:120
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:126
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:117
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:123
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:109
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:115
 msgid "Force"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:130
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:127
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:119
 msgid "Wrap template"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:132
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:129
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:121
 msgid "Probably %s should suit well for positions using tables."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:145
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:150
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:142
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:147
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:134
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:139
 msgid "Custom style"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:151
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:148
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:140
 msgid "Customize the style"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:158
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:155
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:146
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:160
 msgid "Text color"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:164
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:161
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:152
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:166
 msgid "Font size"
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-cart.php:165
+#: includes/settings/class-alg-wc-alfs-settings-cart.php:162
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:153
 msgid "Font size in pixels."
 msgstr ""

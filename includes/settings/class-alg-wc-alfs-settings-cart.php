@@ -1,6 +1,6 @@
 <?php
 /**
- * Amount Left for Free Shipping for WooCommerce - Cart Section Settings
+ * Amount Left for Free Shipping for WooCommerce - Cart Section Settings.
  *
  * @version 2.1.5
  * @since   1.6.0
@@ -75,7 +75,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 					'woocommerce_after_cart_table'               => __( 'After cart table', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_cart_collaterals'               => __( 'Cart collaterals', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_after_cart'                     => __( 'After cart', 'amount-left-free-shipping-woocommerce' ),
-
 					'woocommerce_before_cart_totals'             => __( 'Before cart totals', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_cart_totals_before_shipping'    => __( 'Cart totals: Before shipping (in table)', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_cart_totals_after_shipping'     => __( 'Cart totals: After shipping (in table)', 'amount-left-free-shipping-woocommerce' ),
@@ -83,10 +82,8 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 					'woocommerce_cart_totals_after_order_total'  => __( 'Cart totals: After order total (in table)', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_proceed_to_checkout'            => __( 'Proceed to checkout', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_after_cart_totals'              => __( 'After cart totals', 'amount-left-free-shipping-woocommerce' ),
-
 					'woocommerce_before_shipping_calculator'     => __( 'Before shipping calculator', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_after_shipping_calculator'      => __( 'After shipping calculator', 'amount-left-free-shipping-woocommerce' ),
-
 					'woocommerce_cart_is_empty'                  => __( 'If cart is empty', 'amount-left-free-shipping-woocommerce' ),
 				),
 			),
