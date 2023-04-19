@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.2.4
+ * @version 2.2.6
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -87,7 +87,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Hide shipping methods when free shipping is available.
 	 *
-	 * @version 2.1.7
+	 * @version 2.2.6
 	 * @since   2.1.7
 	 *
 	 * @param $packages
@@ -99,6 +99,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			'yes' === get_option( 'alg_wc_left_to_free_shipping_hide_shipping_methods', 'no' ) &&
 			'free-shipping-reached' === $this->get_left_to_free_shipping( array(
 				'min_cart_amount'    => 0,
+				'is_ajax_response'   => false,
 				'free_delivery_text' => 'free-shipping-reached',
 			) ) &&
 			! empty( $free_shipping_package = array_filter( $packages, function ( WC_Shipping_Rate $shipping_rate ) {
@@ -170,7 +171,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * create_default_notice.
 	 *
-	 * @version 2.1.5
+	 * @version 2.2.6
 	 * @since   1.9.6
 	 */
 	function create_default_notice() {
@@ -189,7 +190,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		$message = $this->get_left_to_free_shipping( array(
 			'content'          => get_option( 'alg_wc_left_to_free_shipping_default_notice_content', $this->get_default_content() ),
 			'location'         => 'wc_notice',
-			'is_ajax_response' => false
+			'is_ajax_response' => true
 		) );
 		wc_add_notice( $message, get_option( 'alg_wc_left_to_free_shipping_default_notice_type', 'notice' ) );
 	}
