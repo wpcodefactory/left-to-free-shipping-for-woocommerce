@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings.
  *
- * @version 2.2.7
+ * @version 2.2.8
  * @since   1.9.0
  * @author  WPFactory
  */
@@ -212,7 +212,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	/**
 	 * get_extra_options.
 	 *
-	 * @version 2.2.7
+	 * @version 2.2.8
 	 * @since   2.2.7
 	 *
 	 * @return array|array[]|string[][]
@@ -242,7 +242,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 					'type'              => 'multiselect',
 					'class'             => 'chosen_select',
 					'options'           => $all_values[ $type ],
-					'custom_attributes' => 'shipping_methods' === $type ? apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ) : array(),
+					'custom_attributes' => in_array( $type, array( 'shipping_methods', 'shipping_classes' ) ) ? apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ) : array(),
 				),
 			) );
 		}
