@@ -1,8 +1,8 @@
 <?php
 /**
- * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings
+ * Amount Left for Free Shipping for WooCommerce - Manual Min Amount Section Settings.
  *
- * @version 2.1.1
+ * @version 2.2.7
  * @since   1.9.0
  * @author  WPFactory
  */
@@ -71,6 +71,22 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	}
 
 	/**
+	 * get_shipping_classes.
+	 *
+	 * @version 2.2.7
+	 * @since   2.2.7
+	 */
+	function get_shipping_classes() {
+		$shipping_classes  = array('-1' => __( 'No shipping class', 'amount-left-free-shipping-woocommerce' ));
+		$_shipping_classes = WC()->shipping() ? WC()->shipping()->get_shipping_classes() : array();
+		
+		foreach ( $_shipping_classes as $class ) {
+			$shipping_classes[ $class->slug ] = $class->name;
+		}
+		return $shipping_classes;
+	}
+
+	/**
 	 * get_shipping_zones_options.
 	 *
 	 * @version 1.9.0
@@ -99,7 +115,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.1.1
+	 * @version 2.2.7
 	 * @since   1.9.0
 	 * @todo    [next] currency: conversion (i.e. exchange rates) (manual and automatic)
 	 * @todo    [next] rename `alg_wc_left_to_free_shipping_mma_roles_val` to e.g. `alg_wc_left_to_free_shipping_mma_amounts`
@@ -168,98 +184,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 			),
 
 		);
-		$all_values = array(
-			'roles'            => $this->get_user_roles_options(),
-			'currencies'       => get_woocommerce_currencies(),
-			'zones'            => $this->get_shipping_zones_options(),
-			'shipping_methods' => $this->get_shipping_methods(),
-		);
-		$extra_settings = array(
-			array(
-				'title'    => __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ),
-				'desc'     => __( 'Here you can optionally select user roles, currencies and/or shipping zones to set individual manual min amounts for.', 'amount-left-free-shipping-woocommerce' ) . ' ' .__( 'Select values and "Save changes" for new option fields.', 'amount-left-free-shipping-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_left_to_free_shipping_mma_extra_options',
-			),
-		);
-		foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
-			$extra_settings = array_merge( $extra_settings, array(
-				array(
-					'title'             => $title,
-					'id'                => "alg_wc_left_to_free_shipping_mma_{$type}",
-					'default'           => array(),
-					'type'              => 'multiselect',
-					'class'             => 'chosen_select',
-					'options'           => $all_values[ $type ],
-					'custom_attributes' => 'shipping_methods' === $type ? apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ) : array(),
-				),
-			) );
-		}
-		$extra_settings = array_merge( $extra_settings, array(
-			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_left_to_free_shipping_mma_extra_options',
-			),
-		) );
-		$extra_amounts_settings = array();
-		$types                  = array();
-		$do_display             = false;
-		foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
-			$values = get_option( "alg_wc_left_to_free_shipping_mma_{$type}", array() );
-			if ( ! empty( $values ) ) {
-				$types[ $type ] = $values;
-				$do_display     = true;
-			} else {
-				$types[ $type ] = array( '' );
-			}
-		}
-		if ( $do_display ) {
-			$extra_amounts_settings = array(
-				array(
-					'title' => __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ) . ': ' . __( 'Amounts', 'amount-left-free-shipping-woocommerce' ),
-					'type'  => 'title',
-					'id'    => 'alg_wc_left_to_free_shipping_mma_extra_amounts_options',
-				),
-			);
-			foreach ( $types['roles'] as $value_roles ) {
-				foreach ( $types['currencies'] as $value_currencies ) {
-					foreach ( $types['zones'] as $value_zones ) {
-						foreach ( $types['shipping_methods'] as $value_shipping_methods ) {
-							// Get title and ID
-							$extra_amount_title = array();
-							$extra_amount_id    = array();
-							foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
-								$value = 'value_' . $type;
-								$value = $$value;
-								if ( '' !== $value ) {
-									$extra_amount_title[] = ( isset( $all_values[ $type ][ $value ] ) ? $all_values[ $type ][ $value ] : $value );
-									$extra_amount_id[]    = ( 'roles' === $type ? '' : $type . ':' ) . $value;
-								}
-							}
-							$extra_amount_title = implode( ' | ', $extra_amount_title );
-							$extra_amount_id    = implode( '|', $extra_amount_id );
-							// Add settings field
-							$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
-								array(
-									'title'             => $extra_amount_title,
-									'id'                => "alg_wc_left_to_free_shipping_mma_roles_val[{$extra_amount_id}]", // mislabeled, should be e.g. `alg_wc_left_to_free_shipping_mma_amounts`
-									'default'           => 0,
-									'type'              => 'number',
-									'custom_attributes' => $this->get_amount_atts(),
-								),
-							) );
-						}
-					}
-				}
-			}
-			$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
-				array(
-					'type'     => 'sectionend',
-					'id'       => 'alg_wc_left_to_free_shipping_mma_extra_amounts_options',
-				),
-			) );
-		}
-
 		$compatibility_settings = array(
 			array(
 				'title'    => __( 'Compatibility', 'amount-left-free-shipping-woocommerce' ),
@@ -282,7 +206,176 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 			),
 		);
 
-		return array_merge( $general_settings, $extra_settings, $extra_amounts_settings, $compatibility_settings );
+		return array_merge( $general_settings, array_values( $this->get_extra_options() ), $compatibility_settings );
+	}
+
+	/**
+	 * get_extra_options.
+	 *
+	 * @version 2.2.7
+	 * @since   2.2.7
+	 *
+	 * @return array|array[]|string[][]
+	 */
+	function get_extra_options() {
+		$all_values     = array(
+			'roles'            => $this->get_user_roles_options(),
+			'currencies'       => get_woocommerce_currencies(),
+			'zones'            => $this->get_shipping_zones_options(),
+			'shipping_methods' => $this->get_shipping_methods(),
+			'shipping_classes' => $this->get_shipping_classes(),
+		);
+		$extra_settings = array(
+			array(
+				'title' => __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ),
+				'desc'  => __( 'Here you can optionally select user roles, currencies and/or shipping zones to set individual manual min amounts for.', 'amount-left-free-shipping-woocommerce' ) . ' ' . __( 'Select values and "Save changes" for new option fields.', 'amount-left-free-shipping-woocommerce' ),
+				'type'  => 'title',
+				'id'    => 'alg_wc_left_to_free_shipping_mma_extra_options',
+			),
+		);
+		foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
+			$extra_settings = array_merge( $extra_settings, array(
+				array(
+					'title'             => $title,
+					'id'                => "alg_wc_left_to_free_shipping_mma_{$type}",
+					'default'           => array(),
+					'type'              => 'multiselect',
+					'class'             => 'chosen_select',
+					'options'           => $all_values[ $type ],
+					'custom_attributes' => 'shipping_methods' === $type ? apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ) : array(),
+				),
+			) );
+		}
+		$extra_settings         = array_merge( $extra_settings, array(
+			array(
+				'type' => 'sectionend',
+				'id'   => 'alg_wc_left_to_free_shipping_mma_extra_options',
+			),
+		) );
+		$extra_amounts_settings = $this->get_extra_option_amounts( $all_values );
+		return array_merge( $extra_settings, $extra_amounts_settings );
+	}
+
+	/**
+	 * get_extra_amount_settings.
+	 *
+	 * @version 2.2.7
+	 * @since   2.2.7
+	 *
+	 * @param $all_values
+	 *
+	 * @return array
+	 */
+	function get_extra_option_amounts( $all_values ) {
+		$extra_amounts_settings = array();
+		$types                  = array();
+		$do_display             = false;
+		foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
+			$values = get_option( "alg_wc_left_to_free_shipping_mma_{$type}", array() );
+			if ( ! empty( $values ) ) {
+				$types[ $type ] = $values;
+				$do_display     = true;
+			} else {
+				$types[ $type ] = array( '' );
+			}
+		}
+		if ( $do_display ) {
+			$extra_amounts_settings = array(
+				array(
+					'title' => __( 'Extra Options', 'amount-left-free-shipping-woocommerce' ) . ': ' . __( 'Amounts', 'amount-left-free-shipping-woocommerce' ),
+					'type'  => 'title',
+					'id'    => 'alg_wc_left_to_free_shipping_mma_extra_amounts_options',
+				),
+			);
+
+			$shipping_classes_values = get_option( "alg_wc_left_to_free_shipping_mma_shipping_classes", array() );
+			if ( ! empty( $shipping_classes_values ) ) {
+				$extra_amounts_settings = array_merge( $extra_amounts_settings, array( 
+					array(
+						'title'    => __( 'Multiple shipping class priority', 'amount-left-free-shipping-woocommerce' ),
+						'id'       => 'alg_wc_left_to_free_shipping_multiple_shipping_priority',
+						'default'  => 'highest',
+						'options'  => array(
+							'highest' => __( 'Calculate based on highest min amount.', 'amount-left-free-shipping-woocommerce' ),
+							'lowest' => __( 'Calculate based on lowest min amount.', 'amount-left-free-shipping-woocommerce' )
+						),
+						'type'     => 'radio',
+					) )
+				);
+			}
+
+			foreach ( $types['roles'] as $value_roles ) {
+				foreach ( $types['currencies'] as $value_currencies ) {
+					foreach ( $types['zones'] as $value_zones ) {
+						foreach ( $types['shipping_methods'] as $value_shipping_methods ) {
+							foreach ( $types['shipping_classes'] as $value_shipping_classes ) {
+								// Get title and ID
+								$extra_amount_title = array();
+								$extra_amount_id    = array();
+								foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
+									$value = 'value_' . $type;
+									$value = $$value;
+									if ( '' !== $value ) {
+										$extra_amount_title[] = ( isset( $all_values[ $type ][ $value ] ) ? $all_values[ $type ][ $value ] : $value );
+										$extra_amount_id[]    = ( 'roles' === $type ? '' : $type . ':' ) . $value;
+									}
+								}
+								$extra_amount_title = implode( ' | ', $extra_amount_title );
+								$extra_amount_id    = implode( '|', $extra_amount_id );
+								// Add settings field
+								$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
+									array(
+										'title'             => $extra_amount_title,
+										'id'                => "alg_wc_left_to_free_shipping_mma_roles_val[{$extra_amount_id}]", // mislabeled, should be e.g. `alg_wc_left_to_free_shipping_mma_amounts`
+										'default'           => 0,
+										'type'              => 'number',
+										'custom_attributes' => $this->get_amount_atts(),
+									),
+								) );
+							}
+						}
+					}
+				}
+			}
+			$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
+				array(
+					'type' => 'sectionend',
+					'id'   => 'alg_wc_left_to_free_shipping_mma_extra_amounts_options',
+				),
+			) );
+		}
+
+		return $extra_amounts_settings;
+	}
+
+	function test( $types, $extra_amounts_settings, $all_values ) {
+		/*foreach ( $types as $key => $values ) {
+			// Get title and ID
+			$extra_amount_title = array();
+			$extra_amount_id    = array();
+			foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
+				$value = 'value_' . $type;
+				$value = $$value;
+				if ( '' !== $value ) {
+					$extra_amount_title[] = ( isset( $all_values[ $type ][ $value ] ) ? $all_values[ $type ][ $value ] : $value );
+					$extra_amount_id[]    = ( 'roles' === $type ? '' : $type . ':' ) . $value;
+				}
+			}
+			$extra_amount_title = implode( ' | ', $extra_amount_title );
+			$extra_amount_id    = implode( '|', $extra_amount_id );
+			// Add settings field
+			$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
+				array(
+					'title'             => $extra_amount_title,
+					'id'                => "alg_wc_left_to_free_shipping_mma_roles_val[{$extra_amount_id}]", // mislabeled, should be e.g. `alg_wc_left_to_free_shipping_mma_amounts`
+					'default'           => 0,
+					'type'              => 'number',
+					'custom_attributes' => $this->get_amount_atts(),
+				),
+			) );
+		}*/
+
+		return $extra_amounts_settings;
 	}
 
 }

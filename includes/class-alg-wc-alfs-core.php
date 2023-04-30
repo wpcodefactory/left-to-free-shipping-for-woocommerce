@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.2.6
+ * @version 2.2.7
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -351,16 +351,19 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_manual_min_amount_types.
 	 *
-	 * @version 2.0.7
+	 * @version 2.2.7
 	 * @since   1.9.0
 	 */
 	function get_manual_min_amount_types() {
-		return array(
+		$types = array(
 			'roles'            => __( 'User roles', 'amount-left-free-shipping-woocommerce' ),
 			'currencies'       => __( 'Currencies', 'amount-left-free-shipping-woocommerce' ),
 			'zones'            => __( 'Shipping zones', 'amount-left-free-shipping-woocommerce' ),
 			'shipping_methods' => __( 'Shipping methods', 'amount-left-free-shipping-woocommerce' ),
+			'shipping_classes' => __( 'Shipping classes', 'amount-left-free-shipping-woocommerce' ),
 		);
+
+		return apply_filters( 'alg_wc_left_to_free_shipping_amount_types', $types );
 	}
 
 	/**
@@ -444,7 +447,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_manual_min_amount.
 	 *
-	 * @version 2.1.1
+	 * @version 2.7.2
 	 * @since   1.9.0
 	 * @todo    [maybe] pre-check `function_exists( 'WC' ) && ( $wc_cart = WC()->cart )`
 	 */
@@ -465,13 +468,50 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			}
 			if ( ! empty( $types ) ) {
 				$id  = apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array(), array( 'types' => $types ) );
-				$_id = implode( '|', $id );
-				$amount = isset( $amounts[ $_id ] ) ? $amounts[ $_id ] : $general_manual_min_amount;
-				if ( ! empty( $_id ) && isset( $amounts[ $_id ] ) ) {
-					return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $amount, 'is_available' => false ), array(
-						'id'      => $_id,
-						'amounts' => $amounts,
-					) );
+				$cart_shipping_classes = array();
+
+				if(isset($id['cart_shipping_classes']) && !empty($id['cart_shipping_classes'])){
+					
+					$cart_shipping_classes = $id['cart_shipping_classes'];
+					unset($id['cart_shipping_classes']);
+					
+					$shipping_priority = get_option( 'alg_wc_left_to_free_shipping_multiple_shipping_priority', 'highest' );
+					$tobe_sorted = array();
+					foreach($cart_shipping_classes as $cls){
+						$new_id = $id;
+						$new_id[] = $cls;
+						$_id = implode( '|', $new_id );
+						$amount = isset( $amounts[ $_id ] ) ? $amounts[ $_id ] : $general_manual_min_amount;
+						$tobe_sorted[$_id] = $amount;
+						
+					}
+					
+					if($shipping_priority == 'highest'){
+						arsort($tobe_sorted);
+					}else{
+						asort($tobe_sorted);
+					}
+					
+					$selected_amount = reset($tobe_sorted);
+					$selected_id = key($tobe_sorted);
+					if ( ! empty( $selected_id ) && isset( $amounts[ $selected_id ] ) ) {
+						return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $selected_amount, 'is_available' => false ), array(
+							'id'      => $selected_id,
+							'amounts' => $amounts,
+						) );
+					}
+					
+					
+				}else{
+
+					$_id = implode( '|', $id );
+					$amount = isset( $amounts[ $_id ] ) ? $amounts[ $_id ] : $general_manual_min_amount;
+					if ( ! empty( $_id ) && isset( $amounts[ $_id ] ) ) {
+						return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $amount, 'is_available' => false ), array(
+							'id'      => $_id,
+							'amounts' => $amounts,
+						) );
+					}
 				}
 			}
 		}
