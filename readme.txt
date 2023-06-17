@@ -3,7 +3,7 @@ Contributors: wpcodefactory, karzin, algoritmika, anbinder, omardabbas, kousikmu
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.2
-Stable tag: 2.2.8
+Stable tag: 2.2.9
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,10 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+
+= 2.2.9 - 17/06/2023 =
+* WC tested up to: 7.8.
 
 = 2.2.8 - 01/05/2023 =
 * Manual min amount > Extra Options > Shipping classes ( available for pro version only )
