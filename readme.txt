@@ -1,9 +1,9 @@
-=== Amount Left for Free Shipping for WooCommerce ===
+=== Free Shipping Over Amount Bar for WooCommerce ===
 Contributors: wpcodefactory, karzin, algoritmika, anbinder, omardabbas, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
-Tested up to: 6.2
-Stable tag: 2.2.9
+Tested up to: 6.3
+Stable tag: 2.2.10
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,7 +11,7 @@ Show your customers the amount left for free shipping in WooCommerce.
 
 == Description ==
 
-**Amount Left for Free Shipping for WooCommerce** is a lightweight plugin that lets you display the amount left for free shipping in WooCommerce.
+**Free Shipping Over Amount Bar for WooCommerce** is a lightweight plugin that lets you display the amount left for free shipping in WooCommerce.
 
 The amount can be displayed on **cart** page or, alternatively, you can use **widget**, **shortcode** or PHP **function** to display it anywhere on your site.
 
@@ -29,7 +29,7 @@ The amount can be displayed on **cart** page or, alternatively, you can use **wi
 
 ### &#127942; Pro Version ###
 
-[Amount Left for Free Shipping for WooCommerce Pro](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) features:
+[Free Shipping Over Amount Bar for WooCommerce Pro](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) features:
 
 * Additional **positions** available for displaying the amount left text:
   * Site-wide **store notice**.
@@ -77,6 +77,11 @@ You can optionally add a column title for the message if you wish like this:
 
 == Changelog ==
 
+
+= 2.2.10 - 31/08/2023 =
+* Update plugin title.
+* Tested up to: 6.3.
+* WC tested up to: 8.0.
 
 = 2.2.9 - 17/06/2023 =
 * WC tested up to: 7.8.
