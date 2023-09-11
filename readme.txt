@@ -3,7 +3,7 @@ Contributors: wpcodefactory, karzin, algoritmika, anbinder, omardabbas, kousikmu
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.3
-Stable tag: 2.2.10
+Stable tag: 2.3.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -77,6 +77,9 @@ You can optionally add a column title for the message if you wish like this:
 
 == Changelog ==
 
+= 2.3.0 - 11/09/2023 =
+* Dev - Add compatibility to POS.
+* Dev - Move main class to a separate file.
 
 = 2.2.10 - 31/08/2023 =
 * Update plugin title.
