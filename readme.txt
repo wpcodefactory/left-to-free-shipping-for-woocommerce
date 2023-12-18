@@ -2,51 +2,115 @@
 Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
-Tested up to: 6.3
-Stable tag: 2.3.1
+Tested up to: 6.4
+Stable tag: 2.3.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Show your customers the amount left for free shipping in WooCommerce.
+Show progress bar for amount left for free shipping using our fully customizable WordPress plugin
 
 == Description ==
 
-**Free Shipping Over Amount Bar for WooCommerce** is a lightweight plugin that lets you display the amount left for free shipping in WooCommerce.
+> “Amazing Plugin and Support: The plugin does what it says and works perfectly in executing it. It’s a clean code and light-weight plugin. The support is also top-notch.” – ⭐⭐⭐⭐⭐  [carmpocalypse](https://wordpress.org/support/topic/amazing-plugin-and-support-126/)
 
-The amount can be displayed on **cart** page or, alternatively, you can use **widget**, **shortcode** or PHP **function** to display it anywhere on your site.
+Free shipping is a powerful incentive for customers to complete a purchase, everybody love to get something for “Free”. That’s why with our plugin you can increase your eCommerce sales with just a few tweaks into how your store looks and how to convert visitors into buyers.
 
-### &#9989; Main Features: ###
+Our plugin lets you display the amount left for free shipping in WooCommerce, it works as a reminder for your customers for of how much is left for them to get there free shipping, and it’s an incentive too as encourages them to add more products into their carts to get the free shipping.
 
-* Hide other shipping methods when free shipping is available.
-* Display the amount left for free shipping in the Cart page in many different spots.
-* Hide the amount left text if the total value **in cart** is below a specific amount.
-* Get the minimum order amount automatically from the **free shipping** method or set it **manually**.
-* Set a different minimum order amount for free shipping by **user role**, **currency** and **shipping zone**.
-* Create a **custom message** if the user reaches free shipping.
-* **Include discounts** when calculating cart total or not.
-* Show the free shipping message if cart shipping costs are not present, i.e., when shipping total is zero.
-* Do not display the amount left text if cart consists of **virtual products** only.
+A simple plugin like that works some psychological tricks can increase the average cart value in your store and thus increase your profitability.
 
-### &#127942; Pro Version ###
+Your customers will know in real time the amount left in their cart for free shipping, you can customize the shipping criteria to fit your strategic goals, and you can customize the message so you can try different CTAs and see what works best for your customers.
 
-[Free Shipping Over Amount Bar for WooCommerce Pro](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/) features:
+#### Useful Links ####
+* **[Plugin Main Page](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Plugin Main Page")**
+* **[Plugin Support Forum](https://wpfactory.com/support/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Plugin Support Forum")**
+* **[Documentation & How to](https://wpfactory.com/docs/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Documentation & How to")**
 
-* Additional **positions** available for displaying the amount left text:
-  * Site-wide **store notice**.
-  * "Add to cart" **notice**.
-  * **Mini cart**.
-  * **Checkout** page.
-* Update the amount left text via **AJAX**.
-* **Hide** the amount left text by **category** or **user role**.
-* Ignore **virtual products** in cart to reach the minimum amount required for free shipping.
-* Set a specific minimum order amount by each different **shipping method**.
-* **Compatibility** options:
-  * **[WooCommerce Currency Switcher](https://currency-switcher.com/)**: Convert manual min amount value to current currency.
+## 🤝 Recommended By##
+* [WP Glob: Top List of WooCommerce Shipping Plugins](https://wpglob.com/2022s-top-list-of-woocommerce-shipping-plugins/ "WP Globe: 2022's Top List of WooCommerce Shipping Plugins")
+* [Avada: How to Add Free Shipping for Orders Over an Amount in WooCommerce](https://avada.io/woocommerce/docs/add-free-shipping-on-orders.html "Avada: How to Add Free Shipping for Orders Over an Amount in WooCommerce")
+* [LearnWoo: WooCommerce Free Shipping - A Detailed Guide](https://learnwoo.com/woocommerce-free-shipping-a-detailed-guide/ "LearnWoo: WooCommerce Free Shipping - A Detailed Guide")
+* [AYS Pro: Best WordPress Shipping plugins 2023](https://ays-pro.com/blog/wordpress-shipping-plugins "AYS Pro: Best WordPress Shipping plugins 2023")
 
-#### Feedback ####
+## 🚀 Main Features: FREE Version##
 
-* We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
-* [Visit plugin site](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/).
+### 🚀 **Show Your Customers the Amount Left for Free Shipping** ###
+Show progress bar for amount left for free shipping using our fully customizable WordPress plugin, you can control every detail about the progress bar so your store is fully customizable.
+
+### 🚀 **Flexible Placement for the Amount Left Text in the Cart Page** ###
+Choose the best spot that fits your store to show the progress bar in your cart page using our plugin, this allows for maximum flexibility so you can test which spot brings the best conversions.
+
+### 🚀 **Manual and Automatic Minimum Order Amount Setting** ###
+Keep your systems consistent and well synchronized by setting the minimum order amount automatically from the free shipping method or set it manually by yourself for further control and flexibility.
+
+### 🚀 **Localized Pricing Based in Shipping Zone and Currency** ###
+The flexibility our plugin provides will allow you to implement localized pricing and policies, and targeted marketing. Impowering you to appeal to wider audiences by providing full flexibility for your campaigns.
+
+### 🚀 **Full Customization for the Free Shipping Message** ###
+You don't have to show the same message as every other store using this plugin, you can write your own customized message if the user reaches the free shipping threshold.
+
+
+### Reviews ###
+
+> “Good plugin: I recommend this plugin. Been using it for a year and has been working with no problems.” – ⭐⭐⭐⭐⭐ [kirsimaria](https://wordpress.org/support/topic/good-plugin-5620/)
+
+> “A great plugin with a great support team !: Amazing plugin with a great support team that really take the time to understand your issue in order to help you ! I can’t believe that this plugin is free !” – ⭐⭐⭐⭐⭐ [Thé du Vietnam](https://wordpress.org/support/topic/a-great-plugin-with-a-great-support-team/)
+
+## 🏆 Pro Version ##
+
+Our Pro features further expands the Capabilities of our plugin so you can have full control on when and where to show the progress bar, here are the features:
+
+### 🏆 **Greater Flexibility for Showing the Amount Left Message through the Website** ###
+You'll be able to display the amount left text in: site-wide store notice, "add to cart" notice, Mini cart, Checkout Page. That would encourage more users to add more products into their carts to get their products shipped for free.
+
+### 🏆 **Real-time User Update for Free Shipping** ###
+Your users will be notified in real-time on the amount left for free shipping using the latest technology of AJAX.
+
+### 🏆 **Full Control Of Free Shipping By Category or User Role** ###
+If for a specific user role or category you want to hide the amount left text our pro plugin allow for that providing full flexibility on which categories or user roles to show the amount left text.
+
+### 🏆 **Full Compatibility with AJAX and Other WooCommerce Plugins** ###
+Allowing for more functionality for your WooCommerce store by being compatible with the WooCommerce Currency Switcher plugin.
+
+## 💯 Why WPFactory?##
+
+* **Experience You Can Trust:** Over a decade in the business
+* **Wide Plugin Selection:** Offering 65+ unique and powerful plugins
+* **Highly-Rated Support:** Backed by hundreds of 5-star reviews
+* **Expert Team:** Dedicated developers and technical support at your service
+
+___
+
+## What's Next? Check More Plugins by WPFactory##
+
+If you're enjoying our plugin, we'd love for you to explore our other offerings. WPFactory has a diverse range of plugins tailored to enhance your experience. 
+
+Dive in and discover more tools to empower your WooCommerce Store!
+
+
+* [**Min Max Step Quantity**](https://wpfactory.com/item/product-quantity-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Min Max Step Quantity**"): Define a min max, step and default quantity for products, show a dropdown, quantities on archive/categories pages, use decimal quantities, and much more on WooCommerce stores (**[Try our Free version](https://wordpress.org/plugins/product-quantity-for-woocommerce/ "Try our Free version")**)
+
+* [**Cost of Goods for WooCommerce**](https://wpfactory.com/item/cost-of-goods-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Cost of Goods WooCommerce**"): Make informed decisions to maximize profits, correctly calculate Cost of Goods Sold (COGS) for your WooCommerce store and enhance your financial management capabilities (**[Try our Free version](https://wordpress.org/plugins/cost-of-goods-for-woocommerce/ "Try our Free version")**)
+
+* [**Maximum Products per User**](https://wpfactory.com/item/maximum-products-per-user-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Maximum Products per User**"): Set personalized purchase limits for your customers, define maximum product quantities, catered to specific user roles & selected date range (**[Try our Free version](https://wordpress.org/plugins/maximum-products-per-user-for-woocommerce/ "Try our Free version")**)
+
+* [**Order Minimum/Maximum Amount**](https://wpfactory.com/item/order-minimum-maximum-amount-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Order Minimum/Maximum Amount**"): Set tailored minimum and maximum order thresholds, by sum, quantity, weight, or volume, customize limits by user role, specific user, product category, shipping method, payment gateway, or even by currency (**[Try our Free version](https://wordpress.org/plugins/order-minimum-amount-for-woocommerce/ "Try our Free version")**)
+
+* [**EU/UK VAT Manager for WooCommerce**](https://wpfactory.com/item/eu-vat-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**EU/UK VAT Manager for WooCommerce**"): Streamline your WooCommerce store’s EU/UK VAT compliance effortlessly, automate VAT settings, validation (VIES), and how to apply taxes, ensuring a seamless and compliant customer experience (**[Try our Free version](https://wordpress.org/plugins/eu-vat-for-woocommerce/ "Try our Free version")**)
+
+* [**Email Verification for WooCommerce**](https://wpfactory.com/item/email-verification-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Email Verification for WooCommerce**"): Enhance WooCommerce security and credibility with Email Verification best plugin. Ensure genuine customer interactions, eliminate spam, and elevate email marketing efficiency (**[Try our Free version](https://wordpress.org/plugins/maximum-products-per-user-for-woocommerce/ "Try our Free version")**)
+
+* [**Bulk Price Editor for WooCommerce**](https://wpfactory.com/item/bulk-price-editor-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Bulk Price Editor for WooCommerce**"): Bulk update & edit WooCommerce pricing with Bulk Pricing Editor for WooCommerce. Streamline bulk pricing edits, set sale prices effortlessly, and perform complex bulk price updates in a matter of clicks (**[Try our Free version](https://wordpress.org/plugins/bulk-price-converter-for-woocommerce/ "Try our Free version")**)
+
+* [**Dynamic Pricing & Bulk Quantity Discounts**](https://wpfactory.com/item/product-price-by-quantity-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Dynamic Pricing & Bulk Quantity Discounts**"): Create and manage advanced dynamic pricing and bulk discount rules for WooCommerce, encouraging bulk purchases and driving your sales to new heights (**[Try our Free version](https://wordpress.org/plugins/wholesale-pricing-woocommerce/ "Try our Free version")**)
+
+> “Great support and perfectly working plugin. I highly recommend.” – ⭐⭐⭐⭐⭐ [Petia Koleva](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
+
+> “Amazing Plugin! Tom even helped me to implement a second and third bar for free gifts. Never seen such an amazing support!” – ⭐⭐⭐⭐⭐ [Dominic](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
+
+> “Very simple small plugin. Does exactly what's promised.” – ⭐⭐⭐⭐⭐ [Lucas](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
+
+> “Great lightweight plugin and 5-star support: The developer added a new option into the plugin to solve my issue! It works perfectly and the support is simply the best.” – ⭐⭐⭐⭐⭐ [Nora C.](https://wordpress.org/support/topic/great-lightweight-plugin-and-5-star-support/)
 
 == Frequently Asked Questions ==
 = Why the amount left message doesn't seem to get displayed in the proper position? =
@@ -76,6 +140,11 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.3.2 - 18/12/2023 =
+* Update readme.txt file.
+* WC tested up to: 8.4.
+* Tested up to: 6.4.
 
 = 2.3.1 - 26/09/2023 =
 * Update plugin icon, banner
@@ -398,3 +467,4 @@ You can optionally add a column title for the message if you wish like this:
 
 = 1.0.0 =
 * Initial Release.
+
