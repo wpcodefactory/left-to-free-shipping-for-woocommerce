@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.2.7
+ * @version 2.3.3
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -276,7 +276,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_cart_total.
 	 *
-	 * @version 2.1.0
+	 * @version 2.3.3
 	 * @since   1.4.0
 	 * @see     `WC_Shipping_Free_Shipping::is_available()` (/woocommerce/includes/shipping/free-shipping/class-wc-shipping-free-shipping.php)
 	 */
@@ -289,17 +289,17 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		);
 		$cart_total_function = get_option( 'alg_wc_left_to_free_shipping_cart_total_method', 'get_displayed_subtotal' );
 		$cart_total_params   = isset( $cart_total_params[ $cart_total_function ] ) ? $cart_total_params[ $cart_total_function ] : array();
-		$total               = call_user_func_array( array( WC()->cart, $cart_total_function ), $cart_total_params );
+		$total               = (float) call_user_func_array( array( WC()->cart, $cart_total_function ), $cart_total_params );
 		if ( 'yes' === get_option( 'alg_wc_left_to_free_shipping_include_discounts', 'yes' ) ) {
 			if ( WC()->cart->display_prices_including_tax() ) {
-				$total = round( $total - ( WC()->cart->get_discount_total() + WC()->cart->get_discount_tax() ), wc_get_price_decimals() );
+				$total = round( $total - (float)( WC()->cart->get_discount_total() + WC()->cart->get_discount_tax() ), wc_get_price_decimals() );
 			} else {
-				$total = round( $total - WC()->cart->get_discount_total(), wc_get_price_decimals() );
+				$total = round( $total - (float)WC()->cart->get_discount_total(), wc_get_price_decimals() );
 			}
 		}
 		if ( 'yes' === get_option( 'alg_wc_left_to_free_shipping_exclude_shipping', 'no' ) ) {
 			$shipping_taxes = 'yes' === get_option( 'alg_wc_left_to_free_shipping_exclude_shipping_taxes', 'yes' ) ? WC()->cart->get_shipping_tax() : 0;
-			$total = round( $total - ( WC()->cart->get_shipping_total() + $shipping_taxes ), wc_get_price_decimals() );
+			$total = round( $total - (float)( WC()->cart->get_shipping_total() + $shipping_taxes ), wc_get_price_decimals() );
 		}
 		return apply_filters( 'alg_wc_left_to_free_shipping_cart_total', $total );
 	}
@@ -665,10 +665,10 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			&& ! $this->is_cart_virtual()
 			&& (
 				empty( $min_cart_amount = $args['min_cart_amount'] )
-				|| ( (float) $min_cart_amount > 0 && $this->get_cart_total() > (float) $min_cart_amount )
+				|| ( (float) $min_cart_amount > 0 && (float) $this->get_cart_total() > (float) $min_cart_amount )
 			)
 		) {
-			$total = $this->get_cart_total();
+			$total = (float) $this->get_cart_total();
 			// Placeholders
 			$amount_left_for_free_shipping = ( $min_free_shipping_amount - $total ) * $args['multiply_by'];
 			$free_shipping_min_amount      = ( $min_free_shipping_amount )          * $args['multiply_by'];

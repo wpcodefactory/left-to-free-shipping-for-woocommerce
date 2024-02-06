@@ -348,36 +348,6 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Manual_Min_Amount extends Alg_WC_Lef
 		return $extra_amounts_settings;
 	}
 
-	function test( $types, $extra_amounts_settings, $all_values ) {
-		/*foreach ( $types as $key => $values ) {
-			// Get title and ID
-			$extra_amount_title = array();
-			$extra_amount_id    = array();
-			foreach ( alg_wc_left_to_free_shipping()->core->get_manual_min_amount_types() as $type => $title ) {
-				$value = 'value_' . $type;
-				$value = $$value;
-				if ( '' !== $value ) {
-					$extra_amount_title[] = ( isset( $all_values[ $type ][ $value ] ) ? $all_values[ $type ][ $value ] : $value );
-					$extra_amount_id[]    = ( 'roles' === $type ? '' : $type . ':' ) . $value;
-				}
-			}
-			$extra_amount_title = implode( ' | ', $extra_amount_title );
-			$extra_amount_id    = implode( '|', $extra_amount_id );
-			// Add settings field
-			$extra_amounts_settings = array_merge( $extra_amounts_settings, array(
-				array(
-					'title'             => $extra_amount_title,
-					'id'                => "alg_wc_left_to_free_shipping_mma_roles_val[{$extra_amount_id}]", // mislabeled, should be e.g. `alg_wc_left_to_free_shipping_mma_amounts`
-					'default'           => 0,
-					'type'              => 'number',
-					'custom_attributes' => $this->get_amount_atts(),
-				),
-			) );
-		}*/
-
-		return $extra_amounts_settings;
-	}
-
 }
 
 endif;

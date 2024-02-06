@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Section Settings
  *
- * @version 2.0.5
+ * @version 2.3.3
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -12,6 +12,24 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Section' ) ) :
 
 class Alg_WC_Left_To_Free_Shipping_Settings_Section {
+
+	/**
+	 * Id.
+	 *
+	 * @since 2.3.3
+	 *
+	 * @var
+	 */
+	public $id;
+
+	/**
+	 * Description.
+	 *
+	 * @since 2.3.3
+	 *
+	 * @var
+	 */
+	public $desc;
 
 	/**
 	 * Constructor.
