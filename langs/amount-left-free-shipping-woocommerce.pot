@@ -2,16 +2,16 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: amount-left-free-shipping-woocommerce 2.3.3\n"
+"Project-Id-Version: amount-left-free-shipping-woocommerce 2.3.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-02-07T00:47:41+01:00\n"
+"POT-Creation-Date: 2024-02-07T17:43:40+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
 
 #. Plugin Name of the plugin
@@ -38,31 +38,31 @@ msgstr ""
 msgid "Please pass it as a key of the first parameter like %s"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:348
+#: includes/class-alg-wc-alfs-core.php:408
 msgid "%s left for free shipping"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:359
+#: includes/class-alg-wc-alfs-core.php:419
 msgid "User roles"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:360
+#: includes/class-alg-wc-alfs-core.php:420
 msgid "Currencies"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:361
+#: includes/class-alg-wc-alfs-core.php:421
 msgid "Shipping zones"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:362
+#: includes/class-alg-wc-alfs-core.php:422
 msgid "Shipping methods"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:363
+#: includes/class-alg-wc-alfs-core.php:423
 msgid "Shipping classes"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:693
+#: includes/class-alg-wc-alfs-core.php:776
 #: includes/settings/class-alg-wc-alfs-settings-general.php:93
 msgid "You have free delivery!"
 msgstr ""
@@ -107,6 +107,7 @@ msgstr ""
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:45
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:43
 #: includes/settings/class-alg-wc-alfs-settings-mini-cart.php:43
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:45
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:43
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:102
 msgid "Enable/Disable"
@@ -453,6 +454,7 @@ msgstr ""
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:147
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:134
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:139
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:60
 msgid "Custom style"
 msgstr ""
 
@@ -969,6 +971,48 @@ msgstr ""
 msgid "After mini cart"
 msgstr ""
 
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:24
+msgid "Progress Bar"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:39
+msgid "Progress Bar Options"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:42
+msgid "Please use the placeholder <code>%progress_bar%</code> within any content textarea in the \"cart,\" \"mini-cart,\" \"checkout,\" and \"Store notice\" sections."
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:46
+msgid "Enable progress bar"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:65
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:127
+msgid "Animation"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:66
+msgid "Enable animation"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:73
+#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:154
+msgid "Background color"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:79
+msgid "Foreground color"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:85
+msgid "Height"
+msgstr ""
+
+#: includes/settings/class-alg-wc-alfs-settings-progress-bar.php:86
+msgid "Height in pixels."
+msgstr ""
+
 #: includes/settings/class-alg-wc-alfs-settings-section.php:64
 msgid "Available placeholders: %s."
 msgstr ""
@@ -1033,10 +1077,6 @@ msgstr ""
 msgid "The action hook used to add the notice to the DOM."
 msgstr ""
 
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:127
-msgid "Animation"
-msgstr ""
-
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:128
 msgid "Create a smooth animation effect with opacity and position"
 msgstr ""
@@ -1059,10 +1099,6 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:150
 msgid "Top"
-msgstr ""
-
-#: includes/settings/class-alg-wc-alfs-settings-store-notice.php:154
-msgid "Background color"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:167
@@ -1109,35 +1145,35 @@ msgstr ""
 msgid "padding shorthand"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:59
+#: includes/settings/class-alg-wc-settings-alfs.php:60
 msgid "Amount Left for Free Shipping for WooCommerce Pro"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:60
+#: includes/settings/class-alg-wc-settings-alfs.php:61
 msgid "Disabled options can be unlocked using <a href=\"%pro_version_url%\" target=\"_blank\"><strong>%pro_version_title%</strong></a>"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:61
+#: includes/settings/class-alg-wc-settings-alfs.php:62
 msgid "Upgrade to Pro version"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:88
+#: includes/settings/class-alg-wc-settings-alfs.php:89
 msgid "Reset Settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:93
+#: includes/settings/class-alg-wc-settings-alfs.php:94
 msgid "Reset section settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:94
+#: includes/settings/class-alg-wc-settings-alfs.php:95
 msgid "Reset"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:95
+#: includes/settings/class-alg-wc-settings-alfs.php:96
 msgid "Check the box and save changes to reset."
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-alfs.php:123
-#: includes/settings/class-alg-wc-settings-alfs.php:138
+#: includes/settings/class-alg-wc-settings-alfs.php:124
+#: includes/settings/class-alg-wc-settings-alfs.php:139
 msgid "Your settings have been reset."
 msgstr ""

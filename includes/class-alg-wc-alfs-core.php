@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.3.3
+ * @version 2.3.4
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.2.3
+	 * @version 2.3.4
 	 * @since   1.0.0
 	 * @todo    [maybe] move shortcodes inside `alg_wc_left_to_free_shipping_enabled` (or maybe remove `alg_wc_left_to_free_shipping_enabled` completely?)
 	 */
@@ -49,7 +49,67 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			add_filter( 'woocommerce_package_rates', array( $this, 'hide_shipping_methods' ), 10, 1 );
 			// Hide by disabled shipping methods.
 			add_filter( 'alg_wc_get_left_to_free_shipping_validation', array( $this, 'hide_notification_by_disabled_shipping_method' ) );
+			
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'wp_footer', array( $this, 'add_custom_css_to_footer' ) );
 		}
+	}
+	
+	/**
+	 * add_custom_css_to_footer.
+	 *
+	 * @version 2.3.4
+	 * @since   2.3.4
+	 */
+	 function add_custom_css_to_footer() {
+		 $progressbar_enabled = get_option( 'alg_wc_left_to_free_shipping_progressbar_enabled', 'no' );
+		 $progressbar_animation = get_option( 'alg_wc_left_to_free_shipping_progressbar_animation_enabled', 'no' );
+		 $progressbar_background = get_option( 'alg_wc_left_to_free_shipping_progressbar_background_color', '#f0f0f0' );
+		 $progressbar_foreground = get_option( 'alg_wc_left_to_free_shipping_progressbar_foreground_color', '#007bff' );
+		 $progressbar_height = get_option( 'alg_wc_left_to_free_shipping_progressbar_height', '20' );
+		 
+		 if ($progressbar_enabled == 'yes' ) {
+			 
+		 ?>
+			<style>
+				.alg-wc-alfs-progress-bar {
+					height: <?php echo $progressbar_height; ?>px;
+					background-color: <?php echo $progressbar_foreground; ?>;
+				}
+				.alg-wc-alfs-progress {
+					background-color: <?php echo $progressbar_background; ?>;;
+				}
+				<?php if ($progressbar_animation == 'yes' ) { ?>
+				.alg-wc-alfs-progress-bar {
+					animation: progress-bar-stripes 3s linear infinite;
+				}
+				.alg-wc-alfs-progress-bar:after{
+					animation: progress-bar-animate-shine 2s ease-out infinite;
+					background: #fff;
+					border-radius: 3px;
+					bottom: 0;
+					content: "";
+					left: 0;
+					opacity: 0;
+					position: absolute;
+					right: 0;
+					top: 0;
+				}
+				<?php } ?>
+			</style>
+			<?php
+		 }
+	 }
+	 
+	/**
+	 * enqueue_scripts.
+	 *
+	 * @version 2.3.4
+	 * @since   2.3.4
+	 */
+	function enqueue_scripts() {
+		wp_register_style( 'alg-wc-alfs-progress-css', trailingslashit( alg_wc_left_to_free_shipping()->plugin_url() ) . 'includes/css/alg-wc-alfs-progress.css', false, '1.0', 'all' );
+		wp_enqueue_style( 'alg-wc-alfs-progress-css' );
 	}
 
 	/**
@@ -636,7 +696,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 2.2.3
+	 * @version 2.3.3
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -673,6 +733,25 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			$amount_left_for_free_shipping = ( $min_free_shipping_amount - $total ) * $args['multiply_by'];
 			$free_shipping_min_amount      = ( $min_free_shipping_amount )          * $args['multiply_by'];
 			$current_cart_total            = ( $total )                             * $args['multiply_by'];
+			
+			// put $amount_left_for_free_shipping to $args
+			$args['amount_left_for_free_shipping'] = $amount_left_for_free_shipping;
+			
+			// Progress bar.
+			$progress_bar_html = '';
+			$part = $args['amount_left_for_free_shipping'];
+			$whole = $args['min_free_shipping_amount'];
+			
+			$progressbar_enabled = get_option( 'alg_wc_left_to_free_shipping_progressbar_enabled', 'no' );
+			
+			if ( $progressbar_enabled == 'yes' ) {
+				$percentage = ( $part / $whole ) * 100;
+				$percentage = (int) $percentage;
+				$progress_bar_html = '<div class="alg-wc-alfs-progress">
+										<div class="alg-wc-alfs-progress-bar alg-wc-alfs-progress-bar-striped" style="width: ' . $percentage . '%;"></div>
+									  </div>';
+			}
+						
 			$placeholders = array(
 				'%amount_left_for_free_shipping%'     => wc_price( $amount_left_for_free_shipping ),
 				'%free_shipping_min_amount%'          => wc_price( $free_shipping_min_amount ),
@@ -680,7 +759,11 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				'%amount_left_for_free_shipping_raw%' => $amount_left_for_free_shipping,
 				'%free_shipping_min_amount_raw%'      => $free_shipping_min_amount,
 				'%current_cart_total_raw%'            => $current_cart_total,
+				'%progress_bar%'            		  => $progress_bar_html,
 			);
+			
+			
+			
 			// Content
 			if (
 				$min_free_shipping_amount_data['is_available']
@@ -721,7 +804,9 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			$result = str_replace( array_keys( $placeholders ), $placeholders, $result );
 			$result = do_shortcode( $result );
 			$args['original_result'] = $result;
-			$result = str_replace( '{content}', $result, $args['template'] );
+			$result =  str_replace( '{content}', $result, $args['template'] );
+						
+						
 			// Result
 			return apply_filters( 'alg_wc_get_left_to_free_shipping', $result, $args );
 		}

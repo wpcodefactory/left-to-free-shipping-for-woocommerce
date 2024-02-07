@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Section Settings
  *
- * @version 2.3.3
+ * @version 2.3.4
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -56,7 +56,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Section {
 	/**
 	 * get_placeholders_desc.
 	 *
-	 * @version 1.6.0
+	 * @version 2.3.4
 	 * @since   1.4.8
 	 * @todo    [maybe] add to placeholders *info*: "raw" amounts: `%amount_left_for_free_shipping_raw%`, `%free_shipping_min_amount_raw%` and `%current_cart_total_raw%`.
 	 */
@@ -65,6 +65,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Section {
 				'%amount_left_for_free_shipping%',
 				'%free_shipping_min_amount%',
 				'%current_cart_total%',
+				'%progress_bar%',
 			) ) . '</code>' );
 	}
 
