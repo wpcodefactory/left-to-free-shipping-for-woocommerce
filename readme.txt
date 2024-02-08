@@ -1,9 +1,9 @@
-=== Free Shipping Over Amount Bar for WooCommerce ===
+=== Free Shipping Amount Label & Progress Bar for WooCommerce ===
 Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping, free delivery, amount left, free shipping over amount
 Requires at least: 4.4
 Tested up to: 6.4
-Stable tag: 2.3.4
+Stable tag: 2.3.5
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -192,6 +192,9 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.3.5 - 08/02/2024 =
+* Fix - Percentage calculation.
 
 = 2.3.4 - 07/02/2024 =
 * Update readme.txt file.

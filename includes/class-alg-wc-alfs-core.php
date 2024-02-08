@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.3.4
+ * @version 2.3.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -696,7 +696,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 2.3.3
+	 * @version 2.3.5
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -736,15 +736,16 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			
 			// put $amount_left_for_free_shipping to $args
 			$args['amount_left_for_free_shipping'] = $amount_left_for_free_shipping;
+			$args['current_cart_total'] = $current_cart_total;
 			
 			// Progress bar.
 			$progress_bar_html = '';
-			$part = $args['amount_left_for_free_shipping'];
+			$part = $args['current_cart_total'];
 			$whole = $args['min_free_shipping_amount'];
 			
 			$progressbar_enabled = get_option( 'alg_wc_left_to_free_shipping_progressbar_enabled', 'no' );
 			
-			if ( $progressbar_enabled == 'yes' ) {
+			if ( $progressbar_enabled == 'yes' && $args['min_free_shipping_amount'] > 0 && $args['amount_left_for_free_shipping'] > 0) {
 				$percentage = ( $part / $whole ) * 100;
 				$percentage = (int) $percentage;
 				$progress_bar_html = '<div class="alg-wc-alfs-progress">
