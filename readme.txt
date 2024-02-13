@@ -1,19 +1,19 @@
 === Free Shipping Amount Label & Progress Bar for WooCommerce ===
 Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
-Tags: woocommerce, left for free shipping, free shipping, shipping, free delivery, amount left, free shipping over amount
+Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.4
-Stable tag: 2.3.5
+Stable tag: 2.3.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Show progress messages & bar for amount left for free shipping using our fully customizable WordPress plugin
+Show progress bar for amount left for free shipping using our fully customizable WordPress plugin
 
 == Description ==
 
 > “Amazing Plugin and Support: The plugin does what it says and works perfectly in executing it. It’s a clean code and light-weight plugin. The support is also top-notch.” – ⭐⭐⭐⭐⭐  [carmpocalypse](https://wordpress.org/support/topic/amazing-plugin-and-support-126/)
 
-Free shipping is a powerful incentive for customers to complete a purchase, everybody loves to get something for “Free”. That’s why with our plugin you can increase your eCommerce sales with just a few tweaks into how your store looks and how to convert visitors into buyers.
+Free shipping is a powerful incentive for customers to complete a purchase, everybody love to get something for “Free”. That’s why with our plugin you can increase your eCommerce sales with just a few tweaks into how your store looks and how to convert visitors into buyers.
 
 Our plugin lets you display the amount left for free shipping in WooCommerce, it works as a reminder for your customers for of how much is left for them to get there free shipping, and it’s an incentive too as encourages them to add more products into their carts to get the free shipping.
 
@@ -35,6 +35,7 @@ Let's get into more details and see what features the plugin offers.
 
 #### Useful Links ####
 * **[Plugin Main Page](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Plugin Main Page")**
+* **[Plugin Demo](https://freeshippingbar.instawp.xyz/ "Plugin Demo")**
 * **[Plugin Support Forum](https://wpfactory.com/support/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Plugin Support Forum")**
 * **[Documentation & How to](https://wpfactory.com/docs/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Documentation & How to")**
 
@@ -48,7 +49,7 @@ Let's get into more details and see what features the plugin offers.
 
 ### 🚀 Amount left for Free shipping Messages ###
 
-Show your customers the amount left they need to add to cart in order to get free shipping, control text using variables like amount spent, amount remaining, total amount to get free shipping.
+Show your customers the amount left they need to add to cart in order to get  free shipping, control text using variables like amount spent, amount remaining, total amount to get free shipping.
 
 For example, if you set the free shipping at $100, and customer has $70 in cart, you can show the 3 values for them (or any part of it):
 You have $70 in your cart, spend $30 more to get free shipping at $100 
@@ -57,37 +58,17 @@ You have $70 in your cart, spend $30 more to get free shipping at $100
 
 You can show messages anywhere on your store, the plugin allows (by default) showing the "Amount Left for Free shipping" messages on cart, but also you can show it anywhere using our shortcode, or from widgets available in your theme.
 
-Tailor this to your store and show it in products pages, categories, homepage, or anywhere you think it might make your customers encouraged to spend more to get your offer.
+Tailor this to your store and show it in products pages, categories, homepage, or anywhere you think it might makes your customers encouraged to spend more to get your offer.
 
-### 🚀 Show message only on reaching certain amounts ###
-
-If cart is below a specific value, you can select to hide the messages and only show them when customers reach a specific value.
-
-For example, if free shipping is on $100, you can only start showing "Amount left for free shipping" messages if cart value is $50, so customers with any lesser amount will not see the message.
-
-### 🚀 Control Message Position & Styling on Cart page ###
-
-From within the plugin settings, you can select from 15+ placements in the cart page to show the free shipping message, you can show it before cart, before cart table, on cart content, after table, and much more options.
-
-You can also customize text style by altering font type & size so it aligns with your site color & cart design.
-
-### 🚀 Customize Minimum Order Amount For Free Shipping Setting ###
-
+### 🚀 Manual and Automatic Minimum Order Amount Setting ###
 Keep your systems consistent and well synchronized by setting the minimum order amount automatically from the free shipping method or set it manually by yourself for further control and flexibility.
 
-By default, the plugin reads the minimum order required for free shipping from WooCommerce >> Shipping >> Free shipping method (Minimum order amount field).
+### 🚀 Localized Pricing Based in Shipping Zone and Currency ###
+The flexibility our plugin provides will allow you to implement localized pricing and policies, and targeted marketing. Impowering you to appeal to wider audiences by providing full flexibility for your campaigns.
 
-You can overwrite this value from plugin settings if the default method isn't working properly, this defined amount will have higher priority over the one in WooCommerce settings.
+### 🚀 Full Customization for the Free Shipping Message ###
+You don't have to show the same message as every other store using this plugin, you can write your own customized message if the user reaches the free shipping threshold.
 
-### 🚀 Set Amount Left for Free Shipping By User Role ###
-
-If you want to customize free shipping amount by user role, the plugin allows you to specify the amount left to get free shipping by user roles defined on your store (built-in & custom roles).
-
-For instance, you can allow your wholesaler customers to get free shipping on orders above $1000, but for regular customers you can offer that as low as $100 if needed.
-
-### 🚀 Set Amount Left for Free Shipping By Currency ###
-
-Similar to the user role option, the plugin allows you to customize the amount left for free shipping based on currency. Select & customize values based on all WooCommerce supported currencies.
 
 > “Good plugin: I recommend this plugin. Been using it for a year and has been working with no problems.” – ⭐⭐⭐⭐⭐ [kirsimaria](https://wordpress.org/support/topic/good-plugin-5620/)
 
@@ -95,34 +76,21 @@ Similar to the user role option, the plugin allows you to customize the amount l
 
 ## 🏆 Pro Version ##
 
-All what's listed above (and more) is available in the free version, but for those who would like to go further and beyond, we have a premium version of [Free Shipping Over Amount Bar for WooCommerce](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme) plugin.
+Our Pro features further expands the Capabilities of our plugin so you can have full control on when and where to show the progress bar, here are the features:
 
-🏆 The Pro version unlocks more advanced features like:
+### 🏆Greater Flexibility for Showing the Amount Left Message through the Website ###
+You'll be able to display the amount left text in: site-wide store notice, "add to cart" notice, Mini cart, Checkout Page. That would encourage more users to add more products into their carts to get their products shipped for free.
 
-### 🏆 Hide text messages by user role & category ###
-
-The plugin allows hiding the "Amount left for free shipping" text messages by user role, or if a product from a specific category has been added to cart.
-
-### 🏆 Greater Flexibility for Showing the Amount Left Message through the Website ###
-
-You'll be able to display the amount left text in several locations: When products are added to cart, mini cart, checkout page, so that your messages are appearing in the right timing in front of your customers.
-
-### 🏆 Show message in site-wide Banner with full customization options ###
-
-To show the messages across the whole site in a site-wide banner, you have the options to do that, with unlimited customization options to text (HTML with shortcodes), animation, hide after a period of time, position (top or bottom), text alignment, color, font size & weight, and more!
-
-### 🏆 AJAX Real-time User Update for Free Shipping ###
-
+### 🏆 Real-time User Update for Free Shipping ###
 Your users will be notified in real-time on the amount left for free shipping using the latest technology of AJAX.
 
-### 🏆 Set Amount Left for Free Shipping By Shipping Method ###
-
-If you're using a non-standard shipping method to offer free shipping, you can customize the minimum amount to reach free shipping using this option (overwriting WooCommerce default settings).
+### 🏆 Full Control Of Free Shipping By Category or User Role ###
+If for a specific user role or category you want to hide the amount left text our pro plugin allow for that providing full flexibility on which categories or user roles to show the amount left text.
 
 ### 🏆 Full Compatibility with AJAX and Other WooCommerce Plugins ###
-Allowing for more functionality for your WooCommerce store by being compatible with the WooCommerce Currency Switcher plugin by [PluginUs](https://pluginus.net/ "PluginUs").
+Allowing for more functionality for your WooCommerce store by being compatible with the WooCommerce Currency Switcher plugin.
 
-## 💯 Why [WPFactory](https://wpfactory.com/ "WPFactory")? ##
+## 💯 Why WPFactory? ##
 
 * **Experience You Can Trust:** Over a decade in the business
 * **Wide Plugin Selection:** Offering 65+ unique and powerful plugins
@@ -136,6 +104,7 @@ ___
 If you're enjoying our plugin, we'd love for you to explore our other offerings. WPFactory has a diverse range of plugins tailored to enhance your experience. 
 
 Dive in and discover more tools to empower your WooCommerce Store!
+
 
 * [**Min Max Step Quantity**](https://wpfactory.com/item/product-quantity-for-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "**Min Max Step Quantity**"): Define a min max, step and default quantity for products, show a dropdown, quantities on archive/categories pages, use decimal quantities, and much more on WooCommerce stores (**[Try our Free version](https://wordpress.org/plugins/product-quantity-for-woocommerce/ "Try our Free version")**)
 
@@ -192,6 +161,9 @@ You can optionally add a column title for the message if you wish like this:
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.3.6 - 13/02/2024 =
+* Fix - Remove store wide notice if message empty. 
 
 = 2.3.5 - 08/02/2024 =
 * Fix - Percentage calculation.

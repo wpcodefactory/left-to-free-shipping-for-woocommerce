@@ -805,8 +805,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			$result = str_replace( array_keys( $placeholders ), $placeholders, $result );
 			$result = do_shortcode( $result );
 			$args['original_result'] = $result;
-			$result =  str_replace( '{content}', $result, $args['template'] );
-						
+			$result =  str_replace( '{content}', $result, $args['template'] );		
 						
 			// Result
 			return apply_filters( 'alg_wc_get_left_to_free_shipping', $result, $args );
