@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Free Shipping Amount Label & Progress Bar for WooCommerce
+Plugin Name: Free Shipping Bar: Amount Left for Free Shipping for WooCommerce
 Plugin URI: https://wpfactory.com/item/amount-left-free-shipping-woocommerce/
 Description: Show your customers the amount left for free shipping in WooCommerce.
-Version: 2.3.8
+Version: 2.3.9
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: amount-left-free-shipping-woocommerce

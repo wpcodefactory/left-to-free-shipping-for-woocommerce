@@ -1,9 +1,9 @@
-=== Free Shipping Amount Label & Progress Bar for WooCommerce ===
+=== Free Shipping Bar: Amount Left for Free Shipping for WooCommerce ===
 Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.5
-Stable tag: 2.3.8
+Stable tag: 2.3.9
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -174,6 +174,9 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.3.9 - 20/05/2024 =
+* Update plugin name.
 
 = 2.3.8 - 20/05/2024 =
 * WC tested up to: 8.8.
