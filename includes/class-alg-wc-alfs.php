@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce.
  *
- * @version 2.3.9
+ * @version 2.3.10
  * @since   2.3.0
  * @author  WPFactory
  */
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.3.9';
+		public $version = '2.3.10';
 
 		/**
 		 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class

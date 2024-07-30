@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
-Tested up to: 6.5
-Stable tag: 2.3.9
+Tested up to: 6.6
+Stable tag: 2.3.10
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -174,6 +174,10 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.3.10 - 30/07/2024 =
+* WC tested up to: 9.1.
+* Tested up to: 6.6.
 
 = 2.3.9 - 20/05/2024 =
 * Update plugin name.
