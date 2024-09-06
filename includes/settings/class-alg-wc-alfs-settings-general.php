@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings.
  *
- * @version 2.2.3
+ * @version 2.3.12
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.2.0
+		 * @version 2.3.12
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -190,8 +190,8 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'title'    => __( 'Free shipping method', 'amount-left-free-shipping-woocommerce' ),
 					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_free_shipping_method',
 					'desc'     => __( 'The only shipping method that will be visible when free shipping is reached.', 'amount-left-free-shipping-woocommerce' ),
-					'default'  => 'free_shipping',
-					'type'     => 'select',
+					'default'  => array('free_shipping'),
+					'type'     => 'multiselect',
 					'options'  => wp_list_pluck( WC()->shipping->get_shipping_methods(), 'method_title', 'id' ),
 					'class'    => 'chosen_select',
 				),
