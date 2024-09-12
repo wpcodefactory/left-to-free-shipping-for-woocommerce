@@ -3,7 +3,7 @@ Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmu
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.6
-Stable tag: 2.4.0
+Stable tag: 2.4.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -175,11 +175,14 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 
 == Changelog ==
 
+= 2.4.1 - 12/09/2024 =
+* Fix - Hide shipping methods - Fixed a PHP error related to the new multiselect free shipping method option.
+
 = 2.4.0 - 12/09/2024 =
 * Fix - Advanced - AJAX was not working in some contexts, such as in the shortcode.
 
 = 2.3.12 - 06/09/2024 =
-* Fix - Hide shipping methods - Free shipping method - Multiselect
+* Fix - Hide shipping methods - Free shipping method - Multiselect.
 
 = 2.3.11 - 05/09/2024 =
 * WC tested up to: 9.2.
