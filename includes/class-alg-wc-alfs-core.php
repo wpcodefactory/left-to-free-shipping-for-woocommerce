@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.4.1
+ * @version 2.4.2
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -147,7 +147,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * Hide shipping methods when free shipping is available.
 	 *
-	 * @version 2.4.1
+	 * @version 2.4.2
 	 * @since   2.1.7
 	 *
 	 * @param $packages
@@ -163,12 +163,12 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				'free_delivery_text' => 'free-shipping-reached',
 			) ) &&
 			! empty( $free_shipping_package = array_filter( $packages, function ( WC_Shipping_Rate $shipping_rate ) {
-				$free_shipping_ids = get_option( 'alg_wc_left_to_free_shipping_hide_shipping_methods_free_shipping_method', array( 'free_shipping' ) );
-				if ( ! empty( $free_shipping_ids ) ) {
-					if ( is_array( $free_shipping_ids ) ) {
-						return in_array( $shipping_rate->get_method_id(), $free_shipping_ids );
-					} elseif ( is_string( $free_shipping_ids ) ) {
-						return $shipping_rate->get_method_id() === $free_shipping_ids;
+				$visible_shipping_methods_ids = get_option( 'alg_wc_left_to_free_shipping_visible_shipping_methods_on_hide', alg_wc_left_to_free_shipping_get_visible_shipping_methods_on_hide_default() );
+				if ( ! empty( $visible_shipping_methods_ids ) ) {
+					if ( is_array( $visible_shipping_methods_ids ) ) {
+						return in_array( $shipping_rate->get_method_id(), $visible_shipping_methods_ids );
+					} elseif ( is_string( $visible_shipping_methods_ids ) ) {
+						return $shipping_rate->get_method_id() === $visible_shipping_methods_ids;
 					}
 				}
 			} ) )

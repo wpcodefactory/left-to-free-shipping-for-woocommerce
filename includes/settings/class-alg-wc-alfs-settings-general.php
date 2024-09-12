@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings.
  *
- * @version 2.3.12
+ * @version 2.4.2
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.3.12
+		 * @version 2.4.2
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -174,7 +174,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 			$hide_other_shipping_opts = array(
 				array(
 					'title'    => __( 'Hide shipping methods', 'amount-left-free-shipping-woocommerce' ),
-					'desc'     => __( 'Hide all the shipping methods on the frontend except the free shipping when it becomes available.', 'amount-left-free-shipping-woocommerce' ),
+					'desc'     => __( 'Hide all shipping methods on the frontend except the ones you want to remain visible when free shipping becomes available.', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'title',
 					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_opts',
 				),
@@ -187,10 +187,10 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'default'  => 'no'
 				),
 				array(
-					'title'    => __( 'Free shipping method', 'amount-left-free-shipping-woocommerce' ),
-					'id'       => 'alg_wc_left_to_free_shipping_hide_shipping_methods_free_shipping_method',
-					'desc'     => __( 'The only shipping method that will be visible when free shipping is reached.', 'amount-left-free-shipping-woocommerce' ),
-					'default'  => array('free_shipping'),
+					'title'    => __( 'Visible shipping methods', 'amount-left-free-shipping-woocommerce' ),
+					'id'       => 'alg_wc_left_to_free_shipping_visible_shipping_methods_on_hide',
+					'desc'     => __( 'The shipping methods that will remain visible when free shipping is reached.', 'amount-left-free-shipping-woocommerce' ),
+					'default'  => alg_wc_left_to_free_shipping_get_visible_shipping_methods_on_hide_default(),
 					'type'     => 'multiselect',
 					'options'  => wp_list_pluck( WC()->shipping->get_shipping_methods(), 'method_title', 'id' ),
 					'class'    => 'chosen_select',

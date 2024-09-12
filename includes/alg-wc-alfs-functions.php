@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Functions.
  *
- * @version 2.2.1
+ * @version 2.4.2
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -53,5 +53,25 @@ if ( ! function_exists( 'alg_wc_left_to_free_shipping_is_admin' ) ) {
 	 */
 	function alg_wc_left_to_free_shipping_is_admin( $args = null ) {
 		return ( is_admin() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) );
+	}
+}
+
+if ( ! function_exists( 'alg_wc_left_to_free_shipping_get_visible_shipping_methods_on_hide_default' ) ) {
+	/**
+	 * Default value from the option id "alg_wc_left_to_free_shipping_visible_shipping_methods_on_hide".
+	 *
+	 * @version 2.4.2
+	 * @since   2.4.2
+	 *
+	 * @return array
+	 */
+	function alg_wc_left_to_free_shipping_get_visible_shipping_methods_on_hide_default() {
+		$option        = get_option( 'alg_wc_left_to_free_shipping_hide_shipping_methods_free_shipping_method', array( 'free_shipping' ) );
+		$default_value = array( 'free_shipping' );
+		if ( ! empty( $option ) ) {
+			$default_value = is_string( $option ) ? array( $option ) : $option;
+		}
+
+		return $default_value;
 	}
 }

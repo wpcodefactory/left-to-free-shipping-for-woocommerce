@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: amount-left-free-shipping-woocommerce 2.4.1\n"
+"Project-Id-Version: amount-left-free-shipping-woocommerce 2.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-09-12T19:48:14+02:00\n"
+"POT-Creation-Date: 2024-09-12T21:48:23+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
@@ -685,7 +685,7 @@ msgid "Hide shipping methods"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:177
-msgid "Hide all the shipping methods on the frontend except the free shipping when it becomes available."
+msgid "Hide all shipping methods on the frontend except the ones you want to remain visible when free shipping becomes available."
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:183
@@ -697,11 +697,11 @@ msgid "The free shipping will be considered available when the plugin can't find
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:190
-msgid "Free shipping method"
+msgid "Visible shipping methods"
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:192
-msgid "The only shipping method that will be visible when free shipping is reached."
+msgid "The shipping methods that will remain visible when free shipping is reached."
 msgstr ""
 
 #: includes/settings/class-alg-wc-alfs-settings-general.php:206
