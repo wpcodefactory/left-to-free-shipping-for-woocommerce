@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Settings
  *
- * @version 2.3.4
+ * @version 2.4.4
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -42,7 +42,7 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 	/**
 	 * add_promoting_notice.
 	 *
-	 * @version 2.0.6
+	 * @version 2.4.4
 	 * @since   2.0.5
 	 */
 	function add_promoting_notice() {
@@ -56,7 +56,7 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 			'optimize_plugin_icon_contrast' => true,
 			'template_variables'            => array(
 				'%pro_version_url%'    => 'https://wpfactory.com/item/amount-left-free-shipping-woocommerce/',
-				'%plugin_icon_url%'    => 'https://ps.w.org/amount-left-free-shipping-woocommerce/assets/icon-128x128.jpg',
+				'%plugin_icon_url%'    => 'https://ps.w.org/amount-left-free-shipping-woocommerce/assets/icon.svg?rev=2971497',
 				'%pro_version_title%'  => __( 'Amount Left for Free Shipping for WooCommerce Pro', 'amount-left-free-shipping-woocommerce' ),
 				'%main_text%'          => __( 'Disabled options can be unlocked using <a href="%pro_version_url%" target="_blank"><strong>%pro_version_title%</strong></a>', 'amount-left-free-shipping-woocommerce' ),
 				'%btn_call_to_action%' => __( 'Upgrade to Pro version', 'amount-left-free-shipping-woocommerce' ),

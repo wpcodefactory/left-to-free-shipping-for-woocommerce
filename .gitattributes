@@ -13,3 +13,8 @@ readme.md export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
 /git-tag.sh export-ignore
+# Composer
+composer.json
+composer.lock export ignore
+includes/pro/composer.lock export-ignore
+includes/pro/composer.json

@@ -1,3 +1,6 @@
 .idea
 .idea/*
+composer.json
 composer.lock
+includes/pro/composer.lock
+includes/pro/composer.json

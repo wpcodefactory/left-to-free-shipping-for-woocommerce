@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce.
  *
- * @version 2.3.12
+ * @version 2.4.4
  * @since   2.3.0
  * @author  WPFactory
  */
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.4.3';
+		public $version = '2.4.4';
 
 		/**
 		 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
@@ -73,9 +73,47 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		}
 
 		/**
+		 * add_cross_selling_library.
+		 *
+		 * @version 2.4.4
+		 * @since   2.4.4
+		 *
+		 * @return void
+		 */
+		function add_cross_selling_library(){
+			if ( ! is_admin() ) {
+				return;
+			}
+			// Cross-selling library.
+			$cross_selling = new \WPFactory\WPFactory_Cross_Selling\WPFactory_Cross_Selling();
+			$cross_selling->setup( array( 'plugin_file_path'   => $this->get_filesystem_path() ) );
+			$cross_selling->init();
+		}
+
+		/**
+		 * move_wc_settings_tab_to_wpfactory_submenu.
+		 *
+		 * @version 2.4.4
+		 * @since   2.4.4
+		 *
+		 * @return void
+		 */
+		function move_wc_settings_tab_to_wpfactory_menu() {
+			if ( ! is_admin() ) {
+				return;
+			}
+			// WC Settings tab as WPFactory submenu item.
+			$wpf_admin_menu = \WPFactory\WPFactory_Admin_Menu\WPFactory_Admin_Menu::get_instance();
+			$wpf_admin_menu->move_wc_settings_tab_to_wpfactory_menu( array(
+				'wc_settings_tab_id' => 'alg_wc_left_to_free_shipping',
+				'menu_title'         => __( 'Left for Free Shipping', 'amount-left-free-shipping-woocommerce' ),
+			) );
+		}
+
+		/**
 		 * Initializer.
 		 *
-		 * @version 2.3.0
+		 * @version 2.4.4
 		 * @since   1.0.0
 		 * @access  public
 		 */
@@ -83,6 +121,12 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 
 			// Localization
 			add_action( 'init', array( $this, 'localize' ) );
+
+			// Adds cross-selling library.
+			$this->add_cross_selling_library();
+
+			// Move WC Settings tab to WPFactory menu.
+			$this->move_wc_settings_tab_to_wpfactory_menu();
 
 			// Pro
 			if ( 'left-to-free-shipping-for-woocommerce-pro.php' === basename( $this->get_filesystem_path() ) ) {
