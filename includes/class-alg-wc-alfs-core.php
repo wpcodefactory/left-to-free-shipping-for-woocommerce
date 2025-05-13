@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.4.2
+ * @version 2.4.7
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -49,7 +49,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			add_filter( 'woocommerce_package_rates', array( $this, 'hide_shipping_methods' ), 10, 1 );
 			// Hide by disabled shipping methods.
 			add_filter( 'alg_wc_get_left_to_free_shipping_validation', array( $this, 'hide_notification_by_disabled_shipping_method' ) );
-			
+
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'wp_footer', array( $this, 'add_custom_css_to_footer' ) );
 		}
@@ -300,20 +300,46 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * translate_shortcode.
 	 *
-	 * @version 1.8.0
+	 * @version 2.4.7
 	 * @since   1.3.0
 	 */
 	function translate_shortcode( $atts, $content = '' ) {
 		// E.g.: `[alg_wc_left_to_free_shipping_translate lang="DE" lang_text="%amount_left_for_free_shipping% für kostenlosen Versand" not_lang_text="%amount_left_for_free_shipping% left for free shipping"]`
-		if ( isset( $atts['lang_text'] ) && isset( $atts['not_lang_text'] ) && ! empty( $atts['lang'] ) ) {
-			return ( ! defined( 'ICL_LANGUAGE_CODE' ) || ! in_array( strtolower( ICL_LANGUAGE_CODE ), array_map( 'trim', explode( ',', strtolower( $atts['lang'] ) ) ) ) ) ?
-				$atts['not_lang_text'] : $atts['lang_text'];
+		if (
+			isset( $atts['lang_text'] ) &&
+			isset( $atts['not_lang_text'] ) &&
+			! empty( $atts['lang'] ) ) {
+
+			return (
+				! defined( 'ICL_LANGUAGE_CODE' ) ||
+				! in_array(
+					strtolower( ICL_LANGUAGE_CODE ),
+					array_map( 'trim', explode( ',', strtolower( $atts['lang'] ) ) )
+				)
+			) ? wp_kses_post( $atts['not_lang_text'] ) : wp_kses_post( $atts['lang_text'] );
 		}
+
 		// E.g.: `[alg_wc_left_to_free_shipping_translate lang="DE"]%amount_left_for_free_shipping% für kostenlosen Versand[/alg_wc_left_to_free_shipping_translate][alg_wc_left_to_free_shipping_translate not_lang="DE"]%amount_left_for_free_shipping% left for free shipping[/alg_wc_left_to_free_shipping_translate]`
 		return (
-			( ! empty( $atts['lang'] )     && ( ! defined( 'ICL_LANGUAGE_CODE' ) || ! in_array( strtolower( ICL_LANGUAGE_CODE ), array_map( 'trim', explode( ',', strtolower( $atts['lang'] ) ) ) ) ) ) ||
-			( ! empty( $atts['not_lang'] ) &&     defined( 'ICL_LANGUAGE_CODE' ) &&   in_array( strtolower( ICL_LANGUAGE_CODE ), array_map( 'trim', explode( ',', strtolower( $atts['not_lang'] ) ) ) ) )
-		) ? '' : $content;
+			(
+				! empty( $atts['lang'] ) &&
+				(
+					! defined( 'ICL_LANGUAGE_CODE' ) ||
+					! in_array(
+						strtolower( ICL_LANGUAGE_CODE ),
+						array_map( 'trim', explode( ',', strtolower( $atts['lang'] ) ) )
+					)
+				)
+			) ||
+			(
+				! empty( $atts['not_lang'] ) &&
+				defined( 'ICL_LANGUAGE_CODE' ) &&
+				in_array(
+					strtolower( ICL_LANGUAGE_CODE ),
+					array_map( 'trim', explode( ',', strtolower( $atts['not_lang'] ) ) )
+				)
+			)
+		) ? '' : wp_kses_post( $content );
 	}
 
 	/**

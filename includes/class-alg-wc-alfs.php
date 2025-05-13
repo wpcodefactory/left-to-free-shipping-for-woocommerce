@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce.
  *
- * @version 2.4.4
+ * @version 2.4.7
  * @since   2.3.0
  * @author  WPFactory
  */
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.4.6';
+		public $version = '2.4.7';
 
 		/**
 		 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
@@ -113,7 +113,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		/**
 		 * Initializer.
 		 *
-		 * @version 2.4.4
+		 * @version 2.4.7
 		 * @since   1.0.0
 		 * @access  public
 		 */
@@ -123,10 +123,10 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 			add_action( 'init', array( $this, 'localize' ) );
 
 			// Adds cross-selling library.
-			$this->add_cross_selling_library();
+			add_action( 'init', array( $this, 'add_cross_selling_library' ) );
 
 			// Move WC Settings tab to WPFactory menu.
-			$this->move_wc_settings_tab_to_wpfactory_menu();
+			add_action( 'init', array( $this, 'move_wc_settings_tab_to_wpfactory_menu' ) );
 
 			// Pro
 			if ( 'left-to-free-shipping-for-woocommerce-pro.php' === basename( $this->get_filesystem_path() ) ) {

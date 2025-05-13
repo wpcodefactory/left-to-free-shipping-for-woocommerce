@@ -1,15 +1,15 @@
-# Copyright (C) 2024 WPFactory
+# Copyright (C) 2025 WPFactory
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: amount-left-free-shipping-woocommerce 2.4.6\n"
+"Project-Id-Version: amount-left-free-shipping-woocommerce 2.4.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-14T16:45:54+02:00\n"
+"POT-Creation-Date: 2025-05-14T00:24:04+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
@@ -38,31 +38,31 @@ msgstr ""
 msgid "Please pass it as a key of the first parameter like %s"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:416
+#: includes/class-alg-wc-alfs-core.php:442
 msgid "%s left for free shipping"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:427
+#: includes/class-alg-wc-alfs-core.php:453
 msgid "User roles"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:428
+#: includes/class-alg-wc-alfs-core.php:454
 msgid "Currencies"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:429
+#: includes/class-alg-wc-alfs-core.php:455
 msgid "Shipping zones"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:430
+#: includes/class-alg-wc-alfs-core.php:456
 msgid "Shipping methods"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:431
+#: includes/class-alg-wc-alfs-core.php:457
 msgid "Shipping classes"
 msgstr ""
 
-#: includes/class-alg-wc-alfs-core.php:785
+#: includes/class-alg-wc-alfs-core.php:811
 #: includes/settings/class-alg-wc-alfs-settings-general.php:93
 msgid "You have free delivery!"
 msgstr ""
