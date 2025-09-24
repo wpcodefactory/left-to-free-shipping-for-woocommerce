@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Functions.
  *
- * @version 2.4.2
+ * @version 2.4.8
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -73,5 +73,37 @@ if ( ! function_exists( 'alg_wc_left_to_free_shipping_get_visible_shipping_metho
 		}
 
 		return $default_value;
+	}
+}
+
+if ( ! function_exists( 'alg_wc_left_to_free_shipping_enqueue_script' ) ) {
+	/**
+	 * alg_wc_left_to_free_shipping_enqueue_script.
+	 *
+	 * @version 2.4.8
+	 * @since   2.4.8
+	 */
+	function alg_wc_left_to_free_shipping_enqueue_script( $handle, $src = '', $deps = array(), $ver = false, $args = array() ) {
+		if ( ! defined( 'SCRIPT_DEBUG' ) || ! SCRIPT_DEBUG ) {
+			$src = str_replace( '.js', '.min.js', $src );
+		}
+
+		wp_enqueue_script( $handle, $src, $deps, $ver, $args );
+	}
+}
+
+if ( ! function_exists( 'alg_wc_left_to_free_shipping_enqueue_style' ) ) {
+	/**
+	 * alg_wc_left_to_free_shipping_enqueue_style.
+	 *
+	 * @version 2.4.8
+	 * @since   2.4.8
+	 */
+	function alg_wc_left_to_free_shipping_enqueue_style( $handle, $src = '', $deps = array(), $ver = false, $media = 'all' ) {
+		if ( ! defined( 'SCRIPT_DEBUG' ) || ! SCRIPT_DEBUG ) {
+			$src = str_replace( '.css', '.min.css', $src );
+		}
+
+		wp_enqueue_style( $handle, $src, $deps, $ver, $media );
 	}
 }

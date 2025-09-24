@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.4.7
+ * @version 2.4.8
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -104,12 +104,15 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * enqueue_scripts.
 	 *
-	 * @version 2.3.4
+	 * @version 2.4.8
 	 * @since   2.3.4
 	 */
 	function enqueue_scripts() {
-		wp_register_style( 'alg-wc-alfs-progress-css', trailingslashit( alg_wc_left_to_free_shipping()->plugin_url() ) . 'includes/css/alg-wc-alfs-progress.css', false, '1.0', 'all' );
-		wp_enqueue_style( 'alg-wc-alfs-progress-css' );
+		alg_wc_left_to_free_shipping_enqueue_style( 'alg-wc-alfs-progress',
+			alg_wc_left_to_free_shipping()->plugin_url() . '/includes/css/alg-wc-alfs-progress.css',
+			array(),
+			alg_wc_left_to_free_shipping()->version
+		);
 	}
 
 	/**

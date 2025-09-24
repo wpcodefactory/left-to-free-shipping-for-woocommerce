@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce.
  *
- * @version 2.4.7
+ * @version 2.4.8
  * @since   2.3.0
  * @author  WPFactory
  */
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.4.7';
+		public $version = '2.4.8';
 
 		/**
 		 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
@@ -93,7 +93,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		/**
 		 * move_wc_settings_tab_to_wpfactory_submenu.
 		 *
-		 * @version 2.4.4
+		 * @version 2.4.8
 		 * @since   2.4.4
 		 *
 		 * @return void
@@ -107,6 +107,12 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 			$wpf_admin_menu->move_wc_settings_tab_to_wpfactory_menu( array(
 				'wc_settings_tab_id' => 'alg_wc_left_to_free_shipping',
 				'menu_title'         => __( 'Left for Free Shipping', 'amount-left-free-shipping-woocommerce' ),
+				'page_title'         => __( 'Free Shipping Bar: Amount Left for Free Shipping for WooCommerce', 'amount-left-free-shipping-woocommerce' ),
+				'plugin_icon'        => array(
+					'get_url_method'    => 'wporg_plugins_api',
+					'wporg_plugin_slug' => 'amount-left-free-shipping-woocommerce',
+					'style'             => 'margin-left:-4px',
+				)
 			) );
 		}
 
