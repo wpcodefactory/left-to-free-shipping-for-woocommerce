@@ -54,36 +54,39 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			add_action( 'wp_footer', array( $this, 'add_custom_css_to_footer' ) );
 		}
 	}
-	
+
 	/**
 	 * add_custom_css_to_footer.
 	 *
 	 * @version 2.3.4
 	 * @since   2.3.4
 	 */
-	 function add_custom_css_to_footer() {
-		 $progressbar_enabled = get_option( 'alg_wc_left_to_free_shipping_progressbar_enabled', 'no' );
-		 $progressbar_animation = get_option( 'alg_wc_left_to_free_shipping_progressbar_animation_enabled', 'no' );
-		 $progressbar_background = get_option( 'alg_wc_left_to_free_shipping_progressbar_background_color', '#f0f0f0' );
-		 $progressbar_foreground = get_option( 'alg_wc_left_to_free_shipping_progressbar_foreground_color', '#007bff' );
-		 $progressbar_height = get_option( 'alg_wc_left_to_free_shipping_progressbar_height', '20' );
-		 
-		 if ($progressbar_enabled == 'yes' ) {
-			 
-		 ?>
+	function add_custom_css_to_footer() {
+		$progressbar_enabled    = get_option( 'alg_wc_left_to_free_shipping_progressbar_enabled', 'no' );
+		$progressbar_animation  = get_option( 'alg_wc_left_to_free_shipping_progressbar_animation_enabled', 'no' );
+		$progressbar_background = get_option( 'alg_wc_left_to_free_shipping_progressbar_background_color', '#f0f0f0' );
+		$progressbar_foreground = get_option( 'alg_wc_left_to_free_shipping_progressbar_foreground_color', '#007bff' );
+		$progressbar_height     = get_option( 'alg_wc_left_to_free_shipping_progressbar_height', '20' );
+
+		if ( $progressbar_enabled == 'yes' ) {
+
+			?>
 			<style>
 				.alg-wc-alfs-progress-bar {
 					height: <?php echo $progressbar_height; ?>px;
 					background-color: <?php echo $progressbar_foreground; ?>;
 				}
+
 				.alg-wc-alfs-progress {
 					background-color: <?php echo $progressbar_background; ?>;;
 				}
+
 				<?php if ($progressbar_animation == 'yes' ) { ?>
 				.alg-wc-alfs-progress-bar {
 					animation: progress-bar-stripes 3s linear infinite;
 				}
-				.alg-wc-alfs-progress-bar:after{
+
+				.alg-wc-alfs-progress-bar:after {
 					animation: progress-bar-animate-shine 2s ease-out infinite;
 					background: #fff;
 					border-radius: 3px;
@@ -95,12 +98,13 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 					right: 0;
 					top: 0;
 				}
+
 				<?php } ?>
 			</style>
 			<?php
-		 }
-	 }
-	 
+		}
+	}
+
 	/**
 	 * enqueue_scripts.
 	 *
@@ -544,7 +548,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_manual_min_amount.
 	 *
-	 * @version 2.7.2
+	 * @version 2.4.9
 	 * @since   1.9.0
 	 * @todo    [maybe] pre-check `function_exists( 'WC' ) && ( $wc_cart = WC()->cart )`
 	 */
@@ -564,44 +568,39 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				}
 			}
 			if ( ! empty( $types ) ) {
-				$id  = apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array(), array( 'types' => $types ) );
+				$id                    = apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount_available_types', array(), array( 'types' => $types ) );
 				$cart_shipping_classes = array();
 
-				if(isset($id['cart_shipping_classes']) && !empty($id['cart_shipping_classes'])){
-					
+				if ( isset( $id['cart_shipping_classes'] ) && ! empty( $id['cart_shipping_classes'] ) ) {
 					$cart_shipping_classes = $id['cart_shipping_classes'];
-					unset($id['cart_shipping_classes']);
-					
+					unset( $id['cart_shipping_classes'] );
+
 					$shipping_priority = get_option( 'alg_wc_left_to_free_shipping_multiple_shipping_priority', 'highest' );
-					$tobe_sorted = array();
-					foreach($cart_shipping_classes as $cls){
-						$new_id = $id;
-						$new_id[] = $cls;
-						$_id = implode( '|', $new_id );
-						$amount = isset( $amounts[ $_id ] ) ? $amounts[ $_id ] : $general_manual_min_amount;
-						$tobe_sorted[$_id] = $amount;
-						
+					$tobe_sorted       = array();
+					foreach ( $cart_shipping_classes as $cls ) {
+						$new_id              = $id;
+						$new_id[]            = $cls;
+						$_id                 = implode( '|', $new_id );
+						$amount              = isset( $amounts[ $_id ] ) ? $amounts[ $_id ] : $general_manual_min_amount;
+						$tobe_sorted[ $_id ] = $amount;
 					}
-					
-					if($shipping_priority == 'highest'){
-						arsort($tobe_sorted);
-					}else{
-						asort($tobe_sorted);
+
+					if ( $shipping_priority == 'highest' ) {
+						arsort( $tobe_sorted );
+					} else {
+						asort( $tobe_sorted );
 					}
-					
-					$selected_amount = reset($tobe_sorted);
-					$selected_id = key($tobe_sorted);
+
+					$selected_amount = reset( $tobe_sorted );
+					$selected_id     = key( $tobe_sorted );
 					if ( ! empty( $selected_id ) && isset( $amounts[ $selected_id ] ) ) {
 						return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $selected_amount, 'is_available' => false ), array(
 							'id'      => $selected_id,
 							'amounts' => $amounts,
 						) );
 					}
-					
-					
-				}else{
-
-					$_id = implode( '|', $id );
+				} else {
+					$_id    = implode( '|', $id );
 					$amount = isset( $amounts[ $_id ] ) ? $amounts[ $_id ] : $general_manual_min_amount;
 					if ( ! empty( $_id ) && isset( $amounts[ $_id ] ) ) {
 						return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $amount, 'is_available' => false ), array(
@@ -612,6 +611,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				}
 			}
 		}
+
 		// General manual min amount
 		return apply_filters( 'alg_wc_left_to_free_shipping_manual_min_amount', array( 'amount' => $general_manual_min_amount, 'is_available' => false ), array( 'amounts' => $amounts ) );
 	}
@@ -770,18 +770,18 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			$amount_left_for_free_shipping = ( $min_free_shipping_amount - $total ) * $args['multiply_by'];
 			$free_shipping_min_amount      = ( $min_free_shipping_amount )          * $args['multiply_by'];
 			$current_cart_total            = ( $total )                             * $args['multiply_by'];
-			
+
 			// put $amount_left_for_free_shipping to $args
 			$args['amount_left_for_free_shipping'] = $amount_left_for_free_shipping;
 			$args['current_cart_total'] = $current_cart_total;
-			
+
 			// Progress bar.
 			$progress_bar_html = '';
 			$part = $args['current_cart_total'];
 			$whole = $args['min_free_shipping_amount'];
-			
+
 			$progressbar_enabled = get_option( 'alg_wc_left_to_free_shipping_progressbar_enabled', 'no' );
-			
+
 			if ( $progressbar_enabled == 'yes' && $args['min_free_shipping_amount'] > 0 && $args['amount_left_for_free_shipping'] > 0) {
 				$percentage = ( $part / $whole ) * 100;
 				$percentage = (int) $percentage;
@@ -789,7 +789,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 										<div class="alg-wc-alfs-progress-bar alg-wc-alfs-progress-bar-striped" style="width: ' . $percentage . '%;"></div>
 									  </div>';
 			}
-						
+
 			$placeholders = array(
 				'%amount_left_for_free_shipping%'     => wc_price( $amount_left_for_free_shipping ),
 				'%free_shipping_min_amount%'          => wc_price( $free_shipping_min_amount ),
@@ -799,9 +799,9 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				'%current_cart_total_raw%'            => $current_cart_total,
 				'%progress_bar%'            		  => $progress_bar_html,
 			);
-			
-			
-			
+
+
+
 			// Content
 			if (
 				$min_free_shipping_amount_data['is_available']
@@ -842,8 +842,8 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			$result = str_replace( array_keys( $placeholders ), $placeholders, $result );
 			$result = do_shortcode( $result );
 			$args['original_result'] = $result;
-			$result =  str_replace( '{content}', $result, $args['template'] );		
-						
+			$result =  str_replace( '{content}', $result, $args['template'] );
+
 			// Result
 			return apply_filters( 'alg_wc_get_left_to_free_shipping', $result, $args );
 		}

@@ -1,9 +1,9 @@
 === Free Shipping Bar: Amount Left for Free Shipping for WooCommerce ===
-Contributors: wpcodefactory, omardabbas, karzin, anbinder, algoritmika, kousikmukherjeeli
+Contributors: wpcodefactory, omardabbas, karzin, anbinder, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.8
-Stable tag: 2.4.8
+Stable tag: 2.4.9
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -175,12 +175,13 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 
 == Changelog ==
 
-= 2.4.8 - 24/09/2025 =
+= 2.4.8 - 15/10/2025 =
 * Dev - Admin menu library updated to v1.0.8.
 * Dev - Cross-selling library updated to v1.0.6.
 * Dev - Key-manager library updated to v1.0.7.
 * Dev - Handle minified CSS.
 * WC tested up to: 10.2.
+* Removed Algoritmika from contributors.
 
 = 2.4.7 - 13/05/2025 =
 * Fix - Vulnerability in 'alg_wc_left_to_free_shipping_translate' shortcode output.

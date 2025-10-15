@@ -24,7 +24,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.4.8';
+		public $version = '2.4.9';
 
 		/**
 		 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
