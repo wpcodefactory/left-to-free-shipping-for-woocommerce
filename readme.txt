@@ -175,13 +175,15 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 
 == Changelog ==
 
-= 2.4.8 - 15/10/2025 =
+= 2.4.9 - 15/10/2025 =
+* Removed Algoritmika from contributors.
+
+= 2.4.8 - 24/09/2025 =
 * Dev - Admin menu library updated to v1.0.8.
 * Dev - Cross-selling library updated to v1.0.6.
 * Dev - Key-manager library updated to v1.0.7.
 * Dev - Handle minified CSS.
 * WC tested up to: 10.2.
-* Removed Algoritmika from contributors.
 
 = 2.4.7 - 13/05/2025 =
 * Fix - Vulnerability in 'alg_wc_left_to_free_shipping_translate' shortcode output.
