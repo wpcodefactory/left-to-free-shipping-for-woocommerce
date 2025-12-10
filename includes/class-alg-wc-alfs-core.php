@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.4.8
+ * @version 2.5.0
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -733,7 +733,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 2.3.5
+	 * @version 2.5.0
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -800,8 +800,6 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 				'%progress_bar%'            		  => $progress_bar_html,
 			);
 
-
-
 			// Content
 			if (
 				$min_free_shipping_amount_data['is_available']
@@ -813,7 +811,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 					$args['free_delivery_text'] = get_option( 'alg_wc_left_to_free_shipping_info_content_reached',
 						__( 'You have free delivery!', 'amount-left-free-shipping-woocommerce' ) );
 				}
-				$result = $args['free_delivery_text'];
+				$result = sanitize_text_field( $args['free_delivery_text'] );
 			} else {
 				if (
 					'yes' === get_option( 'alg_wc_left_to_free_shipping_custom_empty_cart', 'no' ) &&
@@ -824,7 +822,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 					if ( '' == $args['content'] ) {
 						$args['content'] = $this->get_default_content();
 					}
-					$result = $args['content'];
+					$result = sanitize_text_field( $args['content'] );
 				}
 			}
 			if ( '' === $result ) {
@@ -845,7 +843,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 			$result =  str_replace( '{content}', $result, $args['template'] );
 
 			// Result
-			return apply_filters( 'alg_wc_get_left_to_free_shipping', $result, $args );
+			return apply_filters( 'alg_wc_get_left_to_free_shipping', wp_kses_post( $result ), $args );
 		}
 	}
 
