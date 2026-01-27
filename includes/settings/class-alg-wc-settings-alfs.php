@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Settings
  *
- * @version 2.4.4
+ * @version 2.5.1
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -16,7 +16,7 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.3.4
+	 * @version 2.5.1
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -35,6 +35,7 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 		require_once( 'class-alg-wc-alfs-settings-manual-min-amount.php' );
 		require_once( 'class-alg-wc-alfs-settings-progress-bar.php' );
 		require_once( 'class-alg-wc-alfs-settings-advanced.php' );
+		require_once( 'class-alg-wc-alfs-settings-compatibility.php' );
 		// Create notice about pro
 		add_action( 'admin_init', array( $this, 'add_promoting_notice' ) );
 	}

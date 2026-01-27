@@ -182,7 +182,6 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		) {
 			$packages = $free_shipping_package;
 		}
-
 		return $packages;
 	}
 

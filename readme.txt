@@ -3,7 +3,7 @@ Contributors: wpcodefactory, omardabbas, karzin, anbinder, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.4
 Tested up to: 6.9
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -174,6 +174,12 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.5.1 - 27/01/2026 =
+* Dev - Added Compatibility section.
+* Dev - Compatibility - Added Compatibility option with PW WooCommerce Exclude Free Shipping plugin to disable Free Shipping check if a product marked as Exclude Free Shipping is in the cart.
+* Dev - Compatibility - Added Compatibility option with PW WooCommerce Exclude Free Shipping plugin to display a notice if a product marked as Exclude Free Shipping is in the cart.
+* WC tested up to: 10.4.
 
 = 2.5.0 - 10/12/2025 =
 * Fix - Fixed security issue.
