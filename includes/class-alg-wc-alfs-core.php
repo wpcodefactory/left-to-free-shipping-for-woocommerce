@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.5.0
+ * @version 2.5.2
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -732,7 +732,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/*
 	 * get_left_to_free_shipping.
 	 *
-	 * @version 2.5.0
+	 * @version 2.5.2
 	 * @since   1.0.0
 	 * @return  string
 	 * @todo    [next] `$empty_cart_text` as function optional param (similar as `$free_delivery_text`)
@@ -810,7 +810,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 					$args['free_delivery_text'] = get_option( 'alg_wc_left_to_free_shipping_info_content_reached',
 						__( 'You have free delivery!', 'amount-left-free-shipping-woocommerce' ) );
 				}
-				$result = sanitize_text_field( $args['free_delivery_text'] );
+				$result = wp_kses_post( $args['free_delivery_text'] );
 			} else {
 				if (
 					'yes' === get_option( 'alg_wc_left_to_free_shipping_custom_empty_cart', 'no' ) &&
@@ -821,7 +821,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 					if ( '' == $args['content'] ) {
 						$args['content'] = $this->get_default_content();
 					}
-					$result = sanitize_text_field( $args['content'] );
+					$result = wp_kses_post( $args['content'] );
 				}
 			}
 			if ( '' === $result ) {
