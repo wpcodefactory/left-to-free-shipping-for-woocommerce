@@ -9,7 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if ( ! class_exists( 'Alg_WC_Cost_of_Goods_Settings_Compatibility' ) ) :
+if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 
 	class Alg_WC_Left_To_Free_Shipping_Settings_Compatibility extends Alg_WC_Left_To_Free_Shipping_Settings_Section {
 
