@@ -1,8 +1,8 @@
 <?php
 /**
- * Cost of Goods for WooCommerce - Compatibility Settings.
+ * Amount Left for Free Shipping for WooCommerce - Compatibility Settings.
  *
- * @version 2.5.1
+ * @version 2.5.3
  * @since   2.5.1
  * @author  WPFactory
  */
