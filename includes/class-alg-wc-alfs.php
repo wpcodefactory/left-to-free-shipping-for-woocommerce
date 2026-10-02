@@ -2,10 +2,14 @@
 /**
  * Amount Left for Free Shipping for WooCommerce.
  *
- * @version 2.4.8
+ * @version 2.5.5
  * @since   2.3.0
  * @author  WPFactory
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 
@@ -24,7 +28,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.5.4';
+		public $version = '2.5.5';
 
 		/**
 		 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class

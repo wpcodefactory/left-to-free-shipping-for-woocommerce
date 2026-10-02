@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Functions.
  *
- * @version 2.4.8
+ * @version 2.5.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -15,7 +15,7 @@ if ( ! function_exists( 'alg_wc_get_left_to_free_shipping' ) ) {
 	/*
 	 * alg_wc_get_left_to_free_shipping.
 	 *
-	 * @version 1.9.4
+	 * @version 2.5.5
 	 * @since   1.3.0
 	 */
 	function alg_wc_get_left_to_free_shipping( $args = null ) {
@@ -31,6 +31,7 @@ if ( ! function_exists( 'alg_wc_get_left_to_free_shipping' ) ) {
 			);
 			for ( $i = 0; $i < func_num_args(); $i ++ ) {
 				if ( ! empty( $param = func_get_arg( $i ) ) && ! is_array( $param ) ) {
+					/* translators: %s: Example of how to pass the parameter to the function. */
 					wc_deprecated_argument( '"' . $deprecated_params[ $i ] . '"', '1.9.4', sprintf( __( 'Please pass it as a key of the first parameter like %s', 'amount-left-free-shipping-woocommerce' ), "<code>alg_wc_get_left_to_free_shipping( array('{$deprecated_params[$i]}' => '') )</code>" ) );
 					$new_params[ $deprecated_params[ $i ] ] = $param;
 				}

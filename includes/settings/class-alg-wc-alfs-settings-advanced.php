@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Advanced Section Settings
  *
- * @version 2.1.5
+ * @version 2.5.5
  * @since   2.1.5
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Advanced' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.1.5
+		 * @version 2.5.5
 		 * @since   2.1.5
 		 */
 		function get_settings() {
@@ -102,6 +102,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Advanced' ) ) :
 				array(
 					'title'    => __( 'Additional events', 'amount-left-free-shipping-woocommerce' ),
 					'desc'     => __( 'Additional JavaScript events to update the amount text on. Leave empty if unsure.', 'amount-left-free-shipping-woocommerce' ) . '<br>' .
+					              /* translators: %s: List of AJAX events. */
 					              sprintf( __( 'These events are always included: %s', 'amount-left-free-shipping-woocommerce' ),
 						              '<code>' . implode( ' ', alg_wc_left_to_free_shipping()->core->get_default_ajax_events() ) . '</code>' ),
 					'type'     => 'text',
@@ -112,6 +113,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Advanced' ) ) :
 				array(
 					'title'    => __( 'Added to cart event without AJAX', 'amount-left-free-shipping-woocommerce' ),
 					'desc'     => __( 'Enable', 'amount-left-free-shipping-woocommerce' ),
+					/* translators: %s: Custom event name. */
 					'desc_tip' => sprintf( __( 'Fires a custom event %s in case a product has been added to cart without AJAX.', 'amount-left-free-shipping-woocommerce' ), '<code>"alg_wc_alfs_added_to_cart"</code>' ) . '<br />' .
 					              __( 'Enable it if the Store notice is not getting displayed on single product pages and if you have the "Hide" option enabled in "Store notice".', 'amount-left-free-shipping-woocommerce' ),
 					'type'     => 'checkbox',

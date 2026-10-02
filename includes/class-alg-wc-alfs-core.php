@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Core Class.
  *
- * @version 2.5.2
+ * @version 2.5.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -58,7 +58,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * add_custom_css_to_footer.
 	 *
-	 * @version 2.3.4
+	 * @version 2.5.5
 	 * @since   2.3.4
 	 */
 	function add_custom_css_to_footer() {
@@ -68,20 +68,20 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		$progressbar_foreground = get_option( 'alg_wc_left_to_free_shipping_progressbar_foreground_color', '#007bff' );
 		$progressbar_height     = get_option( 'alg_wc_left_to_free_shipping_progressbar_height', '20' );
 
-		if ( $progressbar_enabled == 'yes' ) {
+		if ( 'yes' === $progressbar_enabled ) {
 
 			?>
 			<style>
 				.alg-wc-alfs-progress-bar {
-					height: <?php echo $progressbar_height; ?>px;
-					background-color: <?php echo $progressbar_foreground; ?>;
+					height: <?php echo esc_attr( $progressbar_height ); ?>px;
+					background-color: <?php echo esc_attr( $progressbar_foreground ); ?>;
 				}
 
 				.alg-wc-alfs-progress {
-					background-color: <?php echo $progressbar_background; ?>;;
+					background-color: <?php echo esc_attr( $progressbar_background ); ?>;
 				}
 
-				<?php if ($progressbar_animation == 'yes' ) { ?>
+				<?php if ( 'yes' === $progressbar_animation ) { ?>
 				.alg-wc-alfs-progress-bar {
 					animation: progress-bar-stripes 3s linear infinite;
 				}
@@ -245,12 +245,12 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * create_default_notice.
 	 *
-	 * @version 2.2.6
+	 * @version 2.5.5
 	 * @since   1.9.6
 	 */
 	function create_default_notice() {
 		if (
-			'no' == get_option( 'alg_wc_left_to_free_shipping_default_notice_enabled', 'no' )
+			'no' === get_option( 'alg_wc_left_to_free_shipping_default_notice_enabled', 'no' )
 			|| is_admin()
 			|| wp_doing_ajax()
 			||
@@ -351,7 +351,7 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * show_left_to_free_shipping_info_cart.
 	 *
-	 * @version 2.1.5
+	 * @version 2.5.5
 	 * @since   1.0.0
 	 */
 	function show_left_to_free_shipping_info_cart() {
@@ -370,7 +370,10 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 		} elseif ( 'force' === $wrap_method ) {
 			$args['template'] = $wrap_template;
 		}
-		echo $this->get_left_to_free_shipping( $args );
+		$result = $this->get_left_to_free_shipping( $args );
+		if ( $result ) {
+			echo wp_kses_post( $result );
+		}
 	}
 
 	/*
@@ -441,10 +444,11 @@ class Alg_WC_Left_To_Free_Shipping_Core {
 	/**
 	 * get_default_content.
 	 *
-	 * @version 1.8.0
+	 * @version 2.5.5
 	 * @since   1.6.0
 	 */
 	function get_default_content() {
+		/* translators: %s: Placeholder for the amount left for free shipping. */
 		return sprintf( __( '%s left for free shipping', 'amount-left-free-shipping-woocommerce' ), '%amount_left_for_free_shipping%' );
 	}
 

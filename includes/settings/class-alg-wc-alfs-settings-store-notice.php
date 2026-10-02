@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Store Notice Section Settings.
  *
- * @version 2.1.8
+ * @version 2.5.5
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.1.8
+	 * @version 2.5.5
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -36,6 +36,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 			array(
 				'title'    => __( 'Default WooCommerce notice', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'title',
+				/* translators: %s: Option name. */
 				'desc'     => sprintf( __( 'You may want to set the %s option along with this option.', 'amount-left-free-shipping-woocommerce' ), '<strong>"General > Hide the amount left text > By cart amount"</strong>' ),
 				'id'       => 'alg_wc_left_to_free_shipping_default_notice_opt',
 			),
@@ -94,6 +95,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 			array(
 				'title'    => __( 'Site-wide notice', 'amount-left-free-shipping-woocommerce' ),
 				'desc'     => __( 'Site-wide notice.', 'amount-left-free-shipping-woocommerce' ) . ' ' .
+				              /* translators: %s: Option name. */
 				              sprintf( __( 'You may also want to enable %s option for this.', 'amount-left-free-shipping-woocommerce' ), '<strong>"Advanced > AJAX"</strong>' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_left_to_free_shipping_store_notice_options',
@@ -191,6 +193,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Store_Notice extends Alg_WC_Left_To_
 			),
 			array(
 				'title'    => __( 'Padding', 'amount-left-free-shipping-woocommerce' ),
+				/* translators: %s: Documentation link. */
 				'desc'     => sprintf( __( 'Look for %s if you want help configuring the padding.', 'amount-left-free-shipping-woocommerce' ), '<a href="https://www.w3schools.com/css/css_padding.asp" target="_blank">' . __( 'padding shorthand', 'amount-left-free-shipping-woocommerce' ) . '</a>' ),
 				'id'       => 'alg_wc_left_to_free_shipping_info_padding_store_notice',
 				'default'  => '16px 23px',

@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Cart Section Settings.
  *
- * @version 2.1.5
+ * @version 2.5.5
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.1.5
+	 * @version 2.5.5
 	 * @since   1.6.0
 	 * @todo    [maybe] "notice" as "position" (same in "Checkout" section)
 	 * @todo    [maybe] multiple positions (same in "Mini-cart" and "Checkout" sections)
@@ -112,8 +112,11 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 				'title'    => __( 'Wrap method', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'select',
 				'id'       => 'alg_wc_left_to_free_shipping_cart_wrap_method',
+				/* translators: %s: Option name. */
 				'desc_tip' => sprintf( __( '%s will wrap the content automatically, depending on the position.', 'amount-left-free-shipping-woocommerce' ), __( 'Smart', 'amount-left-free-shipping-woocommerce' ) ) . '<br />' .
+				              /* translators: %s: Option name. */
 				              sprintf( __( '%s will not wrap the content.', 'amount-left-free-shipping-woocommerce' ), __( 'Ignore', 'amount-left-free-shipping-woocommerce' ) ) . '<br />' .
+				              /* translators: %s: Option name. */
 				              sprintf( __( '%s will wrap the content in any situation.', 'amount-left-free-shipping-woocommerce' ), __( 'Force', 'amount-left-free-shipping-woocommerce' ) ),
 				'class'    => 'chosen_select',
 				'default'  => 'ignore',
@@ -126,6 +129,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 			array(
 				'title'           => __( 'Wrap template', 'amount-left-free-shipping-woocommerce' ),
 				'type'            => 'text',
+				/* translators: %s: HTML code example. */
 				'desc'            => sprintf( __( 'Probably %s should suit well for positions using tables.', 'amount-left-free-shipping-woocommerce' ), '<code>' . htmlentities( '<tr><th></th><td>' ) . '{content}' . htmlentities( '</td></tr>' ) . '</code>' ),
 				'id'              => 'alg_wc_left_to_free_shipping_cart_wrap_template',
 				'default'         => '<tr><th></th><td>{content}</td></tr>',

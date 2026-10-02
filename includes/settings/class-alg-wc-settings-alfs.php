@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Settings
  *
- * @version 2.5.1
+ * @version 2.5.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -43,7 +43,7 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 	/**
 	 * add_promoting_notice.
 	 *
-	 * @version 2.4.4
+	 * @version 2.5.5
 	 * @since   2.0.5
 	 */
 	function add_promoting_notice() {
@@ -57,7 +57,6 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 			'optimize_plugin_icon_contrast' => true,
 			'template_variables'            => array(
 				'%pro_version_url%'    => 'https://wpfactory.com/item/amount-left-free-shipping-woocommerce/',
-				'%plugin_icon_url%'    => 'https://ps.w.org/amount-left-free-shipping-woocommerce/assets/icon.svg?rev=2971497',
 				'%pro_version_title%'  => __( 'Amount Left for Free Shipping for WooCommerce Pro', 'amount-left-free-shipping-woocommerce' ),
 				'%main_text%'          => __( 'Disabled options can be unlocked using <a href="%pro_version_url%" target="_blank"><strong>%pro_version_title%</strong></a>', 'amount-left-free-shipping-woocommerce' ),
 				'%btn_call_to_action%' => __( 'Upgrade to Pro version', 'amount-left-free-shipping-woocommerce' ),
@@ -132,12 +131,12 @@ class Alg_WC_Settings_Left_To_Free_Shipping extends WC_Settings_Page {
 	/**
 	 * admin_notice_settings_reset.
 	 *
-	 * @version 1.3.0
+	 * @version 2.5.5
 	 * @since   1.3.0
 	 */
 	function admin_notice_settings_reset() {
 		echo '<div class="notice notice-warning is-dismissible"><p><strong>' .
-			__( 'Your settings have been reset.', 'amount-left-free-shipping-woocommerce' ) . '</strong></p></div>';
+			esc_html__( 'Your settings have been reset.', 'amount-left-free-shipping-woocommerce' ) . '</strong></p></div>';
 	}
 
 	/**

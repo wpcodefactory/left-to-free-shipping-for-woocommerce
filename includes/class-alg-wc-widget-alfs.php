@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Widget.
  *
- * @version 2.2.2
+ * @version 2.5.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -30,29 +30,32 @@ class Alg_WC_Widget_Left_to_Free_Shipping extends WP_Widget {
 	/**
 	 * Outputs the content of the widget.
 	 *
-	 * @version 2.2.2
+	 * @version 2.5.5
 	 * @since   1.0.0
 	 * @param   array $args
 	 * @param   array $instance
 	 */
 	function widget( $args, $instance ) {
 		if ( ! alg_wc_left_to_free_shipping_is_admin() ) {
-			echo $args['before_widget'];
+			echo wp_kses_post( $args['before_widget'] );
 			if ( ! empty( $instance['title'] ) ) {
-				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+				echo wp_kses_post( $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'] );
 			}
-			echo alg_wc_left_to_free_shipping()->core->get_left_to_free_shipping( array(
+			$content = alg_wc_left_to_free_shipping()->core->get_left_to_free_shipping( array(
 				'content'  => isset( $instance['content'] ) ? $instance['content'] : '',
 				'location' => 'widget'
 			) );
-			echo $args['after_widget'];
+			if ( $content ) {
+				echo wp_kses_post( $content );
+			}
+			echo wp_kses_post( $args['after_widget'] );
 		}
 	}
 
 	/**
 	 * Outputs the options form on admin.
 	 *
-	 * @version 1.8.0
+	 * @version 2.5.5
 	 * @since   1.0.0
 	 * @param   array $instance The widget options
 	 */
@@ -61,10 +64,10 @@ class Alg_WC_Widget_Left_to_Free_Shipping extends WP_Widget {
 		$content = ! empty( $instance['content'] ) ? $instance['content'] : alg_wc_left_to_free_shipping()->core->get_default_content();
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'amount-left-free-shipping-woocommerce' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		<label for="<?php echo $this->get_field_id( 'content' ); ?>"><?php _e( 'Content:', 'amount-left-free-shipping-woocommerce' ); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id( 'content' ); ?>" name="<?php echo $this->get_field_name( 'content' ); ?>" type="text" value="<?php echo esc_attr( $content ); ?>">
+		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'amount-left-free-shipping-woocommerce' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		<label for="<?php echo esc_attr( $this->get_field_id( 'content' ) ); ?>"><?php esc_html_e( 'Content:', 'amount-left-free-shipping-woocommerce' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'content' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'content' ) ); ?>" type="text" value="<?php echo esc_attr( $content ); ?>">
 		</p>
 		<?php
 	}
@@ -72,7 +75,7 @@ class Alg_WC_Widget_Left_to_Free_Shipping extends WP_Widget {
 	/**
 	 * Processing widget options on save.
 	 *
-	 * @version 1.9.3
+	 * @version 2.5.5
 	 * @since   1.0.0
 	 *
 	 * @param   array $new_instance The new options
@@ -84,7 +87,7 @@ class Alg_WC_Widget_Left_to_Free_Shipping extends WP_Widget {
 		$allowed_html             = wp_kses_allowed_html( 'post' );
 		$allowed_html['progress'] = array( 'max' => array(), 'value' => array() );
 		$instance                 = array();
-		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
 		$instance['content']      = ( ! empty( $new_instance['content'] ) ) ? wp_kses( $new_instance['content'], $allowed_html ) : '';
 		return $instance;
 	}

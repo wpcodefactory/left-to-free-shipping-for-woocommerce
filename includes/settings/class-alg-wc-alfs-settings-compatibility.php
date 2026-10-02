@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Compatibility Settings.
  *
- * @version 2.5.3
+ * @version 2.5.5
  * @since   2.5.1
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.5.1
+		 * @version 2.5.5
 		 * @since   2.5.1
 		 */
 		function get_settings() {
@@ -42,6 +42,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 				) ),
 				array(
 					'title'             => __( 'Disable Free Shipping check', 'amount-left-free-shipping-woocommerce' ),
+					/* translators: %s: Option name. */
 					'desc'              => sprintf( __( 'Disable Free Shipping check if a product marked as %s is in the cart', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Exclude Free Shipping', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 					'desc_tip'          => '',
 					'type'              => 'checkbox',
@@ -53,12 +54,14 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 					//'title'           => __( 'Wrap template', 'amount-left-free-shipping-woocommerce' ),
 					'type'            => 'checkbox',
 					'desc'            => __( 'Display notice', 'amount-left-free-shipping-woocommerce' ),
-					'desc_tip'        => sprintf(__( 'Display notice if there are products in the cart marked as %s', 'amount-left-free-shipping-woocommerce' ),'<strong>' . __( 'Exclude Free Shipping', 'amount-left-free-shipping-woocommerce' ) . '</strong>'),
+					/* translators: %s: Option name. */
+					'desc_tip'        => sprintf( __( 'Display notice if there are products in the cart marked as %s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Exclude Free Shipping', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 					'id'              => 'alg_wc_left_to_free_shipping_pwwcefs_disable_free_shipping_check_display_msg',
 					'default'         => 'no',
 				),
 				array(
 					'type'            => 'text',
+					/* translators: %s: Placeholders list. */
 					'desc'            => sprintf( __( 'Available placeholders: %s.', 'amount-left-free-shipping-woocommerce' ), '<code>' . implode( '</code>, <code>', array(
 							'%pw_efs_products%',
 						) ) . '</code>' ),
@@ -81,7 +84,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 		/**
 		 * get_default_compatibility_title_option.
 		 *
-		 * @version 3.2.4
+		 * @version 2.5.5
 		 * @since   3.2.4
 		 *
 		 * @param $args
@@ -102,7 +105,8 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 				'title' => $args['title'],
 				'type'  => 'title',
 				'desc'  => sprintf(
-					__( 'Compatibility with %s %s.', 'amount-left-free-shipping-woocommerce' ),
+					/* translators: %1$s: Plugin name, %2$s: Type (plugin or theme). */
+					__( 'Compatibility with %1$s %2$s.', 'amount-left-free-shipping-woocommerce' ),
 					'<a href="' . esc_url( $args['link'] ) . '" target="_blank">' . esc_html( $args['title'] ) . '</a>',
 					$product_type
 				),

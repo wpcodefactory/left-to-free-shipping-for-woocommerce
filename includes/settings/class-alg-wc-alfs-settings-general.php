@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings.
  *
- * @version 2.4.2
+ * @version 2.5.5
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.4.2
+		 * @version 2.5.5
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -104,9 +104,12 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'     => 'checkbox',
 				),
 				array(
+					/* translators: %s: Option name. */
 					'desc_tip' => sprintf( __( 'Ignored unless "%s" checkbox is enabled.', 'amount-left-free-shipping-woocommerce' ),
 						__( 'Message on empty cart', 'amount-left-free-shipping-woocommerce' ) . ' > ' . __( 'Custom message', 'amount-left-free-shipping-woocommerce' ) ),
+					/* translators: %s: Example content. */
 					'desc'     => sprintf( __( 'E.g.: %s', 'amount-left-free-shipping-woocommerce' ),
+							/* translators: %s: Placeholder for the free shipping minimum amount. */
 							'<code>' . __( 'Free shipping on orders over %free_shipping_min_amount%.', 'amount-left-free-shipping-woocommerce' ) . '</code>' ) . '<br>' .
 					              $this->get_placeholders_desc(),
 					'id'       => 'alg_wc_left_to_free_shipping_info_content_empty_cart',
@@ -134,8 +137,11 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'default'  => 'get_displayed_subtotal',
 					'type'     => 'select',
 					'options'  => array(
+						/* translators: %s: Method name. */
 						'get_displayed_subtotal'  => sprintf( __( 'Displayed subtotal - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_displayed_subtotal()' ),
+						/* translators: %s: Method name. */
 						'get_cart_contents_total' => sprintf( __( 'Cart contents total - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_cart_contents_total()' ),
+						/* translators: %s: Method name. */
 						'get_total' => sprintf( __( 'Cart total - %s', 'amount-left-free-shipping-woocommerce' ), 'WC_Cart::get_total( "raw" )' ),
 					),
 					'class'    => 'chosen_select',
@@ -143,7 +149,8 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				array(
 					'title'    => __( 'Discounts', 'amount-left-free-shipping-woocommerce' ),
 					'desc'     => __( 'Exclude discounts from cart total calculation', 'amount-left-free-shipping-woocommerce' ),
-					'desc_tip' => sprintf( __( 'Most probably, should be enabled when %s option is set as %s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ) . '</strong>', '<strong>' . __( 'Displayed subtotal', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
+					/* translators: %1$s: Option name, %2$s: Option value. */
+					'desc_tip' => sprintf( __( 'Most probably, should be enabled when %1$s option is set as %2$s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ) . '</strong>', '<strong>' . __( 'Displayed subtotal', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 					'id'       => 'alg_wc_left_to_free_shipping_include_discounts',
 					'default'  => 'yes',
 					'type'     => 'checkbox',
@@ -151,7 +158,8 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				array(
 					'title'    => __( 'Shipping', 'amount-left-free-shipping-woocommerce' ),
 					'desc'     => __( 'Exclude shipping from cart total calculation', 'amount-left-free-shipping-woocommerce' ),
-					'desc_tip' => sprintf( __( 'Most probably, should be enabled when %s option it set as %s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ) . '</strong>', '<strong>' . __( 'Cart total', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
+					/* translators: %1$s: Option name, %2$s: Option value. */
+					'desc_tip' => sprintf( __( 'Most probably, should be enabled when %1$s option it set as %2$s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Cart total method', 'amount-left-free-shipping-woocommerce' ) . '</strong>', '<strong>' . __( 'Cart total', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 					'id'       => 'alg_wc_left_to_free_shipping_exclude_shipping',
 					'default'  => 'no',
 					'checkboxgroup' => 'start',
@@ -219,6 +227,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 				array(
 					'title'             => __( 'By shipping method', 'amount-left-free-shipping-woocommerce' ),
+					/* translators: %s: Option name. */
 					'desc'              => sprintf( __( 'Hides the text if the selected shipping methods are %s.', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'disabled', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 					'desc_tip'          => __( 'Leave it empty to disable.', 'amount-left-free-shipping-woocommerce' ),
 					'id'                => 'alg_wc_left_to_free_shipping_hide_by_disabled_shipping_method',
@@ -228,7 +237,8 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'type'              => 'multiselect',
 				),
 				array(
-					'desc'              => sprintf( __( 'Choose if you need to have %s shipping methods disabled or %s.', 'amount-left-free-shipping-woocommerce' ), '<code>' . __( 'All', 'amount-left-free-shipping-woocommerce' ) . '</code>', '<code>' . __( 'At least one', 'amount-left-free-shipping-woocommerce' ) . '</code>' ),
+					/* translators: %1$s: Option name, %2$s: Option name. */
+					'desc'              => sprintf( __( 'Choose if you need to have %1$s shipping methods disabled or %2$s.', 'amount-left-free-shipping-woocommerce' ), '<code>' . __( 'All', 'amount-left-free-shipping-woocommerce' ) . '</code>', '<code>' . __( 'At least one', 'amount-left-free-shipping-woocommerce' ) . '</code>' ),
 					'id'                => 'alg_wc_left_to_free_shipping_hide_by_disabled_shipping_method_operator',
 					'class'             => 'chosen_select',
 					'default'           => 'or',
@@ -254,6 +264,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 				),
 				array(
 					'desc'              => __( 'Check children categories', 'amount-left-free-shipping-woocommerce' ),
+					/* translators: %s: Option name. */
 					'desc_tip'          => sprintf( __( 'Checks for children categories in cart so you can use just the parent categories in the %s option.', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Hide by category', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 					'id'                => 'alg_wc_left_to_free_hide_by_category_check_children',
 					'default'           => 'no',
