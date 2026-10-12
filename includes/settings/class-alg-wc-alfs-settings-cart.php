@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Cart Section Settings.
  *
- * @version 2.5.5
+ * @version 2.5.6
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.5.5
+	 * @version 2.5.6
 	 * @since   1.6.0
 	 * @todo    [maybe] "notice" as "position" (same in "Checkout" section)
 	 * @todo    [maybe] multiple positions (same in "Mini-cart" and "Checkout" sections)
@@ -160,6 +160,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 				'id'       => 'alg_wc_left_to_free_shipping_cart_custom_color',
 				'default'  => '#000000',
 				'type'     => 'color',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'title'    => __( 'Font size', 'amount-left-free-shipping-woocommerce' ),
@@ -167,6 +168,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Cart extends Alg_WC_Left_To_Free_Shi
 				'id'       => 'alg_wc_left_to_free_shipping_cart_font_size',
 				'default'  => '16',
 				'type'     => 'number',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'type'     => 'sectionend',

@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Checkout Section Settings
  *
- * @version 2.5.5
+ * @version 2.5.6
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.5.5
+	 * @version 2.5.6
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -56,6 +56,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'type'            => 'textarea',
 				'css'             => 'width:100%;height:100px;',
 				'alg_wc_alfs_raw' => true,
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'title'    => __( 'Position', 'amount-left-free-shipping-woocommerce' ),
@@ -63,6 +64,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'default'  => 'woocommerce_checkout_after_order_review',
 				'type'     => 'select',
 				'class'    => 'chosen_select',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				'options'  => array(
 					'woocommerce_before_checkout_form'              => __( 'Before checkout form', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_checkout_before_customer_details'  => __( 'Before customer details', 'amount-left-free-shipping-woocommerce' ),
@@ -85,6 +87,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'id'       => 'alg_wc_left_to_free_shipping_info_priority_checkout',
 				'default'  => 10,
 				'type'     => 'number',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'type'     => 'sectionend',
@@ -104,6 +107,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'title'    => __( 'Wrap method', 'amount-left-free-shipping-woocommerce' ),
 				'type'     => 'select',
 				'id'       => 'alg_wc_left_to_free_shipping_checkout_wrap_method',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				/* translators: %s: Option name. */
 				'desc_tip' => sprintf( __( '%s will wrap the content automatically, depending on the position.', 'amount-left-free-shipping-woocommerce' ), __( 'Smart', 'amount-left-free-shipping-woocommerce' ) ) . '<br />' .
 				              /* translators: %s: Option name. */
@@ -126,6 +130,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'id'              => 'alg_wc_left_to_free_shipping_checkout_wrap_template',
 				'default'         => '<tr><th></th><td>{content}</td></tr>',
 				'alg_wc_alfs_raw' => true,
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'type'     => 'sectionend',
@@ -145,12 +150,14 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'type'     => 'checkbox',
 				'id'       => 'alg_wc_left_to_free_shipping_checkout_custom_style_enabled',
 				'default'  => 'no',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'title'    => __( 'Text color', 'amount-left-free-shipping-woocommerce' ),
 				'id'       => 'alg_wc_left_to_free_shipping_checkout_custom_color',
 				'default'  => '#000000',
 				'type'     => 'color',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'title'    => __( 'Font size', 'amount-left-free-shipping-woocommerce' ),
@@ -158,6 +165,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Checkout extends Alg_WC_Left_To_Free
 				'id'       => 'alg_wc_left_to_free_shipping_checkout_font_size',
 				'default'  => '16',
 				'type'     => 'number',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'type'     => 'sectionend',

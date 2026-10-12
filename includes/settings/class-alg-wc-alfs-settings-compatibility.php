@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Compatibility Settings.
  *
- * @version 2.5.5
+ * @version 2.5.6
  * @since   2.5.1
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.5.5
+		 * @version 2.5.6
 		 * @since   2.5.1
 		 */
 		function get_settings() {
@@ -58,6 +58,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 					'desc_tip'        => sprintf( __( 'Display notice if there are products in the cart marked as %s', 'amount-left-free-shipping-woocommerce' ), '<strong>' . __( 'Exclude Free Shipping', 'amount-left-free-shipping-woocommerce' ) . '</strong>' ),
 					'id'              => 'alg_wc_left_to_free_shipping_pwwcefs_disable_free_shipping_check_display_msg',
 					'default'         => 'no',
+					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				),
 				array(
 					'type'            => 'text',
@@ -68,6 +69,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Compatibility' ) ) :
 					'id'              => 'alg_wc_left_to_free_shipping_comp_pwwcefs_disable_free_shipping_check_msg',
 					'default'         => __( 'Free shipping is not available while the following items are in the cart: %pw_efs_products%.', 'amount-left-free-shipping-woocommerce' ),
 					'css'             => 'width:600px',
+					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				),
 				array(
 					'type' => 'sectionend',

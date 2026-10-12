@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - General Section Settings.
  *
- * @version 2.5.5
+ * @version 2.5.6
  * @since   1.0.0
  * @author  WPFactory
  */
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.5.5
+		 * @version 2.5.6
 		 * @since   1.0.0
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_free_shipping`: default to `yes`
 		 * @todo    [next] `alg_wc_left_to_free_shipping_check_virtual`: default to `yes`
@@ -269,6 +269,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_General' ) ) :
 					'id'                => 'alg_wc_left_to_free_hide_by_category_check_children',
 					'default'           => 'no',
 					'type'              => 'checkbox',
+					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				),
 				array(
 					'title'             => __( 'By user role', 'amount-left-free-shipping-woocommerce' ),

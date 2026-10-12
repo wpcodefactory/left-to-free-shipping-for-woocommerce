@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Advanced Section Settings
  *
- * @version 2.5.5
+ * @version 2.5.6
  * @since   2.1.5
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Advanced' ) ) :
 		/**
 		 * get_settings.
 		 *
-		 * @version 2.5.5
+		 * @version 2.5.6
 		 * @since   2.1.5
 		 */
 		function get_settings() {
@@ -109,6 +109,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Advanced' ) ) :
 					'id'       => 'alg_wc_left_to_free_shipping_ajax_events',
 					'default'  => '',
 					'css'      => 'width:100%;',
+					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				),
 				array(
 					'title'    => __( 'Added to cart event without AJAX', 'amount-left-free-shipping-woocommerce' ),
@@ -119,6 +120,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Advanced' ) ) :
 					'type'     => 'checkbox',
 					'id'       => 'alg_wc_left_to_free_shipping_ajax_added_to_cart_no_ajax',
 					'default'  => 'no',
+					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				),
 				array(
 					'title'    => __( 'Force update', 'amount-left-free-shipping-woocommerce' ),
@@ -127,6 +129,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping_Settings_Advanced' ) ) :
 					'type'     => 'checkbox',
 					'id'       => 'alg_wc_left_to_free_shipping_ajax_force_update',
 					'default'  => 'no',
+					'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				),
 				array(
 					'type'     => 'sectionend',

@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - Mini-cart Section Settings
  *
- * @version 2.0.5
+ * @version 2.5.6
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Mini_Cart extends Alg_WC_Left_To_Fre
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.5
+	 * @version 2.5.6
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -56,6 +56,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Mini_Cart extends Alg_WC_Left_To_Fre
 				'type'     => 'textarea',
 				'css'      => 'width:100%;height:100px;',
 				'alg_wc_alfs_raw' => true,
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'title'    => __( 'Position', 'amount-left-free-shipping-woocommerce' ),
@@ -63,6 +64,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Mini_Cart extends Alg_WC_Left_To_Fre
 				'default'  => 'woocommerce_after_mini_cart',
 				'type'     => 'select',
 				'class'    => 'chosen_select',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				'options'  => array(
 					'woocommerce_before_mini_cart'                    => __( 'Before mini cart', 'amount-left-free-shipping-woocommerce' ),
 					'woocommerce_before_mini_cart_contents'           => __( 'Before mini cart contents', 'amount-left-free-shipping-woocommerce' ),
@@ -80,6 +82,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Mini_Cart extends Alg_WC_Left_To_Fre
 				'id'       => 'alg_wc_left_to_free_shipping_info_priority_mini_cart',
 				'default'  => 10,
 				'type'     => 'number',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'type'     => 'sectionend',

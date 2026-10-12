@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce.
  *
- * @version 2.5.5
+ * @version 2.5.6
  * @since   2.3.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		 * @var   string
 		 * @since 1.0.0
 		 */
-		public $version = '2.5.5';
+		public $version = '2.5.6';
 
 		/**
 		 * @var   Alg_WC_Left_To_Free_Shipping The single instance of the class
@@ -123,14 +123,11 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 		/**
 		 * Initializer.
 		 *
-		 * @version 2.4.7
+		 * @version 2.5.6
 		 * @since   1.0.0
 		 * @access  public
 		 */
 		function init() {
-
-			// Localization
-			add_action( 'init', array( $this, 'localize' ) );
 
 			// Adds cross-selling library.
 			add_action( 'init', array( $this, 'add_cross_selling_library' ) );
@@ -158,18 +155,6 @@ if ( ! class_exists( 'Alg_WC_Left_To_Free_Shipping' ) ) :
 			if ( is_admin() ) {
 				$this->admin();
 			}
-		}
-
-		/**
-		 * localize.
-		 *
-		 * @version 2.3.0
-		 * @since   2.3.0
-		 *
-		 */
-		function localize() {
-			// Set up localisation
-			load_plugin_textdomain( 'amount-left-free-shipping-woocommerce', false, dirname( plugin_basename( $this->get_filesystem_path() ) ) . '/langs/' );
 		}
 
 		/**

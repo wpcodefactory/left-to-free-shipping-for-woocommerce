@@ -2,7 +2,7 @@
 /**
  * Amount Left for Free Shipping for WooCommerce - "Add to Cart" Section Settings
  *
- * @version 2.0.5
+ * @version 2.5.6
  * @since   1.6.0
  * @author  WPFactory
  */
@@ -28,7 +28,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Add_To_Cart extends Alg_WC_Left_To_F
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.5
+	 * @version 2.5.6
 	 * @since   1.6.0
 	 */
 	function get_settings() {
@@ -56,6 +56,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Add_To_Cart extends Alg_WC_Left_To_F
 				'type'     => 'textarea',
 				'css'      => 'width:100%;height:100px;',
 				'alg_wc_alfs_raw' => true,
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'title'    => __( 'Position', 'amount-left-free-shipping-woocommerce' ),
@@ -63,6 +64,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Add_To_Cart extends Alg_WC_Left_To_F
 				'default'  => 'after',
 				'type'     => 'select',
 				'class'    => 'chosen_select',
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 				'options'  => array(
 					'before' => __( 'Before the standard text', 'amount-left-free-shipping-woocommerce' ),
 					'after'  => __( 'After the standard text', 'amount-left-free-shipping-woocommerce' ),
@@ -75,6 +77,7 @@ class Alg_WC_Left_To_Free_Shipping_Settings_Add_To_Cart extends Alg_WC_Left_To_F
 				'default'  => '<br>',
 				'type'     => 'text',
 				'alg_wc_alfs_raw' => true,
+				'custom_attributes' => apply_filters( 'alg_wc_left_to_free_shipping_settings', array( 'disabled' => 'disabled' ) ),
 			),
 			array(
 				'type'     => 'sectionend',

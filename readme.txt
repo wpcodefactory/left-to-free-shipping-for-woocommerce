@@ -3,7 +3,7 @@ Contributors: wpcodefactory, omardabbas, karzin, anbinder, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.7
 Tested up to: 7.1
-Stable tag: 2.5.5
+Stable tag: 2.5.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -174,6 +174,16 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.5.6 - 12/10/2026 =
+* Fix - Corrected the text domain in some strings.
+* Fix - Added strict allowlists for settings-controlled function calls in default notice and cart total calculation.
+* Dev - Code refactoring.
+* Fix - Removed discouraged load_plugin_textdomain() call; translations load automatically since WordPress 4.6.
+* Dev - Updated wpfactory-admin-menu library to v1.1.3.
+* Dev - Updated wpfactory-cross-selling library to v1.1.7.
+* Dev - Updated wpfactory-promoting-notice library to v1.0.7.
+* Dev - Updated wpfactory-key-manager library to v1.1.1.
 
 = 2.5.5 - 02/10/2026 =
 * Fix - Site-wide notice not showing on page load when AJAX is enabled.
