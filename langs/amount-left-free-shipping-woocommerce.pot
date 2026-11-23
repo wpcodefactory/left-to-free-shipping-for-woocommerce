@@ -2,45 +2,53 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: amount-left-free-shipping-woocommerce 2.5.6\n"
+"Project-Id-Version: Free Shipping Bar: Amount Left for Free Shipping for WooCommerce 2.5.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/amount-left-free-shipping-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-13T00:12:22+02:00\n"
+"POT-Creation-Date: 2026-11-23T12:20:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: amount-left-free-shipping-woocommerce\n"
 
 #. Plugin Name of the plugin
-msgid "Free Shipping Bar: Amount Left for Free Shipping for WooCommerce Pro"
+#: left-to-free-shipping-for-woocommerce.php
+#: includes/class-alg-wc-alfs.php:114
+msgid "Free Shipping Bar: Amount Left for Free Shipping for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: left-to-free-shipping-for-woocommerce.php
 msgid "https://wpfactory.com/item/amount-left-free-shipping-woocommerce/"
 msgstr ""
 
 #. Description of the plugin
+#: left-to-free-shipping-for-woocommerce.php
 msgid "Show your customers the amount left for free shipping in WooCommerce."
 msgstr ""
 
 #. Author of the plugin
+#: left-to-free-shipping-for-woocommerce.php
 msgid "WPFactory"
 msgstr ""
 
 #. Author URI of the plugin
+#: left-to-free-shipping-for-woocommerce.php
 msgid "https://wpfactory.com"
 msgstr ""
 
 #. translators: %s: Example of how to pass the parameter to the function.
 #: includes/alg-wc-alfs-functions.php:35
+#, php-format
 msgid "Please pass it as a key of the first parameter like %s"
 msgstr ""
 
 #. translators: %s: Placeholder for the amount left for free shipping.
 #: includes/class-alg-wc-alfs-core.php:386
+#, php-format
 msgid "%s left for free shipping"
 msgstr ""
 
@@ -71,10 +79,6 @@ msgstr ""
 
 #: includes/class-alg-wc-alfs.php:113
 msgid "Left for Free Shipping"
-msgstr ""
-
-#: includes/class-alg-wc-alfs.php:114
-msgid "Free Shipping Bar: Amount Left for Free Shipping for WooCommerce"
 msgstr ""
 
 #: includes/class-alg-wc-alfs.php:205
@@ -263,6 +267,7 @@ msgstr ""
 
 #. translators: %s: List of AJAX events.
 #: includes/settings/class-alg-wc-alfs-settings-advanced.php:106
+#, php-format
 msgid "These events are always included: %s"
 msgstr ""
 
@@ -272,6 +277,7 @@ msgstr ""
 
 #. translators: %s: Custom event name.
 #: includes/settings/class-alg-wc-alfs-settings-advanced.php:118
+#, php-format
 msgid "Fires a custom event %s in case a product has been added to cart without AJAX."
 msgstr ""
 
@@ -423,6 +429,7 @@ msgstr ""
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:116
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:112
+#, php-format
 msgid "%s will wrap the content automatically, depending on the position."
 msgstr ""
 
@@ -437,6 +444,7 @@ msgstr ""
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:118
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:114
+#, php-format
 msgid "%s will not wrap the content."
 msgstr ""
 
@@ -452,6 +460,7 @@ msgstr ""
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:120
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:116
+#, php-format
 msgid "%s will wrap the content in any situation."
 msgstr ""
 
@@ -471,6 +480,7 @@ msgstr ""
 #. translators: %s: HTML code example.
 #: includes/settings/class-alg-wc-alfs-settings-cart.php:133
 #: includes/settings/class-alg-wc-alfs-settings-checkout.php:129
+#, php-format
 msgid "Probably %s should suit well for positions using tables."
 msgstr ""
 
@@ -584,6 +594,7 @@ msgstr ""
 
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-compatibility.php:46
+#, php-format
 msgid "Disable Free Shipping check if a product marked as %s is in the cart"
 msgstr ""
 
@@ -599,12 +610,14 @@ msgstr ""
 
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-compatibility.php:58
+#, php-format
 msgid "Display notice if there are products in the cart marked as %s"
 msgstr ""
 
 #. translators: %s: Placeholders list.
 #: includes/settings/class-alg-wc-alfs-settings-compatibility.php:66
 #: includes/settings/class-alg-wc-alfs-settings-section.php:65
+#, php-format
 msgid "Available placeholders: %s."
 msgstr ""
 
@@ -618,6 +631,7 @@ msgstr ""
 
 #. translators: %1$s: Plugin name, %2$s: Type (plugin or theme).
 #: includes/settings/class-alg-wc-alfs-settings-compatibility.php:111
+#, php-format
 msgid "Compatibility with %1$s %2$s."
 msgstr ""
 
@@ -675,6 +689,7 @@ msgstr ""
 
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:108
+#, php-format
 msgid "Ignored unless \"%s\" checkbox is enabled."
 msgstr ""
 
@@ -688,11 +703,13 @@ msgstr ""
 
 #. translators: %s: Example content.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:111
+#, php-format
 msgid "E.g.: %s"
 msgstr ""
 
 #. translators: %s: Placeholder for the free shipping minimum amount.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:113
+#, php-format
 msgid "Free shipping on orders over %free_shipping_min_amount%."
 msgstr ""
 
@@ -713,16 +730,19 @@ msgstr ""
 
 #. translators: %s: Method name.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:141
+#, php-format
 msgid "Displayed subtotal - %s"
 msgstr ""
 
 #. translators: %s: Method name.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:143
+#, php-format
 msgid "Cart contents total - %s"
 msgstr ""
 
 #. translators: %s: Method name.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:145
+#, php-format
 msgid "Cart total - %s"
 msgstr ""
 
@@ -736,6 +756,7 @@ msgstr ""
 
 #. translators: %1$s: Option name, %2$s: Option value.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:153
+#, php-format
 msgid "Most probably, should be enabled when %1$s option is set as %2$s"
 msgstr ""
 
@@ -750,6 +771,7 @@ msgstr ""
 
 #. translators: %1$s: Option name, %2$s: Option value.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:162
+#, php-format
 msgid "Most probably, should be enabled when %1$s option it set as %2$s"
 msgstr ""
 
@@ -821,6 +843,7 @@ msgstr ""
 
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:231
+#, php-format
 msgid "Hides the text if the selected shipping methods are %s."
 msgstr ""
 
@@ -837,6 +860,7 @@ msgstr ""
 
 #. translators: %1$s: Option name, %2$s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:241
+#, php-format
 msgid "Choose if you need to have %1$s shipping methods disabled or %2$s."
 msgstr ""
 
@@ -866,6 +890,7 @@ msgstr ""
 
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-general.php:268
+#, php-format
 msgid "Checks for children categories in cart so you can use just the parent categories in the %s option."
 msgstr ""
 
@@ -944,6 +969,7 @@ msgstr ""
 
 #. translators: %s: Section name.
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:158
+#, php-format
 msgid "Special values you can use on the %s section"
 msgstr ""
 
@@ -1006,6 +1032,7 @@ msgstr ""
 
 #. translators: %1$s: Plugin URL, %2$s: Author URL.
 #: includes/settings/class-alg-wc-alfs-settings-manual-min-amount.php:198
+#, php-format
 msgid "Convert manual min amount value to current currency when using \"<a target=\"_blank\" href=\"%1$s\">WooCommerce Currency Switcher</a>\" plugin made by author <a href=\"%2$s\" target=\"_blank\">realmag777</a>"
 msgstr ""
 
@@ -1129,6 +1156,7 @@ msgstr ""
 
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:40
+#, php-format
 msgid "You may want to set the %s option along with this option."
 msgstr ""
 
@@ -1202,6 +1230,7 @@ msgstr ""
 
 #. translators: %s: Option name.
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:102
+#, php-format
 msgid "You may also want to enable %s option for this."
 msgstr ""
 
@@ -1275,6 +1304,7 @@ msgstr ""
 
 #. translators: %s: Documentation link.
 #: includes/settings/class-alg-wc-alfs-settings-store-notice.php:209
+#, php-format
 msgid "Look for %s if you want help configuring the padding."
 msgstr ""
 
