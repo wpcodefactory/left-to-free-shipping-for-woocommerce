@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'c8d460c769879e4903cad859e3e806fc' => $vendorDir . '/wpfactory/wpfactory-cross-selling/src/php/my-plugins/loader.php',
     '20872bbaff0e3115cc7db5ab4a7d607e' => $vendorDir . '/wpfactory/wpfactory-promoting-notice/src/php/functions.php',
 );

@@ -3,7 +3,7 @@ Contributors: wpcodefactory, omardabbas, karzin, anbinder, kousikmukherjeeli
 Tags: woocommerce, left for free shipping, free shipping, shipping
 Requires at least: 4.7
 Tested up to: 7.1
-Stable tag: 2.5.7
+Stable tag: 2.5.8
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,7 +11,7 @@ Show progress bar for amount left for free shipping using our fully customizable
 
 == Description ==
 
-> “Amazing Plugin and Support: The plugin does what it says and works perfectly in executing it. It’s a clean code and light-weight plugin. The support is also top-notch.” – ⭐⭐⭐⭐⭐  [carmpocalypse](https://wordpress.org/support/topic/amazing-plugin-and-support-126/)
+> “Amazing Plugin and Support: The plugin does what it says and works perfectly in executing it. It’s a clean code and light-weight plugin. The support is also top-notch.” - ⭐⭐⭐⭐⭐  [carmpocalypse](https://wordpress.org/support/topic/amazing-plugin-and-support-126/)
 
 [Main Page](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Main Page") | [Demo](https://freeshippingbar.instawp.xyz/ "Demo") | [Support Forum](https://wpfactory.com/support/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Support Forum") | [Documentation & How to](https://wpfactory.com/docs/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme "Documentation & How to")
 
@@ -67,9 +67,9 @@ The flexibility our plugin provides will allow you to implement localized pricin
 You don't have to show the same message as every other store using this plugin, you can write your own customized message if the user reaches the free shipping threshold.
 
 
-> “Good plugin: I recommend this plugin. Been using it for a year and has been working with no problems.” – ⭐⭐⭐⭐⭐ [kirsimaria](https://wordpress.org/support/topic/good-plugin-5620/)
+> “Good plugin: I recommend this plugin. Been using it for a year and has been working with no problems.” - ⭐⭐⭐⭐⭐ [kirsimaria](https://wordpress.org/support/topic/good-plugin-5620/)
 
-> “A great plugin with a great support team !: Amazing plugin with a great support team that really take the time to understand your issue in order to help you ! I can’t believe that this plugin is free !” – ⭐⭐⭐⭐⭐ [Thé du Vietnam](https://wordpress.org/support/topic/a-great-plugin-with-a-great-support-team/)
+> “A great plugin with a great support team !: Amazing plugin with a great support team that really take the time to understand your issue in order to help you ! I can’t believe that this plugin is free !” - ⭐⭐⭐⭐⭐ [Thé du Vietnam](https://wordpress.org/support/topic/a-great-plugin-with-a-great-support-team/)
 
 ## 🏆 Pro Version ##
 
@@ -119,13 +119,13 @@ WPFactory has a diverse range of plugins tailored to enhance your experience, so
 
 ### ❤️ USER TESTIMONIALS: SEE WHAT OTHERS ARE SAYING! ###
 
-> “Great support and perfectly working plugin. I highly recommend.” – ⭐⭐⭐⭐⭐ [Petia Koleva](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
+> “Great support and perfectly working plugin. I highly recommend.” - ⭐⭐⭐⭐⭐ [Petia Koleva](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
 
-> “Amazing Plugin! Tom even helped me to implement a second and third bar for free gifts. Never seen such an amazing support!” – ⭐⭐⭐⭐⭐ [Dominic](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
+> “Amazing Plugin! Tom even helped me to implement a second and third bar for free gifts. Never seen such an amazing support!” - ⭐⭐⭐⭐⭐ [Dominic](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
 
-> “Very simple small plugin. Does exactly what's promised.” – ⭐⭐⭐⭐⭐ [Lucas](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
+> “Very simple small plugin. Does exactly what's promised.” - ⭐⭐⭐⭐⭐ [Lucas](https://wpfactory.com/item/amount-left-free-shipping-woocommerce/?utm_source=wporg&utm_medium=organic&utm_campaign=readme)
 
-> “Great lightweight plugin and 5-star support: The developer added a new option into the plugin to solve my issue! It works perfectly and the support is simply the best.” – ⭐⭐⭐⭐⭐ [Nora C.](https://wordpress.org/support/topic/great-lightweight-plugin-and-5-star-support/)
+> “Great lightweight plugin and 5-star support: The developer added a new option into the plugin to solve my issue! It works perfectly and the support is simply the best.” - ⭐⭐⭐⭐⭐ [Nora C.](https://wordpress.org/support/topic/great-lightweight-plugin-and-5-star-support/)
 
 == Frequently Asked Questions ==
 
@@ -174,6 +174,11 @@ Once activated, access the plugin's settings by navigating to “WooCommerce > S
 3. An example of the amount left text being displayed on frontend after the Cart section is enabled.
 
 == Changelog ==
+
+= 2.5.8 - 25/11/2026 =
+* Fix - Security: the live refresh (Pro "AJAX" option) only shows the message the store printed; a changed request can no longer run shortcodes.
+* Fix - A malformed live refresh request no longer causes a PHP error.
+* Dev - WPFactory Cross-Selling - Library updated (to v1.2.1).
 
 = 2.5.7 - 23/11/2026 =
 * WC tested up to: 11.3.
